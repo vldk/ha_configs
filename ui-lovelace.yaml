@@ -87,49 +87,19 @@ views:
         - type: weather-forecast
           entity: weather.home
           
+  - title: СС 2531
+    icon: mdi:usb-flash-drive
           
-  # - title: Освещение
-  #   icon: mdi:lightbulb-group
-    
-          
-  #   cards:
-    
-  #     - type: vertical-stack
-  #       cards:
-  #       - type: markdown
-  #         content: >
-  #            **Панель переключателей** 
-
-  #       - type: entities
-  #         show_header_toggle: false
-  #         entities:          
-  #           - entity: light.yeelight_650
-  #             name: Люстра 650 основной свет
-  #           - entity: light.yeelight_650_nightlight
-  #             name: Люстра 650 ночник
-  #           - entity: light.yeelight_650_ambilight
-  #             name: Люстра 650 амбилайт           
-  #           - entity: light.yeelight_450           
-  #             name: Люстра 450 основной свет
-  #           - entity: light.yeelight_450_nightlight 
-  #             name: Люстра 450 ночник            
-  #           - entity: light.yeelight_rgb_bulb            
-  #             name: Лампочка  
-
-  #     - type: vertical-stack
-  #       cards:
-  #       - type: markdown
-  #         content: >
-  #            **Светильники**    
-
-  #       - type: horizontal-stack
-  #         cards:
-  #           - type: light
-  #             entity: light.yeelight_650
-  #             name: Люстра 650
-  #           - type: light
-  #             entity: light.yeelight_650_nightlight
-  #             name: Ночник 650
-  #           - type: light
-  #             entity: light.yeelight_650_ambilight
-  #             name: Ambilight 650
+    cards:
+      - type: vertical-stack
+        cards:
+        - type: markdown
+          content: >
+              **Добавление устройств**     
+        - type: entities
+          title: Добавление Zigbee устройств
+          show_header_toggle: false
+          entities:
+              - entity: input_boolean.zigbee_permit_join
+              - entity: timer.zigbee_permit_join
+              - entity: sensor.bridge_state
