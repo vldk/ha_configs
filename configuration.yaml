@@ -1,7 +1,15 @@
-
+homeassistant:
+  name: VHome
+  latitude: !secret latitude_coord
+  longitude: !secret longitude_coord
+  time_zone: Europe/Kiev
+  unit_system: metric
+  elevation: 270
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+lovelace:
+  mode: yaml
 # Text to speech
 tts:
   - platform: google_translate
@@ -10,3 +18,5 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+sensor: !include_dir_merge_list sensors
+recorder: !include recorder.yaml
