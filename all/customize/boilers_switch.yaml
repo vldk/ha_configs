@@ -1,0 +1,16 @@
+# 4х канальне реле
+sensor.0x00124b00209e96c4_linkquality:
+  friendly_name: Реле рівень сигналу
+  icon: mdi:signal
+
+# sensors of switch
+sensor.0x00124b00209e96c4_l1:
+  friendly_name: Swith Port 1 State
+sensor.0x00124b00209e96c4_l2:
+  friendly_name: Swith Port 2 State
+
+# switch buttons
+switch.0x00124b00209e96c4_l1:
+  friendly_name: Swith Port 1
+switch.0x00124b00209e96c4_l2:
+  friendly_name: Swith Port 2

@@ -4,16 +4,31 @@ views:
 
   - title: Main
     icon: mdi:home-assistant
+    cards:
+      # - type: entities
+      #   show_header_toggle: false
+      #   entities:
+      #     - entity: switch.0x00124b00209e96c4_l1
+      #     - entity: switch.0x00124b00209e96c4_l2
+
+      # дитяча
+      - type: thermostat
+        entity: climate.0x5c0272fffed9d5ff
+      - type: thermostat
+        entity: climate.0x5c0272fffedab255
+      # спальня
+      - type: thermostat
+        entity: climate.0x847127fffe960b38
 
   - title: Сервер
     icon: mdi:raspberry-pi
-    
+
     cards:
       - type: vertical-stack
-        cards:        
+        cards:
         - type: markdown
           content: >
-             **Текущее состояние**             
+             **Текущее состояние**
         - type: entities
           show_header_toggle: false
           entities:
@@ -23,7 +38,7 @@ views:
             - entity: sensor.date
               name: Дата
               icon: mdi:calendar-check-outline
-              
+
     #     - type: entities
     #       show_header_toggle: false
     #       entities:
@@ -35,7 +50,7 @@ views:
         cards:
         - type: markdown
           content: >
-             **Графики** 
+             **Графики**
         - type: horizontal-stack
           cards:
           - type: gauge
@@ -45,7 +60,7 @@ views:
             severity:
               green: 0
               yellow: 60
-              red: 85             
+              red: 85
           - type: gauge
             name: Загрузка ОЗУ
             unit: '%'
@@ -54,7 +69,7 @@ views:
               green: 0
               yellow: 60
               red: 85
-                
+
       - type: horizontal-stack
         cards:
 
@@ -65,8 +80,8 @@ views:
             severity:
               green: 0
               yellow: 60
-              red: 85    
-              
+              red: 85
+
           - type: gauge
             name: Свободное место
             unit: 'Гб'
@@ -75,7 +90,7 @@ views:
               red: 2
               yellow: 6
               green: 8
-                
+
       - type: history-graph
         entities:
           - entity: sensor.maria_db_size
@@ -86,16 +101,16 @@ views:
     cards:
         - type: weather-forecast
           entity: weather.home
-          
+
   - title: СС 2531
     icon: mdi:usb-flash-drive
-          
+
     cards:
       - type: vertical-stack
         cards:
         - type: markdown
           content: >
-              **Добавление устройств**     
+              **Добавление устройств**
         - type: entities
           title: Добавление Zigbee устройств
           show_header_toggle: false
