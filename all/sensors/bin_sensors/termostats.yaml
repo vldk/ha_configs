@@ -1,9 +1,0 @@
-  # - platform: template
-  #   sensors:
-  #     kn_heat_value_1:
-  #         friendly_name: "Termostat 1 -"
-  #         value_template: >-
-  #           {{state_attr('climate.0x5c0272fffed9d5ff_climate', 'position') | int == 100}}
-  #         # device_class: lock
-  #         icon_template: >-
-  #           {% if is_state("bina")}

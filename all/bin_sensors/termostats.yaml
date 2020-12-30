@@ -1,0 +1,110 @@
+# Спальня
+- platform: template
+  sensors:
+    termo_heat_value_21_1:
+        friendly_name: "Termo 21_1 heat"
+        device_class: lock
+        value_template: >-
+          {{state_attr('climate.0x847127fffe960b38', 'position') | int == 100}}
+        icon_template: >-
+          {% if is_state("binary_sensor.termo_heat_value_21_1", "on") %}
+          mdi:valve-open
+          {% else %}
+          mdi:valve-closed
+          {% endif %}
+- platform: template
+  sensors:
+    termo_heat_value_21_2:
+        friendly_name: "Termo 21_2 heat"
+        device_class: lock
+        value_template: >-
+          {{state_attr('climate.0x847127fffe940161', 'position') | int == 100}}
+        icon_template: >-
+          {% if is_state("binary_sensor.termo_heat_value_21_2", "on") %}
+          mdi:valve-open
+          {% else %}
+          mdi:valve-closed
+          {% endif %}
+# Дитяча/кабінет
+- platform: template
+  sensors:
+    termo_heat_value_22_1:
+        friendly_name: "Termo 22_1 heat"
+        device_class: lock
+        value_template: >-
+          {{state_attr('climate.0x5c0272fffed9d5ff', 'position') | int == 100}}
+        icon_template: >-
+          {% if is_state("binary_sensor.termo_heat_value_22_1", "on") %}
+          mdi:valve-open
+          {% else %}
+          mdi:valve-closed
+          {% endif %}
+- platform: template
+  sensors:
+    termo_heat_value_22_2:
+        friendly_name: "Termo 22_2 heat"
+        device_class: lock
+        value_template: >-
+          {{state_attr('climate.0x5c0272fffedab255', 'position') | int == 100}}
+        icon_template: >-
+          {% if is_state("binary_sensor.termo_heat_value_22_2", "on") %}
+          mdi:valve-open
+          {% else %}
+          mdi:valve-closed
+          {% endif %}
+- platform: template
+  sensors:
+    termo_heat_value_22_3:
+        friendly_name: "Termo 22_3 heat"
+        device_class: lock
+        value_template: >-
+          {{state_attr('climate.0x847127fffe93ff05', 'position') | int == 100}}
+        icon_template: >-
+          {% if is_state("binary_sensor.termo_heat_value_22_3", "on") %}
+          mdi:valve-open
+          {% else %}
+          mdi:valve-closed
+          {% endif %}
+
+# Вітяльня
+- platform: template
+  sensors:
+    termo_heat_value_11_1:
+        friendly_name: "Termo 11_1 heat"
+        device_class: lock
+        value_template: >-
+          {{state_attr('climate.0x5c0272fffedabc57', 'position') | int == 100}}
+        icon_template: >-
+          {% if is_state("binary_sensor.termo_heat_value_11_1", "on") %}
+          mdi:valve-open
+          {% else %}
+          mdi:valve-closed
+          {% endif %}
+- platform: template
+  sensors:
+    termo_heat_value_11_2:
+        friendly_name: "Termo 11_2 heat"
+        device_class: lock
+        value_template: >-
+          {{state_attr('climate.0x5c0272fffedabed2', 'position') | int == 100}}
+        icon_template: >-
+          {% if is_state("binary_sensor.termo_heat_value_11_2", "on") %}
+          mdi:valve-open
+          {% else %}
+          mdi:valve-closed
+          {% endif %}
+
+# Кухня
+- platform: template
+  sensors:
+    termo_heat_value_12_1:
+        friendly_name: "Termo 12_1 heat"
+        device_class: lock
+        value_template: >-
+          {{state_attr('climate.0x847127fffe9f3342', 'position') | int == 100}}
+        icon_template: >-
+          {% if is_state("binary_sensor.termo_heat_value_12_1", "on") %}
+          mdi:valve-open
+          {% else %}
+          mdi:valve-closed
+          {% endif %}

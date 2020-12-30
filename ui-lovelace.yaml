@@ -5,32 +5,94 @@ views:
   - title: Main
     icon: mdi:home-assistant
     cards:
+      - type: entities
+        title: Вітальня
+        entities:
+        - entity: sensor.0x5c0272fffec72d04_temperature
+          name: Temp
+        - entity: sensor.0x5c0272fffec72d04_humidity
+          name: Вологість
+        - entity: climate.0x5c0272fffedabc57
+        - entity: climate.0x5c0272fffedabed2
+        - entity: binary_sensor.termo_heat_value_11_1
+        - entity: binary_sensor.termo_heat_value_11_2
+
+      - type: entities
+        title: Дитяча/Кабінет
+        entities:
+        - entity: sensor.0x5c0272fffebda093_temperature
+          name: Temp
+        - entity: sensor.0x5c0272fffebda093_humidity
+          name: Вологість
+        - entity: climate.0x5c0272fffed9d5ff
+        - entity: climate.0x5c0272fffedab255
+        - entity: climate.0x847127fffe93ff05
+        - entity: binary_sensor.termo_heat_value_22_1
+        - entity: binary_sensor.termo_heat_value_22_2
+        - entity: binary_sensor.termo_heat_value_22_3
+
+      - type: entities
+        title: Спальня
+        entities:
+        - entity: sensor.0x847127fffe18e757_temperature
+          name: Temp
+        - entity: sensor.0x847127fffe18e757_humidity
+          name: Вологість
+        - entity: climate.0x847127fffe960b38
+        - entity: climate.0x847127fffe940161
+        - entity: binary_sensor.termo_heat_value_21_1
+        - entity: binary_sensor.termo_heat_value_21_2
+
+      - type: entities
+        title: Кухня
+        entities:
+          - entity: climate.0x847127fffe9f3342
+          - entity: binary_sensor.termo_heat_value_12_1
       # - type: entities
       #   show_header_toggle: false
       #   entities:
       #     - entity: switch.0x00124b00209e96c4_l1
       #     - entity: switch.0x00124b00209e96c4_l2
 
-      # дитяча
-      - type: thermostat
-        entity: climate.0x5c0272fffed9d5ff
-      - type: thermostat
-        entity: climate.0x5c0272fffedab255
-      # спальня
-      - type: thermostat
-        entity: climate.0x847127fffe960b38
+      # - type: entities
+      #   show_header_toggle: false
+      #   entities:
+      #     - entity: sensor.0x5c0272fffedabc57_position
+      #     - entity: sensor.0x5c0272fffed9d5ff_position
+      #     - entity: sensor.0x5c0272fffedab255_position
+      #     - entity: sensor.0x847127fffe960b38_position
+      #       # unit: '%'
+      # - type: entities
+      #   entities:
+      #     - sensor.0x5c0272fffec72d04_humidity
+      #     # - sensor.0x5c0272fffec72d04_linkquality
+      #     - sensor.0x5c0272fffec72d04_temperature
+
+      # # вітяльня
+      # - type: thermostat
+      #   entity: climate.0x5c0272fffedabc57
+      # # дитяча
+      # - type: thermostat
+      #   entity: climate.0x5c0272fffed9d5ff
+      # - type: thermostat
+      #   entity: climate.0x5c0272fffedab255
+      # # спальня
+      # - type: thermostat
+      #   entity: climate.0x847127fffe960b38
 
   - title: Сервер
     icon: mdi:raspberry-pi
 
     cards:
+      # - type: horizontal-stack
       - type: vertical-stack
         cards:
-        - type: markdown
-          content: >
-             **Текущее состояние**
+        # - type: markdown
+        #   content: >
+        #      **Текущее состояние**
         - type: entities
           show_header_toggle: false
+          title:  'Текущее состояние'
           entities:
             - entity: sensor.time
               name: Текущее время
@@ -38,7 +100,18 @@ views:
             - entity: sensor.date
               name: Дата
               icon: mdi:calendar-check-outline
-
+            - entity: sensor.maria_db_size
+              name: DB Size
+              icon: mdi:database
+            - type: divider
+            - type: call-service
+              icon: mdi:database-refresh
+              name: Compress DB
+              action_name: Run
+              service: recorder.purge
+              service_data:
+                keep_days: 7
+                repack: true
     #     - type: entities
     #       show_header_toggle: false
     #       entities:
@@ -48,9 +121,9 @@ views:
 
       - type: vertical-stack
         cards:
-        - type: markdown
-          content: >
-             **Графики**
+        # - type: markdown
+        #   content: >
+        #      **Графики**
         - type: horizontal-stack
           cards:
           - type: gauge
@@ -102,19 +175,30 @@ views:
         - type: weather-forecast
           entity: weather.home
 
-  - title: СС 2531
-    icon: mdi:usb-flash-drive
-
+  - title: Тести
+    icon: mdi:flask
     cards:
-      - type: vertical-stack
-        cards:
-        - type: markdown
-          content: >
-              **Добавление устройств**
-        - type: entities
-          title: Добавление Zigbee устройств
-          show_header_toggle: false
-          entities:
-              - entity: input_boolean.zigbee_permit_join
-              - entity: timer.zigbee_permit_join
-              - entity: sensor.bridge_state
+      - type: sensor
+        entity: sensor.0x5c0272fffebda093_temperature
+        name: Temp 2_2
+        graph: line
+        detail: 1
+        hours_to_show: 7
+      # - type: sensor
+      #   entity: binary_sensor.termo_heat_value_1
+  # - title: СС 2531
+  #   icon: mdi:usb-flash-drive
+
+  #   cards:
+  #     - type: vertical-stack
+  #       cards:
+  #       - type: markdown
+  #         content: >
+  #             **Добавление устройств**
+  #       - type: entities
+  #         title: Добавление Zigbee устройств
+  #         show_header_toggle: false
+  #         entities:
+  #             - entity: input_boolean.zigbee_permit_join
+  #             - entity: timer.zigbee_permit_join
+  #             - entity: sensor.bridge_state

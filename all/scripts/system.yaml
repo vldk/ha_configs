@@ -2,5 +2,5 @@ purge_db:
   sequence:
       - service: recorder.purge
         data:
-            keep_days: 1
+            keep_days: 7
             repack: true
