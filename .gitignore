@@ -3,3 +3,5 @@ secrets.yaml
 *.log
 .storage/
 *.code-workspace
+custom_components/*
+themes/

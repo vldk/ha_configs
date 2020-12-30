@@ -1,0 +1,63 @@
+- platform: template
+  sensors:
+    term_11_1_valve:
+      friendly_name: "Termo_11_1_valve"
+      icon_template: mdi:valve
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('climate.0x5c0272fffedabc57', 'position') }}"
+
+- platform: template
+  sensors:
+    term_11_2_valve:
+      friendly_name: "Termo_11_2_valve"
+      icon_template: mdi:valve
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('climate.0x5c0272fffedabed2', 'position') }}"
+
+- platform: template
+  sensors:
+    term_12_1_valve:
+      friendly_name: "Termo_12_1_valve"
+      icon_template: mdi:valve
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('climate.0x847127fffe9f3342', 'position') }}"
+
+- platform: template
+  sensors:
+    term_21_1_valve:
+      friendly_name: "Termo_21_1_valve"
+      icon_template: mdi:valve
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('climate.0x847127fffe960b38', 'position') }}"
+
+- platform: template
+  sensors:
+    term_21_2_valve:
+      friendly_name: "Termo_21_2_valve"
+      icon_template: mdi:valve
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('climate.0x847127fffe940161', 'position') }}"
+
+- platform: template
+  sensors:
+    term_22_1_valve:
+      friendly_name: "Termo_22_1_valve"
+      icon_template: mdi:valve
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('climate.0x5c0272fffed9d5ff', 'position') }}"
+
+- platform: template
+  sensors:
+    term_22_2_valve:
+      friendly_name: "Termo_22_2_valve"
+      icon_template: mdi:valve
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('climate.0x5c0272fffedab255', 'position') }}"
+
+- platform: template
+  sensors:
+    term_22_3_valve:
+      friendly_name: "Termo_22_3_valve"
+      icon_template: mdi:valve
+      unit_of_measurement: '%'
+      value_template: "{{ state_attr('climate.0x847127fffe93ff05', 'position') }}"

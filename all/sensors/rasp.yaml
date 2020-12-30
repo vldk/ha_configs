@@ -7,6 +7,7 @@
   - platform: systemmonitor
     resources:
     - type: processor_use
+    - type: processor_temperature
     - type: disk_use_percent
       arg: /
     - type: memory_use_percent
@@ -19,4 +20,4 @@
       - name: Maria DB size
         query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1048576, 2) "value" FROM information_schema.tables WHERE table_schema="homeassistant" GROUP BY table_schema;'
         column: 'value'
-        unit_of_measurement: MB 
+        unit_of_measurement: MB

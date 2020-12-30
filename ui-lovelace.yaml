@@ -1,5 +1,6 @@
-
 title: Home Assistant - сервер
+
+
 views:
 
   - title: Main
@@ -16,6 +17,8 @@ views:
         - entity: climate.0x5c0272fffedabed2
         - entity: binary_sensor.termo_heat_value_11_1
         - entity: binary_sensor.termo_heat_value_11_2
+        - entity: sensor.term_11_1_valve
+        - entity: sensor.term_11_2_valve
 
       - type: entities
         title: Дитяча/Кабінет
@@ -30,6 +33,9 @@ views:
         - entity: binary_sensor.termo_heat_value_22_1
         - entity: binary_sensor.termo_heat_value_22_2
         - entity: binary_sensor.termo_heat_value_22_3
+        - entity: sensor.term_22_1_valve
+        - entity: sensor.term_22_2_valve
+        - entity: sensor.term_22_3_valve
 
       - type: entities
         title: Спальня
@@ -42,47 +48,21 @@ views:
         - entity: climate.0x847127fffe940161
         - entity: binary_sensor.termo_heat_value_21_1
         - entity: binary_sensor.termo_heat_value_21_2
+        - entity: sensor.term_21_1_valve
+        - entity: sensor.term_21_2_valve
 
       - type: entities
         title: Кухня
         entities:
           - entity: climate.0x847127fffe9f3342
           - entity: binary_sensor.termo_heat_value_12_1
-      # - type: entities
-      #   show_header_toggle: false
-      #   entities:
-      #     - entity: switch.0x00124b00209e96c4_l1
-      #     - entity: switch.0x00124b00209e96c4_l2
-
-      # - type: entities
-      #   show_header_toggle: false
-      #   entities:
-      #     - entity: sensor.0x5c0272fffedabc57_position
-      #     - entity: sensor.0x5c0272fffed9d5ff_position
-      #     - entity: sensor.0x5c0272fffedab255_position
-      #     - entity: sensor.0x847127fffe960b38_position
-      #       # unit: '%'
-      # - type: entities
-      #   entities:
-      #     - sensor.0x5c0272fffec72d04_humidity
-      #     # - sensor.0x5c0272fffec72d04_linkquality
-      #     - sensor.0x5c0272fffec72d04_temperature
-
-      # # вітяльня
-      # - type: thermostat
-      #   entity: climate.0x5c0272fffedabc57
-      # # дитяча
-      # - type: thermostat
-      #   entity: climate.0x5c0272fffed9d5ff
-      # - type: thermostat
-      #   entity: climate.0x5c0272fffedab255
-      # # спальня
-      # - type: thermostat
-      #   entity: climate.0x847127fffe960b38
+          - entity: sensor.term_12_1_valve
 
   - title: Сервер
     icon: mdi:raspberry-pi
-
+    badges:
+      - sensor.processor_temperature
+      - sensor.processor_use_percent
     cards:
       # - type: horizontal-stack
       - type: vertical-stack
@@ -178,6 +158,18 @@ views:
   - title: Тести
     icon: mdi:flask
     cards:
+      - type: custom:thermostat-dark-card
+        title: Дитяча/Кабінет
+        entity: climate.0x5c0272fffed9d5ff
+        chevron_size: 100
+        ambient_temperature: sensor.0x5c0272fffebda093_temperature
+        # hvac:
+        #   states:
+        #     'Off': 'idle'
+        #     'Cooling': 'cooling'
+        #     'Heating': 'heating'
+        #   attribute: operation_mode
+
       - type: sensor
         entity: sensor.0x5c0272fffebda093_temperature
         name: Temp 2_2
