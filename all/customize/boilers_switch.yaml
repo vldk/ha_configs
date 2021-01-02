@@ -11,6 +11,6 @@ sensor.0x00124b00209e96c4_l2:
 
 # switch buttons
 switch.0x00124b00209e96c4_l1:
-  friendly_name: Swith Port 1
+  friendly_name: Swith Port 1 (Gas)
 switch.0x00124b00209e96c4_l2:
-  friendly_name: Swith Port 2
+  friendly_name: Swith Port 2 (Electro)

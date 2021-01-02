@@ -58,6 +58,92 @@ views:
           - entity: binary_sensor.termo_heat_value_12_1
           - entity: sensor.term_12_1_valve
 
+  - title: Тести
+    icon: mdi:flask
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: thermostat
+                entity: climate.room_f1_1
+                name: Вітальня
+              - type: thermostat
+                entity: climate.kitchen
+                name: Кухня
+          - type: horizontal-stack
+            cards:
+            - type: thermostat
+              entity: climate.room_f2_1
+              name: Спальня
+            - type: thermostat
+              entity: climate.room_f2_2
+              name: Дитяча/Кабінет
+
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                entity: sensor.0x5c0272fffec72d04_temperature
+                name: Вітальня
+                graph: line
+                detail: 1
+                hours_to_show: 24
+
+              - type: sensor
+                entity: sensor.0x847127fffe18e757_temperature
+                name: Спальня
+                graph: line
+                detail: 1
+                hours_to_show: 24
+
+              - type: sensor
+                entity: sensor.0x5c0272fffebda093_temperature
+                name: Дитяча/Кабінет
+                graph: line
+                detail: 1
+                hours_to_show: 24
+
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            title: Вітальня
+            cards:
+              - type: thermostat
+                entity: climate.0x5c0272fffedabc57
+              - type: thermostat
+                entity: climate.0x5c0272fffedabed2
+
+          - type: horizontal-stack
+            title: Спальня
+            cards:
+              - type: thermostat
+                entity: climate.0x847127fffe960b38
+              - type: thermostat
+                entity: climate.0x847127fffe940161
+
+          - type: horizontal-stack
+            title: Дитяча/Кабінет
+            cards:
+              - type: thermostat
+                entity: climate.0x5c0272fffed9d5ff
+              - type: thermostat
+                entity: climate.0x5c0272fffedab255
+              - type: thermostat
+                entity: climate.0x847127fffe93ff05
+
+      # - type: sensor
+      #   entity: binary_sensor.termo_heat_value_1
+
+  - title: Test2
+    icon: mdi:flask-empty-plus
+    cards:
+      - type: thermostat
+        entity: climate.pterm_room_22
+      - type: entity
+        entity: binary_sensor.boiler_is_on
+
   - title: Сервер
     icon: mdi:raspberry-pi
     badges:
@@ -77,8 +163,8 @@ views:
             - entity: sensor.time
               name: Текущее время
               icon: mdi:clock-outline
-            - entity: sensor.date
-              name: Дата
+            - entity: sensor.last_boot
+              name: Last Boot at
               icon: mdi:calendar-check-outline
             - entity: sensor.maria_db_size
               name: DB Size
@@ -155,29 +241,29 @@ views:
         - type: weather-forecast
           entity: weather.home
 
-  - title: Тести
-    icon: mdi:flask
+  - title: Network
+    icon: mdi:signal-cellular-2
     cards:
-      - type: custom:thermostat-dark-card
-        title: Дитяча/Кабінет
-        entity: climate.0x5c0272fffed9d5ff
-        chevron_size: 100
-        ambient_temperature: sensor.0x5c0272fffebda093_temperature
-        # hvac:
-        #   states:
-        #     'Off': 'idle'
-        #     'Cooling': 'cooling'
-        #     'Heating': 'heating'
-        #   attribute: operation_mode
+      - type: entities
+      # - type: history-graph
+        title: Рівень сигналу
+        entities:
+          - entity: sensor.0x00124b00209e96c4_linkquality
 
-      - type: sensor
-        entity: sensor.0x5c0272fffebda093_temperature
-        name: Temp 2_2
-        graph: line
-        detail: 1
-        hours_to_show: 7
-      # - type: sensor
-      #   entity: binary_sensor.termo_heat_value_1
+          - entity: sensor.0x5c0272fffedabc57_linkquality
+          - entity: sensor.0x5c0272fffedabed2_linkquality
+          - entity: sensor.0x847127fffe9f3342_linkquality
+          - entity: sensor.0x847127fffe960b38_linkquality
+          - entity: sensor.0x847127fffe940161_linkquality
+          - entity: sensor.0x5c0272fffed9d5ff_linkquality
+          - entity: sensor.0x5c0272fffedab255_linkquality
+          - entity: sensor.0x847127fffe93ff05_linkquality
+
+          - entity: sensor.0x5c0272fffec72d04_linkquality
+          - entity: sensor.0x847127fffe18e757_linkquality
+          - entity: sensor.0x5c0272fffebda093_linkquality
+
+
   # - title: СС 2531
   #   icon: mdi:usb-flash-drive
 
@@ -194,3 +280,16 @@ views:
   #             - entity: input_boolean.zigbee_permit_join
   #             - entity: timer.zigbee_permit_join
   #             - entity: sensor.bridge_state
+
+
+      # - type: custom:thermostat-dark-card
+      #   title: Дитяча/Кабінет
+      #   entity: climate.0x5c0272fffed9d5ff
+      #   chevron_size: 100
+      #   ambient_temperature: sensor.0x5c0272fffebda093_temperature
+        # hvac:
+        #   states:
+        #     'Off': 'idle'
+        #     'Cooling': 'cooling'
+        #     'Heating': 'heating'
+        #   attribute: operation_mode

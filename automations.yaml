@@ -1,0 +1,111 @@
+- id: turn_off_switch1_on_switch2_activate
+  alias: 'Котли: Котли: вкл. ел. котел -> викл.газ. котел'
+  description: Виключити газ. котел при включенні ел. котла
+  trigger:
+  - platform: state
+    entity_id: switch.0x00124b00209e96c4_l2
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: switch.0x00124b00209e96c4_l1
+    state: 'on'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.0x00124b00209e96c4_l1
+  mode: single
+- id: turn_off_switch2_on_switch1_activate
+  alias: 'Котли: вкл. газ. котел -> викл. ел. котел'
+  description: 'Котли: виключити ел. котел при вкюченні газ. котла'
+  trigger:
+  - platform: state
+    entity_id: switch.0x00124b00209e96c4_l1
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: switch.0x00124b00209e96c4_l2
+    state: 'on'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.0x00124b00209e96c4_l2
+  mode: single
+- id: '1609621684095'
+  alias: 'Котли: таймаут газ. котла'
+  description: Запустити таймаут газ. котла при виключенні
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: c9ffc9447e2ed0d07868e9b07b35362e
+    entity_id: switch.0x00124b00209e96c4_l1
+    domain: switch
+  condition: []
+  action:
+  - service: timer.start
+    data: {}
+    entity_id: timer.boiler_gas_turn_on_timer
+  mode: single
+- id: '1609622210171'
+  alias: Пожати базу
+  description: ''
+  trigger:
+  - platform: time
+    at: 01:00:00
+  condition: []
+  action:
+  - service: recorder.purge
+    data:
+      keep_days: 7
+      repack: true
+  mode: single
+- id: '1609623356064'
+  alias: 'Котли: таймаут ел. котла'
+  description: Запустити таймаут ел. котла при виключенні
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: c9ffc9447e2ed0d07868e9b07b35362e
+    entity_id: switch.0x00124b00209e96c4_l2
+    domain: switch
+  condition: []
+  action:
+  - service: timer.start
+    data: {}
+    entity_id: timer.boiler_electro_turn_on_timer
+  mode: single
+- id: '1609625023102'
+  alias: 'Котли: зміна нічного тарифу на день'
+  description: Вимкнути ел. котел не в нічний тариф (або запустити газовий, якщо потрібно
+    гріти далі)
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.tod_night_tariff
+    from: 'on'
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.boiler_is_on
+    state: 'on'
+  action:
+  - service: script.turn_on
+    data: {}
+    entity_id: script.boiler_turn_on
+  mode: single
+- id: '1609628380235'
+  alias: 'Котли: зміна нічного тарифу на ніч'
+  description: Увімкнути ел. котел в нічний тариф (якщо був запущений газовий, то
+    потрібно гріти далі електро)
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.tod_night_tariff
+    from: 'on'
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.boiler_is_on
+    state: 'on'
+  action:
+  - service: script.turn_on
+    data: {}
+    entity_id: script.boiler_turn_on
+  mode: single

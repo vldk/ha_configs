@@ -1,0 +1,16 @@
+order:
+  - item: map
+    hide: true
+  - item: developer tools
+    href: /developer-tools/state
+  - item: overview
+  # - item: history
+  #   hide: true
+  - new_item: true
+    item: Server Controls
+    href: /config/server_control
+    icon: "mdi:server-network"
+    bottom: true
+    # bottom: true
+  - item: logbook
+    bottom: true

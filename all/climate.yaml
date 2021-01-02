@@ -1,0 +1,80 @@
+  - platform: climate_group
+    name: 'Kitchen'
+    entities:
+      - climate.0x847127fffe9f3342
+
+  - platform: climate_group
+    name: 'Room F1 1'
+    entities:
+      - climate.0x5c0272fffedabc57
+      - climate.0x5c0272fffedabed2
+
+  - platform: climate_group
+    name: 'Room F2 1'
+    entities:
+      - climate.0x847127fffe960b38
+      - climate.0x847127fffe940161
+    # - climate.heater
+    # - climate.termostate
+
+  - platform: climate_group
+    name: 'Room F2 2'
+    entities:
+      - climate.0x5c0272fffed9d5ff
+      - climate.0x5c0272fffedab255
+      - climate.0x847127fffe93ff05
+      # - switch.0x00124b00209e96c4_l1
+    # - climate.termostate
+
+
+# Programmable
+  # - platform: programmable_thermostat
+  #   name: PTerm Room 22
+  #   heater:
+  #     - switch.0x00124b00209e96c4_l1
+  #     # - switch.0x00124b00209e96c4_l2
+  #   actual_temp_sensor: sensor.0x5c0272fffebda093_temperature
+  #   min_temp: 10
+  #   max_temp: 30
+  #   target_temp_sensor: input_number.dest_temp_22
+  #   tolerance: 0.5
+  #   # related_climate: climate.room_2
+  #   hvac_options: 7
+  #   auto_mode: heating
+  #   min_cycle_duration:
+  #     seconds: 5
+
+
+  # - platform: "mqtt"
+  #   availability_topic: "zigbee2mqtt/bridge/state"
+  #   temperature_unit: "C"
+  #   temp_step: 0.5
+  #   min_temp: 5
+  #   max_temp: 35
+  #   current_temperature_topic: true
+  #   current_temperature_template: "{{ value_json.local_temperature }}"
+  #   mode_state_topic: true
+  #   mode_state_template: "{{ value_json.system_mode }}"
+  #   modes:
+  #     - "heat"
+  #     - "auto"
+  #     - "off"
+  #   mode_command_topic: true
+  #   action_topic: true
+  #   action_template: "{% set values = {'idle':'off','heat':'heating','cool':'cooling','fan only':'fan'} %}{{ values[value_json.running_state] }}"
+  #   temperature_command_topic: "current_heating_setpoint"
+  #   temperature_state_template: "{{ value_json.current_heating_setpoint }}"
+  #   temperature_state_topic: true
+  #   hold_modes:
+  #     - "schedule"
+  #     - "manual"
+  #     - "boost"
+  #     - "complex"
+  #     - "comfort"
+  #     - "eco"
+  #   hold_command_topic: true
+  #   hold_state_template: "{{ value_json.preset }}"
+  #   hold_state_topic: true
+  #   away_mode_command_topic: true
+  #   away_mode_state_topic: true
+  #   away_mode_state_template: "{{ value_json.away_mode }}"

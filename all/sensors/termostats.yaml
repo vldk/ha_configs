@@ -61,3 +61,20 @@
       icon_template: mdi:valve
       unit_of_measurement: '%'
       value_template: "{{ state_attr('climate.0x847127fffe93ff05', 'position') }}"
+
+
+# file_restore sensors
+- platform: file_restore
+  unit_of_measurement: '°C'
+  file_path: .cusom_sensors_data/term_dest_room_22.cvs
+  name: Program temp Toom_22
+  length: week
+  detail: day
+
+
+# - platform: "mqtt"
+#   state_topic: "zigbee2mqtt/Termo_22_1"
+#   availability_topic: "zigbee2mqtt/bridge/state"
+#   unit_of_measurement: "%"
+#   value_template: "{{ value_json.battery }}"
+#   device_class: "battery"

@@ -2,3 +2,8 @@ zigbee_permit_join:
   name: Allow devices to join
   initial: off
   icon: mdi:cellphone-wireless
+
+boiler_gas_pending_start:
+  name: 'Потрібно запустити повторно після таймауту'
+  initial: off
+  icon: mdi:av-timer

@@ -1,0 +1,12 @@
+# - platform: template
+#   switches:
+#     boiler:
+#       value_template: "{{ is_state('sensor.boiler', 'on') }}"
+#       turn_on:
+#         service: switch.turn_on
+#         data:
+#           entity_id: src.boiler_turn_on
+#       turn_off:
+#         service: switch.turn_off
+#         data:
+#           entity_id: switch.boiler_turn_off
