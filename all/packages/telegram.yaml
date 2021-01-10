@@ -1,0 +1,61 @@
+telegram:
+  # commands:
+  #  /report - send current status
+
+  script:
+    send_system_status_report:
+      alias: 'Відпавити поточний статус'
+      sequence:
+        - service: notify.telegram_id1
+          data:
+            message: |
+              {{"♨"}} Опалення: {{ states('binary_sensor.boiler_is_on') }}
+
+              {{"🌡"}} Вітальня: {{ states('sensor.0x5c0272fffec72d04_temperature') }}℃
+              {{"🌡"}} Спальня: {{ states('sensor.0x847127fffe18e757_temperature') }}℃
+              {{"🌡"}} Дитяча: {{ states('sensor.0x5c0272fffebda093_temperature') }}℃
+              {{"🌡"}} Кухня: {{ state_attr('climate.0x847127fffe9f3342', 'current_temperature') }}℃
+
+  automation:
+    - id: Telegram Bot Menu
+      alias: telegram_bot_menu
+      trigger:
+        platform: event
+        event_type: telegram_command
+        event_data:
+          command: '/start'
+      action:
+        - service: notify.telegram_id1
+          data:
+            message: 'commands'
+            data:
+              keyboard:
+                - '/report'
+                # - '/siren'
+
+    - id: Звіт при запуску
+      alias: startup_bot_message
+      trigger:
+        - platform: homeassistant
+          event: start
+      action:
+        - service: notify.telegram_id1
+          data:
+            message: |
+              {{ "\U0001F916" }} Запуск HAs сервера ({{ states('sensor.time_date') }})
+        - delay: 00:02:00
+        - service: script.turn_on
+          entity_id: script.send_system_status_report
+
+    - id: Запит на звіт
+      alias: send_report
+      initial_state: true
+      trigger:
+      - platform: event
+        event_type: telegram_command
+        event_data:
+          command: '/report'
+      action:
+        - service: script.turn_on
+          entity_id:
+            - script.send_system_status_report

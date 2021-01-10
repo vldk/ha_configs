@@ -7,6 +7,7 @@ homeassistant:
   elevation: 270
   customize: !include_dir_merge_named all/customize
   internal_url: "http://rasp.lan:8123"
+  packages: !include_dir_merge_named all/packages
 
   # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
@@ -56,3 +57,14 @@ mqtt:
 # debugpy:
 #  start: true
 #  wait: false
+
+telegram_bot:
+  - platform: polling
+    api_key: !secret api_bot_key
+    allowed_chat_ids:
+      - !secret telegram_id1
+
+notify:
+  - name: telegram_id1
+    platform: telegram
+    chat_id: !secret telegram_id1
