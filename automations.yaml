@@ -98,8 +98,8 @@
   trigger:
   - platform: state
     entity_id: binary_sensor.tod_night_tariff
-    from: 'on'
-    to: 'off'
+    from: 'off'
+    to: 'on'
   condition:
   - condition: state
     entity_id: binary_sensor.boiler_is_on

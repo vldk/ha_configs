@@ -38,3 +38,4 @@
       - sensor.disk_free
 
       - binary_sensor.boiler_is_on
+      - switch.complex_boiler

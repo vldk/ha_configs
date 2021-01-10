@@ -34,3 +34,66 @@ boiler_turn_off:
     domain: switch
   mode: single
   icon: mdi:radiator-off
+try_to_switch_off_boiler:
+  alias: Спробувати викнкнути тепрмостат 1
+  sequence:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: climate.pterm_room_21
+      state: idle
+      attribute: hvac_action
+    - condition: state
+      entity_id: climate.pterm_room_22
+      state: idle
+      attribute: hvac_action
+  - service: script.turn_on
+    data: {}
+    entity_id: script.boiler_turn_off
+  - service: notify.notify
+    data:
+      message: all is OFF
+  mode: single
+  icon: mdi:power
+try_to_switch_off_boiler2:
+  alias: Спробувати викнкнути тепрмостат 2
+  sequence:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: climate.pterm_room_11
+      state: idle
+      attribute: hvac_action
+    - condition: state
+      entity_id: climate.pterm_room_22
+      state: idle
+      attribute: hvac_action
+  - service: script.turn_on
+    data: {}
+    entity_id: script.boiler_turn_off
+  - service: notify.notify
+    data:
+      message: all is OFF
+  mode: single
+  icon: mdi:power
+try_to_switch_off_boiler3:
+  alias: Спробувати викнкнути тепрмостат 3
+  sequence:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: climate.pterm_room_11
+      state: idle
+      attribute: hvac_action
+    - condition: state
+      entity_id: climate.pterm_room_21
+      state: idle
+      attribute: hvac_action
+  - service: script.turn_on
+    data: {}
+    entity_id: script.boiler_turn_off
+  - service: notify.notify
+    data:
+      message: all is OFF
+  mode: single
+  icon: mdi:power

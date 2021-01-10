@@ -140,9 +140,33 @@ views:
     icon: mdi:flask-empty-plus
     cards:
       - type: thermostat
+        entity: climate.pterm_room_11
+      - type: thermostat
+        entity: climate.pterm_room_21
+      - type: thermostat
         entity: climate.pterm_room_22
       - type: entity
         entity: binary_sensor.boiler_is_on
+      - type: entity
+        entity: switch.complex_boiler
+
+  - title: Scheduler
+    icon: mdi:clock-outline
+    cards:
+      - type: custom:scheduler-card
+        # groups:
+        #   - name: Climate
+        #     icon: mdi:home-thermometer
+        include:
+          - climate.pterm_room_11
+          - climate.pterm_room_21
+          - climate.pterm_room_22
+        # domains:
+
+        # entities:
+
+
+
 
   - title: Сервер
     icon: mdi:raspberry-pi

@@ -1,6 +1,6 @@
-# Спальня
 - platform: template
   sensors:
+    # Спальня
     termo_heat_value_21_1:
         friendly_name: "Termo 21_1 heat"
         device_class: lock
@@ -12,8 +12,7 @@
           {% else %}
           mdi:valve-closed
           {% endif %}
-- platform: template
-  sensors:
+
     termo_heat_value_21_2:
         friendly_name: "Termo 21_2 heat"
         device_class: lock
@@ -25,9 +24,8 @@
           {% else %}
           mdi:valve-closed
           {% endif %}
-# Дитяча/кабінет
-- platform: template
-  sensors:
+
+    # Дитяча/кабінет
     termo_heat_value_22_1:
         friendly_name: "Termo 22_1 heat"
         device_class: lock
@@ -39,8 +37,7 @@
           {% else %}
           mdi:valve-closed
           {% endif %}
-- platform: template
-  sensors:
+
     termo_heat_value_22_2:
         friendly_name: "Termo 22_2 heat"
         device_class: lock
@@ -52,8 +49,7 @@
           {% else %}
           mdi:valve-closed
           {% endif %}
-- platform: template
-  sensors:
+
     termo_heat_value_22_3:
         friendly_name: "Termo 22_3 heat"
         device_class: lock
@@ -66,9 +62,7 @@
           mdi:valve-closed
           {% endif %}
 
-# Вітяльня
-- platform: template
-  sensors:
+    # Вітяльня
     termo_heat_value_11_1:
         friendly_name: "Termo 11_1 heat"
         device_class: lock
@@ -80,8 +74,7 @@
           {% else %}
           mdi:valve-closed
           {% endif %}
-- platform: template
-  sensors:
+
     termo_heat_value_11_2:
         friendly_name: "Termo 11_2 heat"
         device_class: lock
@@ -94,9 +87,7 @@
           mdi:valve-closed
           {% endif %}
 
-# Кухня
-- platform: template
-  sensors:
+    # Кухня
     termo_heat_value_12_1:
         friendly_name: "Termo 12_1 heat"
         device_class: lock
@@ -109,9 +100,7 @@
           mdi:valve-closed
           {% endif %}
 
-
-- platform: template
-  sensors:
+    # boilers state
     boiler_is_on:
       friendly_name: "Any boilers is on"
       device_class: heat
