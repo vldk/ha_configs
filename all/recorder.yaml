@@ -1,13 +1,13 @@
   db_url: mysql://hass:hass@core-mariadb/homeassistant?charset=utf8
   purge_keep_days: 7
   auto_purge: true
-  exclude:
-    entities:
-      - sensor.last_boot
-      - sensor.date
-      - sensor.time
-    entity_globs:
-      - sensor.weather_*
+  # exclude:
+  #   entities:
+  #     - sensor.last_boot
+  #     - sensor.date
+  #     - sensor.time
+  #   entity_globs:
+  #     - sensor.weather_*
   include:
     entity_globs:
       # termostats
@@ -15,9 +15,11 @@
       # датчики темп
       - sensor.*_temperature
       - sensor.*_humidity
+      - automation.*
+      - scripts.*
     entities:
       - sensor.home_assistant_v2_db
-      - sensor.maria_db
+      - sensor.maria_db_size
       # switch boilers
       - switch.0x00124b00209e96c4_l1
       - switch.0x00124b00209e96c4_l2

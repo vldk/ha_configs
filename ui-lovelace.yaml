@@ -162,8 +162,9 @@ views:
           - climate.pterm_room_21
           - climate.pterm_room_22
         # domains:
-
         # entities:
+        display_options:
+          primary_info: "{name}"
 
 
 

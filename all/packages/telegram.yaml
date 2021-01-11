@@ -42,7 +42,7 @@ telegram:
         - service: notify.telegram_id1
           data:
             message: |
-              {{ "\U0001F916" }} Запуск HAs сервера ({{ states('sensor.time_date') }})
+              {{ "🤖" }} Запуск HAs сервера ({{ states('sensor.time_date') }})
         - delay: 00:02:00
         - service: script.turn_on
           entity_id: script.send_system_status_report
