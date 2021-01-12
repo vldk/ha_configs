@@ -5,3 +5,4 @@ secrets.yaml
 *.code-workspace
 custom_components/*
 themes/
+__pycache__
