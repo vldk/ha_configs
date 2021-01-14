@@ -82,8 +82,26 @@ views:
 
       - type: vertical-stack
         cards:
-          - type: horizontal-stack
+          - type: vertical-stack
             cards:
+              # - type: history-graph
+              #   entities:
+              #     - entity: sensor.0x5c0272fffec72d04_temperature
+              #       name: Вітальня
+              #     - entity: sensor.0x847127fffe18e757_temperature
+              #       name: Спальня                  
+              #     - entity: sensor.0x5c0272fffebda093_temperature
+              #       name: Дитяча/Кабінет
+              #     - entity: sensor.term_12_1_temperature
+              #       name: Кухня
+              # -----------------
+                # - type: entities
+                #   entities:
+                #     - sensor.0x5c0272fffec72d04_temperature
+                #     - sensor.0x847127fffe18e757_temperature
+                #     - sensor.0x5c0272fffebda093_temperature
+                #     - sensor.term_12_1_temperature
+              # ----------------- 
               - type: sensor
                 entity: sensor.0x5c0272fffec72d04_temperature
                 name: Вітальня
