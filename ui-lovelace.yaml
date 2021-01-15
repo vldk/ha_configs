@@ -89,7 +89,7 @@ views:
               #     - entity: sensor.0x5c0272fffec72d04_temperature
               #       name: Вітальня
               #     - entity: sensor.0x847127fffe18e757_temperature
-              #       name: Спальня                  
+              #       name: Спальня
               #     - entity: sensor.0x5c0272fffebda093_temperature
               #       name: Дитяча/Кабінет
               #     - entity: sensor.term_12_1_temperature
@@ -101,7 +101,7 @@ views:
                 #     - sensor.0x847127fffe18e757_temperature
                 #     - sensor.0x5c0272fffebda093_temperature
                 #     - sensor.term_12_1_temperature
-              # ----------------- 
+              # -----------------
               - type: sensor
                 entity: sensor.0x5c0272fffec72d04_temperature
                 name: Вітальня
@@ -273,10 +273,24 @@ views:
               yellow: 6
               green: 8
 
-      - type: history-graph
-        entities:
-          - entity: sensor.maria_db_size
-            name: Maria DB
+      - type: vertical-stack
+        cards:
+          - type: history-graph
+            refresh_interval: 1800
+            hours_to_show: 48
+            entities:
+              - entity: sensor.speedtest_download
+                name: Download
+              - entity: sensor.speedtest_upload
+                name: Upload
+              - entity: sensor.speedtest_ping
+                name: Ping
+
+
+          - type: history-graph
+            entities:
+              - entity: sensor.maria_db_size
+                name: Maria DB
 
   - title: Погода
     icon: mdi:weather-partly-snowy-rainy

@@ -1,5 +1,6 @@
 - platform: template
   sensors:
+#room 11
     term_11_1_valve:
       friendly_name: "Termo_11_1_valve"
       icon_template: mdi:valve
@@ -11,37 +12,49 @@
       icon_template: mdi:valve
       unit_of_measurement: '%'
       value_template: "{{ state_attr('climate.0x5c0272fffedabed2', 'position') }}"
-
+# room 12 / kitchen
     term_12_1_valve:
       friendly_name: "Termo_12_1_valve"
       icon_template: mdi:valve
       unit_of_measurement: '%'
       value_template: "{{ state_attr('climate.0x847127fffe9f3342', 'position') }}"
-    
+
     term_12_1_temperature:
       friendly_name: "Termo_12_1_temperature"
-      icon_template: mdi:thermometer
+      # icon_template: mdi:thermometer
       unit_of_measurement: °C
       device_class: temperature
       value_template: "{{ state_attr('climate.0x847127fffe9f3342', 'current_temperature') | float }}"
-
+# room 21
     term_21_1_valve:
       friendly_name: "Termo_21_1_valve"
       icon_template: mdi:valve
       unit_of_measurement: '%'
       value_template: "{{ state_attr('climate.0x847127fffe960b38', 'position') }}"
 
+    # term_21_1_temperature:
+    #   friendly_name: "Termo_21_1_temperature"
+    #   unit_of_measurement: °C
+    #   device_class: temperature
+    #   value_template: "{{ state_attr('climate.0x847127fffe960b38', 'current_temperature') | float }}"
+
     term_21_2_valve:
       friendly_name: "Termo_21_2_valve"
       icon_template: mdi:valve
       unit_of_measurement: '%'
       value_template: "{{ state_attr('climate.0x847127fffe940161', 'position') }}"
-
+# room 22
     term_22_1_valve:
       friendly_name: "Termo_22_1_valve"
       icon_template: mdi:valve
       unit_of_measurement: '%'
       value_template: "{{ state_attr('climate.0x5c0272fffed9d5ff', 'position') }}"
+
+    # term_22_1_temperature:
+    #   friendly_name: "Termo_22_1_temperature"
+    #   unit_of_measurement: °C
+    #   device_class: temperature
+    #   value_template: "{{ state_attr('climate.0x5c0272fffed9d5ff', 'current_temperature') | float }}"
 
     term_22_2_valve:
       friendly_name: "Termo_22_2_valve"
@@ -49,11 +62,23 @@
       unit_of_measurement: '%'
       value_template: "{{ state_attr('climate.0x5c0272fffedab255', 'position') }}"
 
+    # term_22_2_temperature:
+    #   friendly_name: "Termo_22_2_temperature"
+    #   unit_of_measurement: °C
+    #   device_class: temperature
+    #   value_template: "{{ state_attr('climate.0x5c0272fffedab255', 'current_temperature') | float }}"
+
     term_22_3_valve:
       friendly_name: "Termo_22_3_valve"
       icon_template: mdi:valve
       unit_of_measurement: '%'
       value_template: "{{ state_attr('climate.0x847127fffe93ff05', 'position') }}"
+
+    # term_22_3_temperature:
+    #   friendly_name: "Termo_22_3_temperature"
+    #   unit_of_measurement: °C
+    #   device_class: temperature
+    #   value_template: "{{ state_attr('climate.0x847127fffe93ff05', 'current_temperature') | float }}"
 
 
 # file_restore sensors

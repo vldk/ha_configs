@@ -15,6 +15,7 @@
       # датчики темп
       - sensor.*_temperature
       - sensor.*_humidity
+      - sensor.speedtest_*
       - automation.*
       - scripts.*
     entities:
