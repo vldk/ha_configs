@@ -109,129 +109,140 @@
     data: {}
     entity_id: script.boiler_turn_on
   mode: single
-- id: 'trv_calibration_11_1'
-  alias: 'Калібрування головки 11_1'
-  description: 'Калібрування локальної температури термоголовки 11_1 по сенсору в кімнаті'
+- id: trv_calibration_11_1
+  alias: Калібрування головки 11_1
+  description: Калібрування локальної температури термоголовки 11_1 по сенсору в кімнаті
   trigger:
-    - platform: time_pattern
-      minutes: "/5"
-
-    - platform: template
-      value_template: "{{ (state_attr('climate.0x5c0272fffedabc57', 'current_temperature')|float - states('sensor.0x5c0272fffec72d04_temperature')|float)|abs > 0.25 }}"
-      for: '00:00:02'
+  - platform: time_pattern
+    minutes: /5
+  - platform: template
+    value_template: '{{ (state_attr(''climate.0x5c0272fffedabc57'', ''current_temperature'')|float
+      - states(''sensor.0x5c0272fffec72d04_temperature'')|float)|abs > 0.25 }}'
+    for: 00:00:02
   action:
-    - service: mqtt.publish
-      data_template:
-        topic: "zigbee2mqtt/{{state_attr('climate.0x5c0272fffedabc57','friendly_name')}}/set/local_temperature_calibration"
-        payload_template: >-
-          {{(state_attr('climate.0x5c0272fffedabc57','local_temperature_calibration')|float -
-              state_attr('climate.0x5c0272fffedabc57', 'current_temperature')|float +
-              states('sensor.0x5c0272fffec72d04_temperature')|float + 128)|round(1,'half')}}
-- id: 'trv_calibration_11_2'
-  alias: 'Калібрування головки 11_2'
-  description: 'Калібрування локальної температури термоголовки 11_2 по сенсору в кімнаті'
+  - service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/{{state_attr('climate.0x5c0272fffedabc57','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.0x5c0272fffedabc57','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.0x5c0272fffedabc57', 'current_temperature')|float\
+        \ +\n    states('sensor.0x5c0272fffec72d04_temperature')|float + 128)|round(1,'half')}}"
+- id: trv_calibration_11_2
+  alias: Калібрування головки 11_2
+  description: Калібрування локальної температури термоголовки 11_2 по сенсору в кімнаті
   trigger:
-    - platform: time_pattern
-      minutes: "/5"
-
-    - platform: template
-      value_template: "{{ (state_attr('climate.0x5c0272fffedabed2', 'current_temperature')|float - states('sensor.0x5c0272fffec72d04_temperature')|float)|abs > 0.25 }}"
-      for: '00:00:02'
+  - platform: time_pattern
+    minutes: /5
+  - platform: template
+    value_template: '{{ (state_attr(''climate.0x5c0272fffedabed2'', ''current_temperature'')|float
+      - states(''sensor.0x5c0272fffec72d04_temperature'')|float)|abs > 0.25 }}'
+    for: 00:00:02
   action:
-    - service: mqtt.publish
-      data_template:
-        topic: "zigbee2mqtt/{{state_attr('climate.0x5c0272fffedabed2','friendly_name')}}/set/local_temperature_calibration"
-        payload_template: >-
-          {{(state_attr('climate.0x5c0272fffedabed2','local_temperature_calibration')|float -
-              state_attr('climate.0x5c0272fffedabed2', 'current_temperature')|float +
-              states('sensor.0x5c0272fffec72d04_temperature')|float + 128)|round(1,'half')}}
-- id: 'trv_calibration_21_1'
-  alias: 'Калібрування головки 21_1'
-  description: 'Калібрування локальної температури термоголовки 21_1 по сенсору в кімнаті'
+  - service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/{{state_attr('climate.0x5c0272fffedabed2','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.0x5c0272fffedabed2','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.0x5c0272fffedabed2', 'current_temperature')|float\
+        \ +\n    states('sensor.0x5c0272fffec72d04_temperature')|float + 128)|round(1,'half')}}"
+- id: trv_calibration_21_1
+  alias: Калібрування головки 21_1
+  description: Калібрування локальної температури термоголовки 21_1 по сенсору в кімнаті
   trigger:
-    - platform: time_pattern
-      minutes: "/5"
-
-    - platform: template
-      value_template: "{{ (state_attr('climate.0x847127fffe960b38', 'current_temperature')|float - states('sensor.0x847127fffe18e757_temperature')|float)|abs > 0.25 }}"
-      for: '00:00:02'
+  - platform: time_pattern
+    minutes: /5
+  - platform: template
+    value_template: '{{ (state_attr(''climate.0x847127fffe960b38'', ''current_temperature'')|float
+      - states(''sensor.0x847127fffe18e757_temperature'')|float)|abs > 0.25 }}'
+    for: 00:00:02
   action:
-    - service: mqtt.publish
-      data_template:
-        topic: "zigbee2mqtt/{{state_attr('climate.0x847127fffe960b38','friendly_name')}}/set/local_temperature_calibration"
-        payload_template: >-
-          {{(state_attr('climate.0x847127fffe960b38','local_temperature_calibration')|float -
-              state_attr('climate.0x847127fffe960b38', 'current_temperature')|float +
-              states('sensor.0x847127fffe18e757_temperature')|float + 128)|round(1,'half')}}
-- id: 'trv_calibration_21_2'
-  alias: 'Калібрування головки 21_2'
-  description: 'Калібрування локальної температури термоголовки 21_2 по сенсору в кімнаті'
+  - service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/{{state_attr('climate.0x847127fffe960b38','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.0x847127fffe960b38','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.0x847127fffe960b38', 'current_temperature')|float\
+        \ +\n    states('sensor.0x847127fffe18e757_temperature')|float + 128)|round(1,'half')}}"
+- id: trv_calibration_21_2
+  alias: Калібрування головки 21_2
+  description: Калібрування локальної температури термоголовки 21_2 по сенсору в кімнаті
   trigger:
-    - platform: time_pattern
-      minutes: "/5"
-
-    - platform: template
-      value_template: "{{ (state_attr('climate.0x847127fffe940161', 'current_temperature')|float - states('sensor.0x847127fffe18e757_temperature')|float)|abs > 0.25 }}"
-      for: '00:00:02'
+  - platform: time_pattern
+    minutes: /5
+  - platform: template
+    value_template: '{{ (state_attr(''climate.0x847127fffe940161'', ''current_temperature'')|float
+      - states(''sensor.0x847127fffe18e757_temperature'')|float)|abs > 0.25 }}'
+    for: 00:00:02
   action:
-    - service: mqtt.publish
-      data_template:
-        topic: "zigbee2mqtt/{{state_attr('climate.0x847127fffe940161','friendly_name')}}/set/local_temperature_calibration"
-        payload_template: >-
-          {{(state_attr('climate.0x847127fffe940161','local_temperature_calibration')|float -
-              state_attr('climate.0x847127fffe940161', 'current_temperature')|float +
-              states('sensor.0x847127fffe18e757_temperature')|float + 128)|round(1,'half')}}
-- id: 'trv_calibration_22_1'
-  alias: 'Калібрування головки 22_1'
-  description: 'Калібрування локальної температури термоголовки 22_1 по сенсору в кімнаті'
+  - service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/{{state_attr('climate.0x847127fffe940161','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.0x847127fffe940161','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.0x847127fffe940161', 'current_temperature')|float\
+        \ +\n    states('sensor.0x847127fffe18e757_temperature')|float + 128)|round(1,'half')}}"
+- id: trv_calibration_22_1
+  alias: Калібрування головки 22_1
+  description: Калібрування локальної температури термоголовки 22_1 по сенсору в кімнаті
   trigger:
-    - platform: time_pattern
-      minutes: "/5"
-
-    - platform: template
-      value_template: "{{ (state_attr('climate.0x5c0272fffed9d5ff', 'current_temperature')|float - states('sensor.0x5c0272fffebda093_temperature')|float)|abs > 0.25 }}"
-      for: '00:00:02'
+  - platform: time_pattern
+    minutes: /5
+  - platform: template
+    value_template: '{{ (state_attr(''climate.0x5c0272fffed9d5ff'', ''current_temperature'')|float
+      - states(''sensor.0x5c0272fffebda093_temperature'')|float)|abs > 0.25 }}'
+    for: 00:00:02
   action:
-    - service: mqtt.publish
-      data_template:
-        topic: "zigbee2mqtt/{{state_attr('climate.0x5c0272fffed9d5ff','friendly_name')}}/set/local_temperature_calibration"
-        payload_template: >-
-          {{(state_attr('climate.0x5c0272fffed9d5ff','local_temperature_calibration')|float -
-              state_attr('climate.0x5c0272fffed9d5ff', 'current_temperature')|float +
-              states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}
-- id: 'trv_calibration_22_2'
-  alias: 'Калібрування головки 22_2'
-  description: 'Калібрування локальної температури термоголовки 22_2 по сенсору в кімнаті'
+  - service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/{{state_attr('climate.0x5c0272fffed9d5ff','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.0x5c0272fffed9d5ff','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.0x5c0272fffed9d5ff', 'current_temperature')|float\
+        \ +\n    states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}"
+- id: trv_calibration_22_2
+  alias: Калібрування головки 22_2
+  description: Калібрування локальної температури термоголовки 22_2 по сенсору в кімнаті
   trigger:
-    - platform: time_pattern
-      minutes: "/5"
-
-    - platform: template
-      value_template: "{{ (state_attr('climate.0x5c0272fffedab255', 'current_temperature')|float - states('sensor.0x5c0272fffebda093_temperature')|float)|abs > 0.25 }}"
-      for: '00:00:02'
+  - platform: time_pattern
+    minutes: /5
+  - platform: template
+    value_template: '{{ (state_attr(''climate.0x5c0272fffedab255'', ''current_temperature'')|float
+      - states(''sensor.0x5c0272fffebda093_temperature'')|float)|abs > 0.25 }}'
+    for: 00:00:02
   action:
-    - service: mqtt.publish
-      data_template:
-        topic: "zigbee2mqtt/{{state_attr('climate.0x5c0272fffedab255','friendly_name')}}/set/local_temperature_calibration"
-        payload_template: >-
-          {{(state_attr('climate.0x5c0272fffedab255','local_temperature_calibration')|float -
-              state_attr('climate.0x5c0272fffedab255', 'current_temperature')|float +
-              states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}
-- id: 'trv_calibration_22_3'
-  alias: 'Калібрування головки 22_3'
-  description: 'Калібрування локальної температури термоголовки 22_3 по сенсору в кімнаті'
+  - service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/{{state_attr('climate.0x5c0272fffedab255','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.0x5c0272fffedab255','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.0x5c0272fffedab255', 'current_temperature')|float\
+        \ +\n    states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}"
+- id: trv_calibration_22_3
+  alias: Калібрування головки 22_3
+  description: Калібрування локальної температури термоголовки 22_3 по сенсору в кімнаті
   trigger:
-    - platform: time_pattern
-      minutes: "/5"
-
-    - platform: template
-      value_template: "{{ (state_attr('climate.0x847127fffe93ff05', 'current_temperature')|float - states('sensor.0x5c0272fffebda093_temperature')|float)|abs > 0.25 }}"
-      for: '00:00:02'
+  - platform: time_pattern
+    minutes: /5
+  - platform: template
+    value_template: '{{ (state_attr(''climate.0x847127fffe93ff05'', ''current_temperature'')|float
+      - states(''sensor.0x5c0272fffebda093_temperature'')|float)|abs > 0.25 }}'
+    for: 00:00:02
   action:
-    - service: mqtt.publish
-      data_template:
-        topic: "zigbee2mqtt/{{state_attr('climate.0x847127fffe93ff05','friendly_name')}}/set/local_temperature_calibration"
-        payload_template: >-
-          {{(state_attr('climate.0x847127fffe93ff05','local_temperature_calibration')|float -
-              state_attr('climate.0x847127fffe93ff05', 'current_temperature')|float +
-              states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}
+  - service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/{{state_attr('climate.0x847127fffe93ff05','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.0x847127fffe93ff05','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.0x847127fffe93ff05', 'current_temperature')|float\
+        \ +\n    states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}"
+- id: '1610724020702'
+  alias: Програмний термостат -> група термоголовок (вітальня)
+  description: Синхронізувати виставлену температуру програмного термостату в групу
+    термоголовок (вітальня)
+  trigger:
+  - platform: state
+    entity_id: climate.pterm_room_11
+    attribute: temperature
+  condition:
+  - condition: template
+    value_template: '{{ trigger.to_state.state != trigger.from_state.state }}'
+  action:
+  - service: notify.notify
+    data:
+      title: Change TRV
+      message: Set to {{trigger.to_state.state}}
+    entity_id: climate.room_f1_1
+  mode: single

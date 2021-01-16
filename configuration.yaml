@@ -15,8 +15,6 @@ default_config:
 lovelace:
   mode: yaml
   resources:
-    - url: /hacsfiles/lovelace-thermostat-dark-card/thermostat-dark-card.js
-      type: module
     - url: /hacsfiles/simple-thermostat/simple-thermostat.js
       type: module
     - url: /hacsfiles/scheduler-card/scheduler-card.js

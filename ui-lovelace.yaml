@@ -159,10 +159,13 @@ views:
     cards:
       - type: thermostat
         entity: climate.pterm_room_11
+        name: Вітальня
       - type: thermostat
         entity: climate.pterm_room_21
+        name: Спальня
       - type: thermostat
         entity: climate.pterm_room_22
+        name: Дитяча
       - type: entity
         entity: binary_sensor.boiler_is_on
       - type: entity
