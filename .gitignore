@@ -1,0 +1,9 @@
+secrets.yaml
+*.db
+*.log
+.storage/
+*.code-workspace
+custom_components/*
+themes/
+.Trash*
+__pycache__
