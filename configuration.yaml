@@ -1,4 +1,13 @@
-
+homeassistant:
+  name: VHome
+  latitude: !secret latitude_coord
+  longitude: !secret longitude_coord
+  time_zone: Europe/Kiev
+  unit_system: metric
+  elevation: 270
+  internal_url: "http://rasp.lan:8123"
+  customize: !include customize.yaml
+  packages: !include_dir_merge_named custom/packages
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
@@ -10,3 +19,49 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+# end default configs
+recorder: !include custom/recorder.yaml
+sensor: !include_dir_merge_list custom/sensors
+binary_sensor: !include_dir_merge_list custom/sensors_bin
+switch: !include custom/switch.yaml
+timer: !include custom/timers.yaml
+input_number: !include custom/input/number.yaml
+climate: !include custom/climate.yaml
+
+lovelace:
+  # mode: yaml
+  mode: storage
+  # resources:
+  #   - url: /hacsfiles/simple-thermostat/simple-thermostat.js
+  #     type: module
+    # - url: /hacsfiles/scheduler-card/scheduler-card.js
+    #   type: module
+  #   - url: /hacsfiles/toggle-control-button-row/toggle-control-button-row.js
+  #     type: module
+  dashboards:
+    manual-mode:
+      mode: yaml
+      title: Manual Dash
+      show_in_sidebar: true
+      icon: mdi:toolbox
+      filename: ui-lovelace.yaml
+
+
+mqtt:
+  broker: core-mosquitto
+  discovery: true
+  discovery_prefix: homeassistant
+  username: mqtt
+  password: mqtt
+
+
+telegram_bot:
+  - platform: polling
+    api_key: !secret api_bot_key
+    allowed_chat_ids:
+      - !secret telegram_id1
+
+notify:
+  - name: telegram_id1
+    platform: telegram
+    chat_id: !secret telegram_id1

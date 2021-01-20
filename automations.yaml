@@ -1,1 +1,194 @@
-[]
+- id: '1609622210171'
+  alias: Пожати базу
+  description: ''
+  trigger:
+  - platform: time
+    at: 01:00:00
+  condition: []
+  action:
+  - service: recorder.purge
+    data:
+      keep_days: 7
+      repack: true
+  mode: single
+- id: trv_calibration_11_1
+  alias: Калібрування головки 11_1
+  description: Калібрування локальної температури термоголовки 11_1 по сенсору в кімнаті
+  trigger:
+  - platform: time_pattern
+    minutes: /5
+  - platform: template
+    value_template: '{{ (state_attr(''climate.0x5c0272fffedabc57'', ''current_temperature'')|float
+      - states(''sensor.0x5c0272fffec72d04_temperature'')|float)|abs > 0.25 }}'
+    for: 00:00:02
+  action:
+  - service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/{{state_attr('climate.0x5c0272fffedabc57','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.0x5c0272fffedabc57','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.0x5c0272fffedabc57', 'current_temperature')|float\
+        \ +\n    states('sensor.0x5c0272fffec72d04_temperature')|float + 128)|round(1,'half')}}"
+- id: trv_calibration_11_2
+  alias: Калібрування головки 11_2
+  description: Калібрування локальної температури термоголовки 11_2 по сенсору в кімнаті
+  trigger:
+  - platform: time_pattern
+    minutes: /5
+  - platform: template
+    value_template: '{{ (state_attr(''climate.0x5c0272fffedabed2'', ''current_temperature'')|float
+      - states(''sensor.0x5c0272fffec72d04_temperature'')|float)|abs > 0.25 }}'
+    for: 00:00:02
+  action:
+  - service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/{{state_attr('climate.0x5c0272fffedabed2','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.0x5c0272fffedabed2','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.0x5c0272fffedabed2', 'current_temperature')|float\
+        \ +\n    states('sensor.0x5c0272fffec72d04_temperature')|float + 128)|round(1,'half')}}"
+- id: trv_calibration_21_1
+  alias: Калібрування головки 21_1
+  description: Калібрування локальної температури термоголовки 21_1 по сенсору в кімнаті
+  trigger:
+  - platform: time_pattern
+    minutes: /5
+  - platform: template
+    value_template: '{{ (state_attr(''climate.0x847127fffe960b38'', ''current_temperature'')|float
+      - states(''sensor.0x847127fffe18e757_temperature'')|float)|abs > 0.25 }}'
+    for: 00:00:02
+  action:
+  - service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/{{state_attr('climate.0x847127fffe960b38','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.0x847127fffe960b38','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.0x847127fffe960b38', 'current_temperature')|float\
+        \ +\n    states('sensor.0x847127fffe18e757_temperature')|float + 128)|round(1,'half')}}"
+- id: trv_calibration_21_2
+  alias: Калібрування головки 21_2
+  description: Калібрування локальної температури термоголовки 21_2 по сенсору в кімнаті
+  trigger:
+  - platform: time_pattern
+    minutes: /5
+  - platform: template
+    value_template: '{{ (state_attr(''climate.0x847127fffe940161'', ''current_temperature'')|float
+      - states(''sensor.0x847127fffe18e757_temperature'')|float)|abs > 0.25 }}'
+    for: 00:00:02
+  action:
+  - service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/{{state_attr('climate.0x847127fffe940161','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.0x847127fffe940161','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.0x847127fffe940161', 'current_temperature')|float\
+        \ +\n    states('sensor.0x847127fffe18e757_temperature')|float + 128)|round(1,'half')}}"
+- id: trv_calibration_22_1
+  alias: Калібрування головки 22_1
+  description: Калібрування локальної температури термоголовки 22_1 по сенсору в кімнаті
+  trigger:
+  - platform: time_pattern
+    minutes: /5
+  - platform: template
+    value_template: '{{ (state_attr(''climate.0x5c0272fffed9d5ff'', ''current_temperature'')|float
+      - states(''sensor.0x5c0272fffebda093_temperature'')|float)|abs > 0.25 }}'
+    for: 00:00:02
+  action:
+  - service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/{{state_attr('climate.0x5c0272fffed9d5ff','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.0x5c0272fffed9d5ff','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.0x5c0272fffed9d5ff', 'current_temperature')|float\
+        \ +\n    states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}"
+- id: trv_calibration_22_2
+  alias: Калібрування головки 22_2
+  description: Калібрування локальної температури термоголовки 22_2 по сенсору в кімнаті
+  trigger:
+  - platform: time_pattern
+    minutes: /5
+  - platform: template
+    value_template: '{{ (state_attr(''climate.0x5c0272fffedab255'', ''current_temperature'')|float
+      - states(''sensor.0x5c0272fffebda093_temperature'')|float)|abs > 0.25 }}'
+    for: 00:00:02
+  action:
+  - service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/{{state_attr('climate.0x5c0272fffedab255','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.0x5c0272fffedab255','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.0x5c0272fffedab255', 'current_temperature')|float\
+        \ +\n    states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}"
+- id: trv_calibration_22_3
+  alias: Калібрування головки 22_3
+  description: Калібрування локальної температури термоголовки 22_3 по сенсору в кімнаті
+  trigger:
+  - platform: time_pattern
+    minutes: /5
+  - platform: template
+    value_template: '{{ (state_attr(''climate.0x847127fffe93ff05'', ''current_temperature'')|float
+      - states(''sensor.0x5c0272fffebda093_temperature'')|float)|abs > 0.25 }}'
+    for: 00:00:02
+  action:
+  - service: mqtt.publish
+    data_template:
+      topic: zigbee2mqtt/{{state_attr('climate.0x847127fffe93ff05','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.0x847127fffe93ff05','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.0x847127fffe93ff05', 'current_temperature')|float\
+        \ +\n    states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}"
+- id: toggle_switch2
+  alias: 'Котли: Котли: вкл. ел. котел -> викл.газ. котел'
+  description: Виключити газ. котел при включенні ел. котла
+  trigger:
+  - platform: state
+    entity_id: switch.0x00124b00209e96c4_l2
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: switch.0x00124b00209e96c4_l1
+    state: 'on'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.0x00124b00209e96c4_l1
+  mode: single
+- id: toggle_switch1
+  alias: 'Котли: вкл. газ. котел -> викл. ел. котел'
+  description: 'Котли: виключити ел. котел при вкюченні газ. котла'
+  trigger:
+  - platform: state
+    entity_id: switch.0x00124b00209e96c4_l1
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: switch.0x00124b00209e96c4_l2
+    state: 'on'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.0x00124b00209e96c4_l2
+  mode: single
+- id: run_gas_boiler_delay_timer
+  alias: 'Котли: таймаут газ. котла'
+  description: Запустити затримку запуску газ. котла при виключенні
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: 972efa4469c7dbc89ad0cb3a5459d3db
+    entity_id: switch.0x00124b00209e96c4_l1
+    domain: switch
+  condition: []
+  action:
+  - service: timer.start
+    data: {}
+    entity_id: timer.boiler_gas_turn_on_timer
+  mode: single
+- id: run_electri_boiler_delay_timer
+  alias: 'Котли: таймаут ел. котла'
+  description: Запустити затримку запуску ел. котла при виключенні
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: 972efa4469c7dbc89ad0cb3a5459d3db
+    entity_id: switch.0x00124b00209e96c4_l2
+    domain: switch
+  condition: []
+  action:
+  - service: timer.start
+    data: {}
+    entity_id: timer.boiler_electro_turn_on_timer
+  mode: single

@@ -1,0 +1,28 @@
+- platform: template
+  sensors:
+    # boilers state
+    boiler_is_on:
+      friendly_name: "Any boilers is on"
+      device_class: heat
+      value_template: >-
+        {{ is_state('switch.0x00124b00209e96c4_l1', 'on')
+          or is_state('switch.0x00124b00209e96c4_l2', 'on') }}
+      icon_template: >-
+        {% if is_state("binary_sensor.boiler_is_on", "on") %}
+        mdi:radiator
+        {% else %}
+        mdi:radiator-off
+        {% endif %}
+
+    # boiler_is_off:
+    #   friendly_name: "All boilers is off"
+    #   device_class: heat
+    #   value_template: >-
+    #     {{ is_state('switch.0x00124b00209e96c4_l1', 'off')
+    #       and is_state('switch.0x00124b00209e96c4_l2', 'off') }}
+    #   icon_template: >-
+    #     {% if is_state("binary_sensor.boiler_is_off", "on") %}
+    #     mdi:radiator-off
+    #     {% else %}
+    #     mdi:radiator
+    #     {% endif %}

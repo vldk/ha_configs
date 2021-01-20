@@ -1,0 +1,24 @@
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+    - 'time_date'
+
+- platform: systemmonitor
+  resources:
+  - type: processor_use
+  - type: processor_temperature
+  - type: disk_use_percent
+    arg: /
+  - type: memory_use_percent
+  - type: last_boot
+  - type: disk_free
+    arg: /
+
+- platform: sql
+  db_url: mysql://ha_db:ha_pwd@core-mariadb/has?charset=utf8
+  queries:
+    - name: Maria DB size
+      query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1048576, 2) "value" FROM information_schema.tables WHERE table_schema="has" GROUP BY table_schema;'
+      column: 'value'
+      unit_of_measurement: MB

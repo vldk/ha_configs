@@ -1,0 +1,33 @@
+title: HAS (Dev)
+views:
+  - title: Server status
+    icon: mdi:raspberry-pi
+    badges:
+      - sensor.processor_temperature
+      - sensor.processor_use_percent
+    cards:
+      # - type: horizontal-stack
+      - type: vertical-stack
+        cards:        
+        - type: entities
+          show_header_toggle: false
+          title:  'Status'
+          entities:
+            - entity: sensor.time
+              name: Текущее время
+              icon: mdi:clock-outline
+            - entity: sensor.last_boot
+              name: Last Boot at
+              icon: mdi:calendar-check-outline
+            - entity: sensor.maria_db_size
+              name: DB Size
+              icon: mdi:database
+            # - type: divider
+            # - type: call-service
+            #   icon: mdi:database-refresh
+            #   name: Compress DB
+            #   action_name: Run
+            #   service: recorder.purge
+            #   service_data:
+            #     keep_days: 7
+            #     repack: true    

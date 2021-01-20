@@ -1,0 +1,10 @@
+switch.0x00124b00209e96c4_l1:
+  icon: mdi:fire
+  friendly_name: Swith Port 1 (Gas)
+switch.0x00124b00209e96c4_l2:
+  icon: mdi:power-plug
+  friendly_name: Swith Port 2 (Electro)
+sensor.0x00124b00209e96c4_l1:
+  icon: mdi:toggle-switch
+sensor.0x00124b00209e96c4_l2:
+  icon: mdi:toggle-switch

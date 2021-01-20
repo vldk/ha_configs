@@ -1,0 +1,8 @@
+
+boiler_gas_turn_on_timer:
+  name: 'Таймер останнього вимкення газ. котла'
+  duration: 600 # 10m
+
+boiler_electro_turn_on_timer:
+  name: 'Таймер останнього вимкення ел. котла'
+  duration: 120 # 2m

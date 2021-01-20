@@ -1,0 +1,8 @@
+- platform: template
+  switches:
+    complex_boiler:
+      value_template: "{{ states('binary_sensor.boiler_is_on') }}"      
+      turn_on:
+        service: script.boiler_turn_on
+      turn_off:
+        service: script.boiler_turn_off
