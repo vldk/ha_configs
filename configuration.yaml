@@ -5,56 +5,55 @@ homeassistant:
   time_zone: Europe/Kiev
   unit_system: metric
   elevation: 270
-  customize: !include_dir_merge_named all/customize
   internal_url: "http://rasp.lan:8123"
-  packages: !include_dir_merge_named all/packages
-
-  # Configure a default setup of Home Assistant (frontend, api, etc)
+  customize: !include customize.yaml
+  packages: !include_dir_merge_named custom/packages
+# Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
-
-lovelace:
-  mode: yaml
-  resources:
-    - url: /hacsfiles/simple-thermostat/simple-thermostat.js
-      type: module
-    - url: /hacsfiles/scheduler-card/scheduler-card.js
-      type: module
-    - url: /hacsfiles/toggle-control-button-row/toggle-control-button-row.js
-      type: module
-frontend:
-  extra_module_url:
-    - /hacsfiles/custom-sidebar/custom-sidebar.js
-  themes: !include_dir_merge_named themes
 
 # Text to speech
 tts:
   - platform: google_translate
 
-group: !include all/groups.yaml
-timer: !include all/timer.yaml
-input_boolean: !include all/input_boolean.yaml
-input_number: !include all/input_number.yaml
-# automation: !include_dir_merge_list all/automation
+group: !include groups.yaml
 automation: !include automations.yaml
-# script: !include_dir_merge_named all/scripts
 script: !include scripts.yaml
-scene: !include all/scenes.yaml
-sensor: !include_dir_merge_list all/sensors
-switch: !include all/switch.yaml
-binary_sensor: !include_dir_merge_list all/bin_sensors
-recorder: !include all/recorder.yaml
-climate: !include all/climate.yaml
+scene: !include scenes.yaml
+# end default configs
+recorder: !include custom/recorder.yaml
+sensor: !include_dir_merge_list custom/sensors
+binary_sensor: !include_dir_merge_list custom/sensors_bin
+switch: !include custom/switch.yaml
+timer: !include custom/timers.yaml
+input_number: !include custom/input/number.yaml
+climate: !include custom/climate.yaml
+
+lovelace:
+  # mode: yaml
+  mode: storage
+  # resources:
+  #   - url: /hacsfiles/simple-thermostat/simple-thermostat.js
+  #     type: module
+    # - url: /hacsfiles/scheduler-card/scheduler-card.js
+    #   type: module
+  #   - url: /hacsfiles/toggle-control-button-row/toggle-control-button-row.js
+  #     type: module
+  dashboards:
+    manual-mode:
+      mode: yaml
+      title: Manual Dash
+      show_in_sidebar: true
+      icon: mdi:toolbox
+      filename: ui-lovelace.yaml
+
 
 mqtt:
-  broker: core-mosquitto  # Локальный брокер
+  broker: core-mosquitto
   discovery: true
   discovery_prefix: homeassistant
   username: mqtt
   password: mqtt
 
-# debugpy:
-#  start: true
-#  wait: false
 
 telegram_bot:
   - platform: polling

@@ -1,0 +1,72 @@
+# Programmable
+
+  - platform: programmable_thermostat
+    name: pterm_room_11
+    heater:
+      - switch.complex_boiler
+    actual_temp_sensor: sensor.0x5c0272fffec72d04_temperature
+    min_temp: 10
+    max_temp: 30
+    target_temp_sensor: input_number.dest_temp_11
+    tolerance: 0.5
+    related_climate:
+      - climate.pterm_room_21
+      - climate.pterm_room_22
+    hvac_options: 7
+    auto_mode: heating
+    min_cycle_duration:
+      seconds: 5
+
+  - platform: programmable_thermostat
+    name: pterm_room_21
+    heater:
+      - switch.complex_boiler
+    actual_temp_sensor: sensor.0x847127fffe18e757_temperature
+    min_temp: 10
+    max_temp: 30
+    target_temp_sensor: input_number.dest_temp_21
+    tolerance: 0.5
+    related_climate:
+      - climate.pterm_room_11
+      - climate.pterm_room_22
+    hvac_options: 7
+    auto_mode: heating
+    min_cycle_duration:
+      seconds: 5
+
+  - platform: programmable_thermostat
+    name: pterm_room_22
+    heater:
+      - switch.complex_boiler
+    actual_temp_sensor: sensor.0x5c0272fffebda093_temperature
+    min_temp: 10
+    max_temp: 30
+    target_temp_sensor: input_number.dest_temp_22
+    tolerance: 0.5
+    related_climate:
+      - climate.pterm_room_11
+      - climate.pterm_room_21
+    hvac_options: 7
+    auto_mode: heating
+    min_cycle_duration:
+      seconds: 5
+
+#tyua thermostats groups per room  
+  - platform: climate_group
+    name: 'trv_group_11'
+    entities:
+      - climate.0x5c0272fffedabc57
+      - climate.0x5c0272fffedabed2
+
+  - platform: climate_group
+    name: 'trv_group_21'
+    entities:
+      - climate.0x847127fffe960b38
+      - climate.0x847127fffe940161    
+
+  - platform: climate_group
+    name: 'trv_group_22'
+    entities:
+      - climate.0x5c0272fffed9d5ff
+      - climate.0x5c0272fffedab255
+      - climate.0x847127fffe93ff05

@@ -1,0 +1,5 @@
+# нічний тариф на електрику
+- platform: tod
+  name: tod_night_tariff
+  after: '23:00'
+  before: '07:00'

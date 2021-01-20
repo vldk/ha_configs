@@ -1,50 +1,3 @@
-- id: turn_off_switch1_on_switch2_activate
-  alias: 'Котли: Котли: вкл. ел. котел -> викл.газ. котел'
-  description: Виключити газ. котел при включенні ел. котла
-  trigger:
-  - platform: state
-    entity_id: switch.0x00124b00209e96c4_l2
-    from: 'off'
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: switch.0x00124b00209e96c4_l1
-    state: 'on'
-  action:
-  - service: switch.turn_off
-    entity_id: switch.0x00124b00209e96c4_l1
-  mode: single
-- id: turn_off_switch2_on_switch1_activate
-  alias: 'Котли: вкл. газ. котел -> викл. ел. котел'
-  description: 'Котли: виключити ел. котел при вкюченні газ. котла'
-  trigger:
-  - platform: state
-    entity_id: switch.0x00124b00209e96c4_l1
-    from: 'off'
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: switch.0x00124b00209e96c4_l2
-    state: 'on'
-  action:
-  - service: switch.turn_off
-    entity_id: switch.0x00124b00209e96c4_l2
-  mode: single
-- id: '1609621684095'
-  alias: 'Котли: таймаут газ. котла'
-  description: Запустити таймаут газ. котла при виключенні
-  trigger:
-  - platform: device
-    type: turned_off
-    device_id: c9ffc9447e2ed0d07868e9b07b35362e
-    entity_id: switch.0x00124b00209e96c4_l1
-    domain: switch
-  condition: []
-  action:
-  - service: timer.start
-    data: {}
-    entity_id: timer.boiler_gas_turn_on_timer
-  mode: single
 - id: '1609622210171'
   alias: Пожати базу
   description: ''
@@ -57,57 +10,6 @@
     data:
       keep_days: 7
       repack: true
-  mode: single
-- id: '1609623356064'
-  alias: 'Котли: таймаут ел. котла'
-  description: Запустити таймаут ел. котла при виключенні
-  trigger:
-  - platform: device
-    type: turned_off
-    device_id: c9ffc9447e2ed0d07868e9b07b35362e
-    entity_id: switch.0x00124b00209e96c4_l2
-    domain: switch
-  condition: []
-  action:
-  - service: timer.start
-    data: {}
-    entity_id: timer.boiler_electro_turn_on_timer
-  mode: single
-- id: '1609625023102'
-  alias: 'Котли: зміна нічного тарифу на день'
-  description: Вимкнути ел. котел не в нічний тариф (або запустити газовий, якщо потрібно
-    гріти далі)
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.tod_night_tariff
-    from: 'on'
-    to: 'off'
-  condition:
-  - condition: state
-    entity_id: binary_sensor.boiler_is_on
-    state: 'on'
-  action:
-  - service: script.turn_on
-    data: {}
-    entity_id: script.boiler_turn_on
-  mode: single
-- id: '1609628380235'
-  alias: 'Котли: зміна нічного тарифу на ніч'
-  description: Увімкнути ел. котел в нічний тариф (якщо був запущений газовий, то
-    потрібно гріти далі електро)
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.tod_night_tariff
-    from: 'off'
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: binary_sensor.boiler_is_on
-    state: 'on'
-  action:
-  - service: script.turn_on
-    data: {}
-    entity_id: script.boiler_turn_on
   mode: single
 - id: trv_calibration_11_1
   alias: Калібрування головки 11_1
@@ -228,21 +130,65 @@
       payload_template: "{{(state_attr('climate.0x847127fffe93ff05','local_temperature_calibration')|float\
         \ -\n    state_attr('climate.0x847127fffe93ff05', 'current_temperature')|float\
         \ +\n    states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}"
-- id: '1610724020702'
-  alias: Програмний термостат -> група термоголовок (вітальня)
-  description: Синхронізувати виставлену температуру програмного термостату в групу
-    термоголовок (вітальня)
+- id: toggle_switch2
+  alias: 'Котли: Котли: вкл. ел. котел -> викл.газ. котел'
+  description: Виключити газ. котел при включенні ел. котла
   trigger:
   - platform: state
-    entity_id: climate.pterm_room_11
-    attribute: temperature
+    entity_id: switch.0x00124b00209e96c4_l2
+    from: 'off'
+    to: 'on'
   condition:
-  - condition: template
-    value_template: '{{ trigger.to_state.state != trigger.from_state.state }}'
+  - condition: state
+    entity_id: switch.0x00124b00209e96c4_l1
+    state: 'on'
   action:
-  - service: notify.notify
-    data:
-      title: Change TRV
-      message: Set to {{trigger.to_state.state}}
-    entity_id: climate.room_f1_1
+  - service: switch.turn_off
+    entity_id: switch.0x00124b00209e96c4_l1
+  mode: single
+- id: toggle_switch1
+  alias: 'Котли: вкл. газ. котел -> викл. ел. котел'
+  description: 'Котли: виключити ел. котел при вкюченні газ. котла'
+  trigger:
+  - platform: state
+    entity_id: switch.0x00124b00209e96c4_l1
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: switch.0x00124b00209e96c4_l2
+    state: 'on'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.0x00124b00209e96c4_l2
+  mode: single
+- id: run_gas_boiler_delay_timer
+  alias: 'Котли: таймаут газ. котла'
+  description: Запустити затримку запуску газ. котла при виключенні
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: 972efa4469c7dbc89ad0cb3a5459d3db
+    entity_id: switch.0x00124b00209e96c4_l1
+    domain: switch
+  condition: []
+  action:
+  - service: timer.start
+    data: {}
+    entity_id: timer.boiler_gas_turn_on_timer
+  mode: single
+- id: run_electri_boiler_delay_timer
+  alias: 'Котли: таймаут ел. котла'
+  description: Запустити затримку запуску ел. котла при виключенні
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: 972efa4469c7dbc89ad0cb3a5459d3db
+    entity_id: switch.0x00124b00209e96c4_l2
+    domain: switch
+  condition: []
+  action:
+  - service: timer.start
+    data: {}
+    entity_id: timer.boiler_electro_turn_on_timer
   mode: single

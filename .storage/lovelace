@@ -1,0 +1,329 @@
+{
+    "version": 1,
+    "key": "lovelace",
+    "data": {
+        "config": {
+            "views": [
+                {
+                    "title": "Main",
+                    "path": "main",
+                    "icon": "mdi:home-assistant",
+                    "panel": false,
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.0x5c0272fffec72d04_temperature",
+                                    "name": "\u0412\u0456\u0442\u0430\u043b\u044c\u043d\u044f",
+                                    "secondary_info": "last-updated"
+                                },
+                                {
+                                    "entity": "sensor.0x5c0272fffec72d04_humidity",
+                                    "name": "\u0412\u043e\u043b\u043e\u0433\u0456\u0441\u0442\u044c"
+                                },
+                                {
+                                    "entity": "climate.0x5c0272fffedabed2",
+                                    "name": "\u041b\u0456\u0432\u0438\u0439",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "sensor.0x5c0272fffedabed2_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d",
+                                    "secondary_info": "entity-id"
+                                },
+                                {
+                                    "entity": "climate.0x5c0272fffedabc57",
+                                    "name": "\u041f\u0440\u0430\u0432\u0438\u0439",
+                                    "secondary_info": "last-updated"
+                                },
+                                {
+                                    "entity": "sensor.0x5c0272fffedabc57_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d",
+                                    "secondary_info": "entity-id"
+                                }
+                            ],
+                            "state_color": true,
+                            "show_header_toggle": false,
+                            "footer": {
+                                "type": "graph",
+                                "entity": "sensor.0x5c0272fffec72d04_temperature",
+                                "hours_to_show": 48,
+                                "detail": 2
+                            }
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.0x5c0272fffec72d04_temperature",
+                                    "name": "\u0421\u043f\u0430\u043b\u044c\u043d\u044f",
+                                    "secondary_info": "last-updated"
+                                },
+                                {
+                                    "entity": "sensor.0x847127fffe18e757_humidity",
+                                    "name": "\u0412\u043e\u043b\u043e\u0433\u0456\u0441\u0442\u044c"
+                                },
+                                {
+                                    "entity": "climate.0x847127fffe940161",
+                                    "name": "\u041b\u0456\u0432\u0438\u0439",
+                                    "secondary_info": "last-updated"
+                                },
+                                {
+                                    "entity": "sensor.0x847127fffe940161_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
+                                    "secondary_info": "entity-id"
+                                },
+                                {
+                                    "entity": "climate.0x847127fffe960b38",
+                                    "name": "\u041f\u0440\u0430\u0432\u0438\u0439",
+                                    "secondary_info": "last-updated"
+                                },
+                                {
+                                    "entity": "sensor.0x847127fffe960b38_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
+                                    "secondary_info": "entity-id"
+                                }
+                            ],
+                            "footer": {
+                                "type": "graph",
+                                "entity": "sensor.0x847127fffe18e757_temperature",
+                                "hours_to_show": 48,
+                                "detail": 2
+                            },
+                            "state_color": false
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.0x5c0272fffebda093_temperature",
+                                    "name": "\u0414\u0438\u0442\u044f\u0447\u0430",
+                                    "secondary_info": "last-updated"
+                                },
+                                {
+                                    "entity": "sensor.0x5c0272fffebda093_humidity",
+                                    "name": "\u0412\u043e\u043b\u043e\u0433\u0456\u0441\u0442\u044c"
+                                },
+                                {
+                                    "entity": "climate.0x847127fffe93ff05",
+                                    "secondary_info": "last-updated",
+                                    "name": "\u041b\u0456\u0432\u0438\u0439"
+                                },
+                                {
+                                    "entity": "sensor.0x847127fffe93ff05_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
+                                    "secondary_info": "entity-id"
+                                },
+                                {
+                                    "entity": "climate.0x5c0272fffedab255",
+                                    "secondary_info": "last-updated",
+                                    "name": "\u0421\u0435\u0440\u0435\u0434\u043d\u0456\u0439"
+                                },
+                                {
+                                    "entity": "sensor.0x5c0272fffedab255_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
+                                    "secondary_info": "entity-id"
+                                },
+                                {
+                                    "entity": "climate.0x5c0272fffed9d5ff",
+                                    "secondary_info": "last-updated",
+                                    "name": "\u041f\u0440\u0430\u0432\u0438\u0439"
+                                },
+                                {
+                                    "entity": "sensor.0x5c0272fffed9d5ff_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
+                                    "secondary_info": "entity-id"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "state_color": true,
+                            "footer": {
+                                "type": "graph",
+                                "entity": "sensor.0x5c0272fffebda093_temperature",
+                                "hours_to_show": 48,
+                                "detail": 2
+                            }
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "climate.0x847127fffe9f3342",
+                                    "secondary_info": "last-updated",
+                                    "name": "\u041a\u0443\u0445\u043d\u044f"
+                                },
+                                {
+                                    "entity": "sensor.0x847127fffe9f3342_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
+                                    "secondary_info": "entity-id"
+                                }
+                            ],
+                            "footer": {
+                                "type": "graph",
+                                "entity": "sensor.trv_12_temperature",
+                                "hours_to_show": 48,
+                                "detail": 2
+                            }
+                        },
+                        {
+                            "type": "weather-forecast",
+                            "entity": "weather.golovna",
+                            "secondary_info_attribute": "wind_speed",
+                            "name": "\u0412\u0456\u043d\u043d\u0438\u0446\u044f"
+                        }
+                    ]
+                },
+                {
+                    "title": "Climate 2",
+                    "path": "climate",
+                    "icon": "mdi:home-thermometer",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "horizontal-stack",
+                            "cards": [
+                                {
+                                    "type": "thermostat",
+                                    "entity": "climate.pterm_room_11",
+                                    "name": "\u0412\u0456\u0442\u0430\u043b\u044c\u043d\u044f"
+                                },
+                                {
+                                    "type": "thermostat",
+                                    "entity": "climate.pterm_room_21",
+                                    "name": "\u0421\u043f\u0430\u043b\u044c\u043d\u044f"
+                                },
+                                {
+                                    "type": "thermostat",
+                                    "entity": "climate.pterm_room_22",
+                                    "name": "\u0414\u0438\u0442\u044f\u0447\u0430"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "grid",
+                            "columns": 2,
+                            "cards": [
+                                {
+                                    "type": "thermostat",
+                                    "entity": "climate.trv_group_11",
+                                    "name": "TRV \u0412\u0456\u0442\u0430\u043b\u044c\u043d\u044f"
+                                },
+                                {
+                                    "type": "thermostat",
+                                    "entity": "climate.0x847127fffe9f3342",
+                                    "name": "TRV \u041a\u0443\u0445\u043d\u044f"
+                                },
+                                {
+                                    "type": "thermostat",
+                                    "entity": "climate.trv_group_21",
+                                    "name": "TRV \u0421\u043f\u0430\u043b\u044c\u043d\u044f"
+                                },
+                                {
+                                    "type": "thermostat",
+                                    "entity": "climate.trv_group_22",
+                                    "name": "TRV \u0414\u0438\u0442\u044f\u0447\u0430"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Server",
+                    "path": "server",
+                    "icon": "mdi:raspberry-pi",
+                    "panel": false,
+                    "badges": [
+                        {
+                            "entity": "sensor.processor_temperature"
+                        }
+                    ],
+                    "cards": [
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.last_boot"
+                                        },
+                                        {
+                                            "entity": "sensor.maria_db_size"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "horizontal-stack",
+                            "cards": [
+                                {
+                                    "type": "gauge",
+                                    "entity": "sensor.processor_use_percent",
+                                    "min": 0,
+                                    "max": 100,
+                                    "name": "CPU",
+                                    "severity": {
+                                        "green": 0,
+                                        "yellow": 35,
+                                        "red": 70
+                                    }
+                                },
+                                {
+                                    "type": "gauge",
+                                    "entity": "sensor.memory_use_percent",
+                                    "min": 0,
+                                    "max": 100,
+                                    "name": "Mem",
+                                    "severity": {
+                                        "green": 0,
+                                        "yellow": 35,
+                                        "red": 70
+                                    }
+                                },
+                                {
+                                    "type": "gauge",
+                                    "entity": "sensor.disk_use_percent",
+                                    "min": 0,
+                                    "max": 100,
+                                    "name": "Disk usage",
+                                    "severity": {
+                                        "green": 0,
+                                        "yellow": 60,
+                                        "red": 80
+                                    }
+                                },
+                                {
+                                    "type": "entity",
+                                    "entity": "sensor.disk_free"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Shedulers",
+                    "path": "shedulers",
+                    "icon": "mdi:timer-outline",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "custom:scheduler-card",
+                            "display_options": {
+                                "primary_info": "{name}"
+                            },
+                            "include": [
+                                "climate.pterm_room_11",
+                                "climate.pterm_room_21",
+                                "climate.pterm_room_22"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "title": "Main"
+        }
+    }
+}

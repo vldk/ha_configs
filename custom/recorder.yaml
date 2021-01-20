@@ -1,0 +1,46 @@
+db_url: mysql://ha_db:ha_pwd@core-mariadb/has?charset=utf8
+purge_keep_days: 7
+auto_purge: true
+# exclude:
+#   entities:
+#     - sensor.last_boot
+#     - sensor.date
+#     - sensor.time
+#   entity_globs:
+#     - sensor.weather_*
+include:
+  entity_globs:
+    # termostats
+    - climate.*
+    # датчики темп
+    - sensor.*_temperature
+    - sensor.*_humidity
+    - sensor.*_linkquality
+    - sensor.speedtest_*
+    - automation.*
+    - scripts.*
+  entities:
+    - sensor.home_assistant_v2_db
+    - sensor.maria_db_size
+    # switch boilers
+    - switch.0x00124b00209e96c4_l1
+    - switch.0x00124b00209e96c4_l2
+    - sensor.0x00124b00209e96c4_l1
+    - sensor.0x00124b00209e96c4_l2
+
+    - switch.0x847127fffe24e50e
+
+    # телефони
+    - sensor.moto_z3_play_battery_level
+    - sensor.redmi_4x_battery_level
+    - device_tracker.moto_z3_play
+    - device_tracker.redmi_4x
+    # Системные сенсоры
+    - sensor.processor_use    
+    - sensor.processor_temperature
+    - sensor.memory_use_percent
+    - sensor.disk_use_percent
+    - sensor.disk_free
+
+    - binary_sensor.boiler_is_on
+    - switch.complex_boiler

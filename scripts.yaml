@@ -10,13 +10,13 @@ boiler_turn_on:
       - wait_template: '{{ is_state(''timer.boiler_electro_turn_on_timer'', ''idle'')
           }}'
       - type: turn_on
-        device_id: c9ffc9447e2ed0d07868e9b07b35362e
+        device_id: 972efa4469c7dbc89ad0cb3a5459d3db
         entity_id: switch.0x00124b00209e96c4_l2
         domain: switch
     default:
     - wait_template: '{{ is_state(''timer.boiler_gas_turn_on_timer'', ''idle'') }}'
-    - type: turn_on
-      device_id: c9ffc9447e2ed0d07868e9b07b35362e
+    - type: turn_off
+      device_id: 972efa4469c7dbc89ad0cb3a5459d3db
       entity_id: switch.0x00124b00209e96c4_l1
       domain: switch
   mode: single
@@ -25,66 +25,12 @@ boiler_turn_off:
   alias: Вимкнути котли
   sequence:
   - type: turn_off
-    device_id: c9ffc9447e2ed0d07868e9b07b35362e
+    device_id: 972efa4469c7dbc89ad0cb3a5459d3db
     entity_id: switch.0x00124b00209e96c4_l2
     domain: switch
   - type: turn_off
-    device_id: c9ffc9447e2ed0d07868e9b07b35362e
+    device_id: 972efa4469c7dbc89ad0cb3a5459d3db
     entity_id: switch.0x00124b00209e96c4_l1
     domain: switch
   mode: single
   icon: mdi:radiator-off
-try_to_switch_off_boiler:
-  alias: Спробувати вимк. тепрмостат 1 (якщо 21 & 22 не гріють)
-  sequence:
-  - condition: and
-    conditions:
-    - condition: state
-      entity_id: climate.pterm_room_21
-      state: idle
-      attribute: hvac_action
-    - condition: state
-      entity_id: climate.pterm_room_22
-      state: idle
-      attribute: hvac_action
-  - service: script.turn_on
-    data: {}
-    entity_id: script.boiler_turn_off
-  mode: single
-  icon: mdi:power
-try_to_switch_off_boiler2:
-  alias: Спробувати вимк. тепрмостат 2 (якщо 11 & 22 не гріють)
-  sequence:
-  - condition: and
-    conditions:
-    - condition: state
-      entity_id: climate.pterm_room_11
-      state: idle
-      attribute: hvac_action
-    - condition: state
-      entity_id: climate.pterm_room_22
-      state: idle
-      attribute: hvac_action
-  - service: script.turn_on
-    data: {}
-    entity_id: script.boiler_turn_off
-  mode: single
-  icon: mdi:power
-try_to_switch_off_boiler3:
-  alias: Спробувати вимк. тепрмостат 3 (якщо 11 & 21 не гріють)
-  sequence:
-  - condition: and
-    conditions:
-    - condition: state
-      entity_id: climate.pterm_room_11
-      state: idle
-      attribute: hvac_action
-    - condition: state
-      entity_id: climate.pterm_room_21
-      state: idle
-      attribute: hvac_action
-  - service: script.turn_on
-    data: {}
-    entity_id: script.boiler_turn_off
-  mode: single
-  icon: mdi:power

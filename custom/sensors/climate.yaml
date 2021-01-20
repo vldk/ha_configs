@@ -1,0 +1,8 @@
+- platform: template
+  sensors:
+# room 12 / kitchen
+    trv_12_temperature:
+      friendly_name: "TRV_12_temperature"
+      unit_of_measurement: °C
+      device_class: temperature
+      value_template: "{{ state_attr('climate.0x847127fffe9f3342', 'current_temperature') | float }}"

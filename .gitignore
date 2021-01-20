@@ -4,6 +4,7 @@ secrets.yaml
 .storage/
 *.code-workspace
 custom_components/*
+www/*
 themes/
 .Trash*
 __pycache__

@@ -1,0 +1,13 @@
+{
+    "version": 1,
+    "key": "lovelace_resources",
+    "data": {
+        "items": [
+            {
+                "url": "/hacsfiles/scheduler-card/scheduler-card.js",
+                "type": "module",
+                "id": "7562fe4dfcd544d480aa532d153320e3"
+            }
+        ]
+    }
+}
