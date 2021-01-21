@@ -1,8 +1,0 @@
-## Системные
-sun.sun:
-  friendly_name: Сонце
-sensor.time:
-  friendly_name: Час
-binary_sensor.workday_sensor:
-  friendly_name: Робочий день
-  

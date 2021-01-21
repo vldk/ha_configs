@@ -179,7 +179,11 @@
                     "title": "Climate 2",
                     "path": "climate",
                     "icon": "mdi:home-thermometer",
-                    "badges": [],
+                    "badges": [
+                        {
+                            "entity": "binary_sensor.boiler_is_on"
+                        }
+                    ],
                     "cards": [
                         {
                             "type": "horizontal-stack",
