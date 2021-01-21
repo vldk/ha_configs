@@ -9,28 +9,24 @@ boiler_turn_on:
       sequence:
       - wait_template: '{{ is_state(''timer.boiler_electro_turn_on_timer'', ''idle'')
           }}'
-      - type: turn_on
-        device_id: 972efa4469c7dbc89ad0cb3a5459d3db
+      - service: switch.turn_on
+        data: {}
         entity_id: switch.0x00124b00209e96c4_l2
-        domain: switch
     default:
     - wait_template: '{{ is_state(''timer.boiler_gas_turn_on_timer'', ''idle'') }}'
-    - type: turn_off
-      device_id: 972efa4469c7dbc89ad0cb3a5459d3db
+    - service: switch.turn_on
+      data: {}
       entity_id: switch.0x00124b00209e96c4_l1
-      domain: switch
   mode: single
   icon: mdi:radiator
 boiler_turn_off:
   alias: Вимкнути котли
   sequence:
-  - type: turn_off
-    device_id: 972efa4469c7dbc89ad0cb3a5459d3db
+  - service: switch.turn_off
+    data: {}
     entity_id: switch.0x00124b00209e96c4_l2
-    domain: switch
-  - type: turn_off
-    device_id: 972efa4469c7dbc89ad0cb3a5459d3db
+  - service: switch.turn_off
+    data: {}
     entity_id: switch.0x00124b00209e96c4_l1
-    domain: switch
   mode: single
   icon: mdi:radiator-off
