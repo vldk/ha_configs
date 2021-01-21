@@ -8,3 +8,5 @@ www/*
 themes/
 .Trash*
 __pycache__
+!.storage/lovelace*
+!.storage/scheduler.storage
