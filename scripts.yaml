@@ -3,9 +3,14 @@ boiler_turn_on:
   sequence:
   - choose:
     - conditions:
-      - condition: state
-        entity_id: binary_sensor.tod_night_tariff
-        state: 'on'
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: input_boolean.use_electro_all_time          
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.tod_night_tariff
+          state: 'on'
       sequence:
       - wait_template: '{{ is_state(''timer.boiler_electro_turn_on_timer'', ''idle'')
           }}'

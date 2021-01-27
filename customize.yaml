@@ -8,3 +8,15 @@ sensor.0x00124b00209e96c4_l1:
   icon: mdi:toggle-switch
 sensor.0x00124b00209e96c4_l2:
   icon: mdi:toggle-switch
+binary_sensor.0x00158d00019f49d5_contact:
+  device_class: window
+binary_sensor.0x00158d0001de18e8_contact:
+  device_class: window
+binary_sensor.0x00158d00019d08a8_contact:
+  device_class: window
+binary_sensor.0x00158d0001ddc9c2_contact:
+  device_class: window
+binary_sensor.0x00158d0001e4c675_contact:
+  device_class: window
+binary_sensor.0x00158d0001e4d72a_contact:
+  device_class: window

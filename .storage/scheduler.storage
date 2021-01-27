@@ -147,7 +147,7 @@
                 "timeslots": [
                     {
                         "start": "00:00:00",
-                        "stop": "09:30:00",
+                        "stop": "08:00:00",
                         "conditions": [],
                         "condition_type": null,
                         "actions": [
@@ -162,7 +162,7 @@
                         ]
                     },
                     {
-                        "start": "09:30:00",
+                        "start": "08:00:00",
                         "stop": "19:00:00",
                         "conditions": [],
                         "condition_type": null,
@@ -206,18 +206,10 @@
                 "timeslots": [
                     {
                         "start": "00:00:00",
-                        "stop": "09:30:00",
+                        "stop": "08:00:00",
                         "conditions": [],
                         "condition_type": null,
                         "actions": [
-                            {
-                                "service": "climate.set_temperature",
-                                "entity_id": "climate.pterm_room_11",
-                                "service_data": {
-                                    "hvac_mode": "heat",
-                                    "temperature": 20
-                                }
-                            },
                             {
                                 "service": "climate.set_temperature",
                                 "entity_id": "climate.pterm_room_21",
@@ -229,19 +221,27 @@
                         ]
                     },
                     {
-                        "start": "09:30:00",
-                        "stop": "21:00:00",
+                        "start": "08:00:00",
+                        "stop": "10:30:00",
                         "conditions": [],
                         "condition_type": null,
                         "actions": [
                             {
                                 "service": "climate.set_temperature",
-                                "entity_id": "climate.pterm_room_11",
+                                "entity_id": "climate.pterm_room_21",
                                 "service_data": {
                                     "hvac_mode": "heat",
-                                    "temperature": 20
+                                    "temperature": 21.5
                                 }
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        "start": "10:30:00",
+                        "stop": "21:00:00",
+                        "conditions": [],
+                        "condition_type": null,
+                        "actions": [
                             {
                                 "service": "climate.set_temperature",
                                 "entity_id": "climate.pterm_room_21",
@@ -260,14 +260,6 @@
                         "actions": [
                             {
                                 "service": "climate.set_temperature",
-                                "entity_id": "climate.pterm_room_11",
-                                "service_data": {
-                                    "hvac_mode": "heat",
-                                    "temperature": 21.5
-                                }
-                            },
-                            {
-                                "service": "climate.set_temperature",
                                 "entity_id": "climate.pterm_room_21",
                                 "service_data": {
                                     "hvac_mode": "heat",
@@ -281,7 +273,7 @@
                     "workday"
                 ],
                 "repeat_type": "repeat",
-                "name": "[\u041e\u043f\u0430\u043b\u0435\u043d\u043d\u044f] \u0420\u043e\u0431\u043e\u0442\u0430 \u0437 \u0434\u043e\u043c\u0443 - \u0432\u0456\u0442\u0430\u043b\u044c\u043d\u044f + \u0441\u043f\u0430\u043b\u044c\u043d\u044f",
+                "name": "[\u041e\u043f\u0430\u043b\u0435\u043d\u043d\u044f] \u0420\u043e\u0431\u043e\u0442\u0430 \u0437 \u0434\u043e\u043c\u0443 - \u0441\u043f\u0430\u043b\u044c\u043d\u044f",
                 "enabled": true
             },
             {
@@ -454,6 +446,49 @@
                 "repeat_type": "repeat",
                 "name": "[\u041e\u043f\u0430\u043b\u0435\u043d\u043d\u044f] \u0411\u0443\u0434\u043d\u0456 \u043d\u0430 \u043e\u0444\u0456\u0441\u0456",
                 "enabled": false
+            },
+            {
+                "schedule_id": "d0135d",
+                "timeslots": [
+                    {
+                        "start": "00:00:00",
+                        "stop": "20:00:00",
+                        "conditions": [],
+                        "condition_type": null,
+                        "actions": [
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_11",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 20
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "start": "20:00:00",
+                        "stop": "00:00:00",
+                        "conditions": [],
+                        "condition_type": null,
+                        "actions": [
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_11",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 21
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "weekdays": [
+                    "daily"
+                ],
+                "repeat_type": "repeat",
+                "name": "[\u041e\u043f\u0430\u043b\u0435\u043d\u043d\u044f] \u0420\u043e\u0431\u043e\u0442\u0430 \u0437 \u0434\u043e\u043c\u0443 - \u0432\u0456\u0442\u0430\u043b\u044c\u043d\u044f",
+                "enabled": true
             }
         ]
     }

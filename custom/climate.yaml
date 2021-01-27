@@ -12,10 +12,10 @@
     related_climate:
       - climate.pterm_room_21
       - climate.pterm_room_22
-    hvac_options: 7
+    hvac_options: 3
     auto_mode: heating
     min_cycle_duration:
-      seconds: 5
+      minutes: 5
 
   - platform: programmable_thermostat
     name: pterm_room_21
@@ -29,10 +29,10 @@
     related_climate:
       - climate.pterm_room_11
       - climate.pterm_room_22
-    hvac_options: 7
+    hvac_options: 3
     auto_mode: heating
     min_cycle_duration:
-      seconds: 5
+      minutes: 5
 
   - platform: programmable_thermostat
     name: pterm_room_22
@@ -46,10 +46,10 @@
     related_climate:
       - climate.pterm_room_11
       - climate.pterm_room_21
-    hvac_options: 7
+    hvac_options: 3
     auto_mode: heating
     min_cycle_duration:
-      seconds: 5
+      minutes: 5
 
 #tyua thermostats groups per room  
   - platform: climate_group

@@ -1,0 +1,4 @@
+use_electro_all_time:
+  initial: false
+  icon: mdi:flash
+  name: 'Використовувати ел. котел завжди'

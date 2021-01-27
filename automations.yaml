@@ -1,6 +1,6 @@
 - id: '1609622210171'
   alias: Пожати базу
-  description: ''
+  description: MariaDB
   trigger:
   - platform: time
     at: 01:00:00
@@ -12,7 +12,7 @@
       repack: true
   mode: single
 - id: trv_calibration_11_1
-  alias: Калібрування головки 11_1
+  alias: Калібрування головки 11_right
   description: Калібрування локальної температури термоголовки 11_1 по сенсору в кімнаті
   trigger:
   - platform: time_pattern
@@ -28,8 +28,9 @@
       payload_template: "{{(state_attr('climate.0x5c0272fffedabc57','local_temperature_calibration')|float\
         \ -\n    state_attr('climate.0x5c0272fffedabc57', 'current_temperature')|float\
         \ +\n    states('sensor.0x5c0272fffec72d04_temperature')|float + 128)|round(1,'half')}}"
+  mode: single
 - id: trv_calibration_11_2
-  alias: Калібрування головки 11_2
+  alias: Калібрування головки 11_left
   description: Калібрування локальної температури термоголовки 11_2 по сенсору в кімнаті
   trigger:
   - platform: time_pattern
@@ -45,8 +46,9 @@
       payload_template: "{{(state_attr('climate.0x5c0272fffedabed2','local_temperature_calibration')|float\
         \ -\n    state_attr('climate.0x5c0272fffedabed2', 'current_temperature')|float\
         \ +\n    states('sensor.0x5c0272fffec72d04_temperature')|float + 128)|round(1,'half')}}"
+  mode: single
 - id: trv_calibration_21_1
-  alias: Калібрування головки 21_1
+  alias: Калібрування головки 21_right
   description: Калібрування локальної температури термоголовки 21_1 по сенсору в кімнаті
   trigger:
   - platform: time_pattern
@@ -62,8 +64,9 @@
       payload_template: "{{(state_attr('climate.0x847127fffe960b38','local_temperature_calibration')|float\
         \ -\n    state_attr('climate.0x847127fffe960b38', 'current_temperature')|float\
         \ +\n    states('sensor.0x847127fffe18e757_temperature')|float + 128)|round(1,'half')}}"
+  mode: single
 - id: trv_calibration_21_2
-  alias: Калібрування головки 21_2
+  alias: Калібрування головки 21_left
   description: Калібрування локальної температури термоголовки 21_2 по сенсору в кімнаті
   trigger:
   - platform: time_pattern
@@ -79,8 +82,9 @@
       payload_template: "{{(state_attr('climate.0x847127fffe940161','local_temperature_calibration')|float\
         \ -\n    state_attr('climate.0x847127fffe940161', 'current_temperature')|float\
         \ +\n    states('sensor.0x847127fffe18e757_temperature')|float + 128)|round(1,'half')}}"
+  mode: single
 - id: trv_calibration_22_1
-  alias: Калібрування головки 22_1
+  alias: Калібрування головки 22_right
   description: Калібрування локальної температури термоголовки 22_1 по сенсору в кімнаті
   trigger:
   - platform: time_pattern
@@ -96,8 +100,9 @@
       payload_template: "{{(state_attr('climate.0x5c0272fffed9d5ff','local_temperature_calibration')|float\
         \ -\n    state_attr('climate.0x5c0272fffed9d5ff', 'current_temperature')|float\
         \ +\n    states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}"
+  mode: single
 - id: trv_calibration_22_2
-  alias: Калібрування головки 22_2
+  alias: Калібрування головки 22_middle
   description: Калібрування локальної температури термоголовки 22_2 по сенсору в кімнаті
   trigger:
   - platform: time_pattern
@@ -113,8 +118,9 @@
       payload_template: "{{(state_attr('climate.0x5c0272fffedab255','local_temperature_calibration')|float\
         \ -\n    state_attr('climate.0x5c0272fffedab255', 'current_temperature')|float\
         \ +\n    states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}"
+  mode: single
 - id: trv_calibration_22_3
-  alias: Калібрування головки 22_3
+  alias: Калібрування головки 22_left
   description: Калібрування локальної температури термоголовки 22_3 по сенсору в кімнаті
   trigger:
   - platform: time_pattern
@@ -130,6 +136,7 @@
       payload_template: "{{(state_attr('climate.0x847127fffe93ff05','local_temperature_calibration')|float\
         \ -\n    state_attr('climate.0x847127fffe93ff05', 'current_temperature')|float\
         \ +\n    states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}"
+  mode: single
 - id: toggle_switch2
   alias: 'Котли: Котли: вкл. ел. котел -> викл.газ. котел'
   description: Виключити газ. котел при включенні ел. котла
@@ -191,4 +198,162 @@
   - service: timer.start
     data: {}
     entity_id: timer.boiler_electro_turn_on_timer
+  mode: single
+- id: '1611223999739'
+  alias: 'Виявлено дим '
+  description: 'Відправити в телеграм алярму про дим '
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.0x00158d0005294284_smoke
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.0x00158d000544c35d_smoke
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.0x00158d00052d1217_smoke
+    from: 'off'
+    to: 'on'
+  action:
+  - service: script.turn_on
+    entity_id: script.send_on_smoke_detect_s1
+  mode: single
+- id: '1611264838756'
+  alias: PTerm1 -> TRV_Gropup_1
+  description: Синхронізація цільової темп. з програмного термостату в групу термоголовок
+  trigger:
+  - platform: state
+    entity_id: climate.pterm_room_11
+  condition:
+  - condition: template
+    value_template: "{{ trigger.from_state and\n    trigger.to_state.attributes.temperature\
+      \ !=\n    trigger.from_state.attributes.temperature }}\n"
+  action:
+  - service: climate.set_temperature
+    entity_id: climate.trv_group_11
+    data_template:
+      temperature: '{{ state_attr(''climate.pterm_room_11'', ''temperature'') }}'
+  mode: single
+- id: '1611268219598'
+  alias: PTerm21 -> TRV_Gropup_21
+  description: Синхронізація цільової темп. з програмного термостату в групу термоголовок
+  trigger:
+  - platform: state
+    entity_id: climate.pterm_room_21
+  condition:
+  - condition: template
+    value_template: "{{ trigger.from_state and\n    trigger.to_state.attributes.temperature\
+      \ !=\n    trigger.from_state.attributes.temperature }}\n"
+  action:
+  - service: climate.set_temperature
+    entity_id: climate.trv_group_21
+    data_template:
+      temperature: '{{ state_attr(''climate.pterm_room_21'', ''temperature'') }}'
+  mode: single
+- id: '1611268259056'
+  alias: PTerm22 -> TRV_Gropup_22
+  description: Синхронізація цільової темп. з програмного термостату в групу термоголовок
+  trigger:
+  - platform: state
+    entity_id: climate.pterm_room_22
+  condition:
+  - condition: template
+    value_template: "{{ trigger.from_state and\n    trigger.to_state.attributes.temperature\
+      \ !=\n    trigger.from_state.attributes.temperature }}\n"
+  action:
+  - service: climate.set_temperature
+    entity_id: climate.trv_group_22
+    data_template:
+      temperature: '{{ state_attr(''climate.pterm_room_22'', ''temperature'') }}'
+  mode: single
+- id: '1611344598133'
+  alias: Віхідні двері - Open
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.0x00158d00019f34e2_contact
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: script.send_on_main_door_open
+    data: {}
+  mode: single
+- id: '1611344637707'
+  alias: Віхідні двері - Close
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.0x00158d00019f34e2_contact
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+  - service: notify.telegram_id1
+    data:
+      message: Закриті вхідні двері
+  mode: single
+- id: '1611577214592'
+  alias: Алярма при відкритті воріт
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.0x00158d0001e4a6db_contact
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: script.send_on_garage_door_open
+    data: {}
+  mode: single
+- id: '1611577241562'
+  alias: Алярма при закритті воріт
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.0x00158d0001e4a6db_contact
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+  - service: script.send_on_garage_door_closed
+    data: {}
+  mode: single
+- id: '1611589628180'
+  alias: Алярма - дощ і мансарда
+  description: Алярма - при дощі закрити на мансарді вікна
+  trigger:
+  - platform: state
+    entity_id: weather.golovna
+    to: rainy
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.0x00158d00019f49d5_contact
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.0x00158d00019d08a8_contact
+      state: 'on'
+  action:
+  - service: script.send_on_rainy_window_open
+    data: {}
+  mode: single
+- id: '1611610986123'
+  alias: 'Котли: зміна нічного тарифу на день'
+  description: Вимкнути ел. котел не в нічний тариф (або запустити газовий, якщо потрібно  гріти
+    далі)
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.tod_night_tariff
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.boiler_is_on
+    state: 'on'
+  action:
+  - service: script.boiler_turn_on
+    data: {}
   mode: single

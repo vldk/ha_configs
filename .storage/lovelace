@@ -9,6 +9,68 @@
                     "path": "main",
                     "icon": "mdi:home-assistant",
                     "panel": false,
+                    "badges": [
+                        {
+                            "entity": "binary_sensor.boiler_is_on"
+                        },
+                        {
+                            "entity": "sensor.0x5c0272fffec72d04_humidity"
+                        },
+                        {
+                            "entity": "sensor.0x847127fffe18e757_humidity"
+                        },
+                        {
+                            "entity": "sensor.0x5c0272fffebda093_humidity"
+                        }
+                    ],
+                    "cards": [
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "switch.0x842e14fffe3a4631",
+                            "show_state": true,
+                            "name": "\u041d\u043e\u0447\u043d\u0456\u043a"
+                        },
+                        {
+                            "type": "grid",
+                            "columns": 2,
+                            "cards": [
+                                {
+                                    "type": "thermostat",
+                                    "entity": "climate.pterm_room_11",
+                                    "name": "TRV \u0412\u0456\u0442\u0430\u043b\u044c\u043d\u044f"
+                                },
+                                {
+                                    "type": "thermostat",
+                                    "entity": "climate.0x847127fffe9f3342",
+                                    "name": "TRV \u041a\u0443\u0445\u043d\u044f"
+                                },
+                                {
+                                    "type": "thermostat",
+                                    "entity": "climate.pterm_room_21",
+                                    "name": "TRV \u0421\u043f\u0430\u043b\u044c\u043d\u044f"
+                                },
+                                {
+                                    "type": "thermostat",
+                                    "entity": "climate.pterm_room_22",
+                                    "name": "TRV \u0414\u0438\u0442\u044f\u0447\u0430"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "weather-forecast",
+                            "entity": "weather.golovna",
+                            "secondary_info_attribute": "wind_speed",
+                            "name": "\u0412\u0456\u043d\u043d\u0438\u0446\u044f"
+                        }
+                    ]
+                },
+                {
+                    "title": "Climate 2",
+                    "path": "climate",
+                    "icon": "mdi:home-thermometer",
                     "badges": [],
                     "cards": [
                         {
@@ -26,7 +88,7 @@
                                 {
                                     "entity": "climate.0x5c0272fffedabed2",
                                     "name": "\u041b\u0456\u0432\u0438\u0439",
-                                    "secondary_info": "last-changed"
+                                    "secondary_info": "last-updated"
                                 },
                                 {
                                     "entity": "sensor.0x5c0272fffedabed2_position",
@@ -45,19 +107,13 @@
                                 }
                             ],
                             "state_color": true,
-                            "show_header_toggle": false,
-                            "footer": {
-                                "type": "graph",
-                                "entity": "sensor.0x5c0272fffec72d04_temperature",
-                                "hours_to_show": 48,
-                                "detail": 2
-                            }
+                            "show_header_toggle": false
                         },
                         {
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "sensor.0x5c0272fffec72d04_temperature",
+                                    "entity": "sensor.0x847127fffe18e757_temperature",
                                     "name": "\u0421\u043f\u0430\u043b\u044c\u043d\u044f",
                                     "secondary_info": "last-updated"
                                 },
@@ -86,12 +142,6 @@
                                     "secondary_info": "entity-id"
                                 }
                             ],
-                            "footer": {
-                                "type": "graph",
-                                "entity": "sensor.0x847127fffe18e757_temperature",
-                                "hours_to_show": 48,
-                                "detail": 2
-                            },
                             "state_color": false
                         },
                         {
@@ -138,13 +188,7 @@
                                 }
                             ],
                             "show_header_toggle": false,
-                            "state_color": true,
-                            "footer": {
-                                "type": "graph",
-                                "entity": "sensor.0x5c0272fffebda093_temperature",
-                                "hours_to_show": 48,
-                                "detail": 2
-                            }
+                            "state_color": true
                         },
                         {
                             "type": "entities",
@@ -168,68 +212,54 @@
                             }
                         },
                         {
-                            "type": "weather-forecast",
-                            "entity": "weather.golovna",
-                            "secondary_info_attribute": "wind_speed",
-                            "name": "\u0412\u0456\u043d\u043d\u0438\u0446\u044f"
-                        }
-                    ]
-                },
-                {
-                    "title": "Climate 2",
-                    "path": "climate",
-                    "icon": "mdi:home-thermometer",
-                    "badges": [
-                        {
-                            "entity": "binary_sensor.boiler_is_on"
-                        }
-                    ],
-                    "cards": [
-                        {
-                            "type": "horizontal-stack",
+                            "type": "grid",
                             "cards": [
                                 {
                                     "type": "thermostat",
-                                    "entity": "climate.pterm_room_11",
-                                    "name": "\u0412\u0456\u0442\u0430\u043b\u044c\u043d\u044f"
+                                    "entity": "climate.trv_group_11"
                                 },
                                 {
                                     "type": "thermostat",
-                                    "entity": "climate.pterm_room_21",
-                                    "name": "\u0421\u043f\u0430\u043b\u044c\u043d\u044f"
+                                    "entity": "climate.trv_group_21"
                                 },
                                 {
                                     "type": "thermostat",
-                                    "entity": "climate.pterm_room_22",
-                                    "name": "\u0414\u0438\u0442\u044f\u0447\u0430"
+                                    "entity": "climate.trv_group_22"
                                 }
                             ]
                         },
                         {
-                            "type": "grid",
-                            "columns": 2,
-                            "cards": [
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "input_boolean.use_electro_all_time",
+                            "icon_height": "50px",
+                            "show_icon": true,
+                            "show_state": true,
+                            "show_name": true
+                        },
+                        {
+                            "type": "custom:mini-graph-card",
+                            "entities": [
                                 {
-                                    "type": "thermostat",
-                                    "entity": "climate.trv_group_11",
-                                    "name": "TRV \u0412\u0456\u0442\u0430\u043b\u044c\u043d\u044f"
+                                    "entity": "sensor.0x5c0272fffec72d04_temperature",
+                                    "name": "\u0412\u0456\u0442\u044f\u043b\u044c\u043d\u044f"
                                 },
                                 {
-                                    "type": "thermostat",
-                                    "entity": "climate.0x847127fffe9f3342",
-                                    "name": "TRV \u041a\u0443\u0445\u043d\u044f"
+                                    "entity": "sensor.trv_12_temperature",
+                                    "name": "\u041a\u0443\u0445\u043d\u044f"
                                 },
                                 {
-                                    "type": "thermostat",
-                                    "entity": "climate.trv_group_21",
-                                    "name": "TRV \u0421\u043f\u0430\u043b\u044c\u043d\u044f"
+                                    "entity": "sensor.0x847127fffe18e757_temperature",
+                                    "name": "\u0421\u043f\u0430\u043b\u044c\u043d\u044f"
                                 },
                                 {
-                                    "type": "thermostat",
-                                    "entity": "climate.trv_group_22",
-                                    "name": "TRV \u0414\u0438\u0442\u044f\u0447\u0430"
+                                    "entity": "sensor.0x5c0272fffebda093_temperature",
+                                    "name": "\u0414\u0438\u0442\u044f\u0447\u0430"
                                 }
-                            ]
+                            ],
+                            "hours_to_show": 48
                         }
                     ]
                 },
@@ -255,6 +285,9 @@
                                         },
                                         {
                                             "entity": "sensor.maria_db_size"
+                                        },
+                                        {
+                                            "entity": "sensor.time_date"
                                         }
                                     ]
                                 }
@@ -322,6 +355,20 @@
                                 "climate.pterm_room_11",
                                 "climate.pterm_room_21",
                                 "climate.pterm_room_22"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Tests",
+                    "path": "tests",
+                    "icon": "mdi:flask",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "sensor.moto_z3_play_room_presence"
                             ]
                         }
                     ]

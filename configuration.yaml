@@ -26,6 +26,7 @@ binary_sensor: !include_dir_merge_list custom/sensors_bin
 switch: !include custom/switch.yaml
 timer: !include custom/timers.yaml
 input_number: !include custom/input/number.yaml
+input_boolean: !include custom/input/boolean.yaml
 climate: !include custom/climate.yaml
 
 lovelace:
@@ -46,6 +47,7 @@ lovelace:
       icon: mdi:toolbox
       filename: ui-lovelace.yaml
 
+# influxdb:
 
 mqtt:
   broker: core-mosquitto
@@ -60,8 +62,14 @@ telegram_bot:
     api_key: !secret api_bot_key
     allowed_chat_ids:
       - !secret telegram_id1
+      - !secret telegram_id2
 
 notify:
   - name: telegram_id1
     platform: telegram
     chat_id: !secret telegram_id1
+
+  - name: telegram_id2
+    platform: telegram
+    chat_id: !secret telegram_id2
+

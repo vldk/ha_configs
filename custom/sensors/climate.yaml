@@ -6,3 +6,16 @@
       unit_of_measurement: °C
       device_class: temperature
       value_template: "{{ state_attr('climate.0x847127fffe9f3342', 'current_temperature') | float }}"
+    # sensors for statistic
+    pterm_11_set_temp: 
+      unit_of_measurement: °C
+      device_class: temperature
+      value_template: "{{ state_attr('climate.pterm_room_11', 'temperature') | float }}"
+    pterm_21_set_temp: 
+      unit_of_measurement: °C
+      device_class: temperature
+      value_template: "{{ state_attr('climate.pterm_room_21', 'temperature') | float }}"
+    pterm_22_set_temp: 
+      unit_of_measurement: °C
+      device_class: temperature
+      value_template: "{{ state_attr('climate.pterm_room_22', 'temperature') | float }}"

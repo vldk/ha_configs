@@ -1,21 +1,106 @@
 telegram:
   # commands:
-  #  /report - send current status
+  #  /status - send current status
 
   script:
     send_system_status_report:
       alias: 'Відпавити поточний статус'
+      variables:
+        # chat_id: 'None'
+        msg: |
+            ♨ Опалення: {{ states('binary_sensor.boiler_is_on') }}
+
+            Вітальня: 🌡{{ states('sensor.0x5c0272fffec72d04_temperature') }}℃ 🪟 {% if is_state('binary_sensor.0x00158d0001ddc9c2_contact', 'on') %} Відк. {% else %} Закр. {% endif %} 
+            Спальня:  🌡{{ states('sensor.0x847127fffe18e757_temperature') }}℃ 🪟 {% if is_state('binary_sensor.0x00158d0001de18e8_contact', 'on') %} Відк. {% else %} Закр. {% endif %}
+            Дитяча:   🌡{{ states('sensor.0x5c0272fffebda093_temperature') }}℃ 🪟 {% if is_state('binary_sensor.0x00158d0001e4d72a_contact', 'on') %} Відк. {% else %} Закр. {% endif %}
+            Кухня:    🌡{{ state_attr('climate.0x847127fffe9f3342', 'current_temperature') }}℃ 🪟 {% if is_state('binary_sensor.0x00158d0001e4c675_contact', 'on') %} Відк. {% else %} Закр. {% endif %}
+            Мансарда: 🪟 {% if is_state('binary_sensor.0x00158d00019f49d5_contact', 'on') %} Відк. {% else %} Закр. {% endif %} 🪟 {% if is_state('binary_sensor.0x00158d00019d08a8_contact', 'on') %} Відк. {% else %} Закр. {% endif %}
+
+            🚪 Вхідні {% if is_state('binary_sensor.0x00158d00019f34e2_contact', 'on') %} Відк. {% else %} Закр. {% endif %}
+            🚪 Ворота {% if is_state('binary_sensor.0x00158d0001e4a6db_contact', 'on') %} Відк. {% else %} Закр. {% endif %}
+            
+            🔥 Дим
+            Кухня: {% if is_state('binary_sensor.0x00158d0005294284_smoke', 'off') %} ✅ {% else %} 🔥 {% endif %}
+            Підвал: {% if is_state('binary_sensor.0x00158d000544c35d_smoke', 'off') %} ✅ {% else %} 🔥 {% endif %}
+            2й етаж: {% if is_state('binary_sensor.0x00158d00052d1217_smoke', 'off') %} ✅ {% else %} 🔥 {% endif %}
+
       sequence:
         - service: notify.telegram_id1
           data:
-            message: |
-              {{"♨"}} Опалення: {{ states('binary_sensor.boiler_is_on') }}
+            message: "{{msg}}"
+        # - service: notify.telegram_id2
+        #   data:
+        #     message: "{{msg}}"
 
-              {{"🌡"}} Вітальня: {{ states('sensor.0x5c0272fffec72d04_temperature') }}℃
-              {{"🌡"}} Спальня: {{ states('sensor.0x847127fffe18e757_temperature') }}℃
-              {{"🌡"}} Дитяча: {{ states('sensor.0x5c0272fffebda093_temperature') }}℃
-              {{"🌡"}} Кухня: {{ state_attr('climate.0x847127fffe9f3342', 'current_temperature') }}℃
 
+    send_on_smoke_detect_s1:
+      alias: 'Алярма при виявленні диму'
+      variables: 
+        msg: |        
+          {{"🔥🚒"}} Виявленно дим!!!
+
+          Кухня: {% if is_state('binary_sensor.0x00158d0005294284_smoke', 'off') %} ✅ {% else %} 🔥 {% endif %} {% if is_state('binary_sensor.0x00158d0005294284_smoke', 'off') %} 
+            {{ states('sensor.0x00158d0005294284_smoke_density') }} 
+          {% endif %}
+          Підвал: {% if is_state('binary_sensor.0x00158d000544c35d_smoke', 'off') %} ✅ {% else %} 🔥 {% endif %} {% if is_state('binary_sensor.0x00158d000544c35d_smoke', 'off') %} 
+            {{ states('sensor.0x00158d000544c35d_smoke_density') }} 
+          {% endif %}
+          2й етаж: {% if is_state('binary_sensor.0x00158d00052d1217_smoke', 'off') %} ✅ {% else %} 🔥 {% endif %} {% if is_state('binary_sensor.0x00158d00052d1217_smoke', 'off') %} 
+            {{ states('sensor.0x00158d00052d1217_smoke_density') }} 
+          {% endif %}
+      sequence:
+        - service: notify.telegram_id1
+          data:
+            message: "{{msg}}"
+        - service: notify.telegram_id2
+          data:
+            message: "{{msg}}"
+        
+    send_on_main_door_open:
+      alias: 'Алярма при відритті вхідних дверей'
+      variables: 
+        msg: "Відкриті вхідні двері 🚪"
+      sequence:
+        - service: notify.telegram_id1
+          data:
+            message: "{{msg}}"
+        - service: notify.telegram_id2
+          data:
+            message: "{{msg}}"
+    send_on_garage_door_open:
+      alias: 'Алярма при відритті воріт'
+      variables: 
+        msg: "Ворота відкриті 🚪"
+      sequence:
+        - service: notify.telegram_id1
+          data:
+            message: "{{msg}}"
+        - service: notify.telegram_id2
+          data:
+            message: "{{msg}}"
+    send_on_garage_door_closed:
+      alias: 'Алярма при закритті воріт'
+      variables: 
+        msg: "Ворота закриті 🚪"
+      sequence:
+        - service: notify.telegram_id1
+          data:
+            message: "{{msg}}"
+        - service: notify.telegram_id2
+          data:
+            message: "{{msg}}"
+
+    send_on_rainy_window_open:
+      alias: 'Алярма - при дощі закрити на мансарді вікна'
+      variables:
+        msg: "На вулиці дощ, а вікна на мансарді відриті 😱"
+      sequence:
+        - service: notify.telegram_id1
+          data:
+            message: "{{msg}}"
+        - service: notify.telegram_id2
+          data:
+            message: "{{msg}}"
   automation:
     - id: Telegram Bot Menu
       alias: telegram_bot_menu
@@ -30,7 +115,13 @@ telegram:
             message: 'commands'
             data:
               keyboard:
-                - '/report'
+                - '/status'
+        - service: notify.telegram_id2
+          data:
+            message: 'commands'
+            data:
+              keyboard:
+                - '/status'
                 # - '/siren'
 
     - id: Звіт при запуску
@@ -54,8 +145,9 @@ telegram:
       - platform: event
         event_type: telegram_command
         event_data:
-          command: '/report'
+          command: '/status'
       action:
         - service: script.turn_on
-          entity_id:
-            - script.send_system_status_report
+          entity_id: script.send_system_status_report
+          # data:
+          #   chat_id: "{{trigger.event.data.chat_id}}"
