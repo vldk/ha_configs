@@ -101,6 +101,39 @@ telegram:
         - service: notify.telegram_id2
           data:
             message: "{{msg}}"
+    
+    send_on_boiler_on_and_any_window_open:
+      alias: 'Алярма при включені котла при відритому будь-яком вікні в кімнатах'
+      variables:
+        msg: |
+          ♨ ℹ Опалення увімкнулось, але є відкриті вікна в:
+          {% if is_state('binary_sensor.0x00158d0001ddc9c2_contact', 'on') %} Вітальня 
+          {% endif %}{% if is_state('binary_sensor.0x00158d0001de18e8_contact', 'on') %} Спальня 
+          {% endif %}{% if is_state('binary_sensor.0x00158d0001e4d72a_contact', 'on') %} Дитяча 
+          {% endif %}{% if is_state('binary_sensor.0x00158d0001e4c675_contact', 'on') %} Кухня 
+          {% endif %}
+      sequence:
+        - service: notify.telegram_id1
+          data:
+            message: "{{msg}}"
+        - service: notify.telegram_id2
+          data:
+            message: "{{msg}}"
+
+    send_on_wash_end:
+      alias: 'Стірка закінчилась'
+      variables:
+          msg: |
+            ℹ Машинка закінчила стірку
+
+      sequence:
+          - service: notify.telegram_id1
+            data:
+              message: "{{msg}}"
+          - service: notify.telegram_id2
+            data:
+              message: "{{msg}}"
+  
   automation:
     - id: Telegram Bot Menu
       alias: telegram_bot_menu

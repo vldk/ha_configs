@@ -8,7 +8,7 @@
   action:
   - service: recorder.purge
     data:
-      keep_days: 7
+      keep_days: 4
       repack: true
   mode: single
 - id: trv_calibration_11_1
@@ -341,7 +341,7 @@
     data: {}
   mode: single
 - id: '1611610986123'
-  alias: 'Котли: зміна нічного тарифу на день'
+  alias: 'Котли: зміна нічного тарифу на ніч'
   description: Вимкнути ел. котел не в нічний тариф (або запустити газовий, якщо потрібно  гріти
     далі)
   trigger:
@@ -356,4 +356,237 @@
   action:
   - service: script.boiler_turn_on
     data: {}
+  mode: single
+- id: '1612040388191'
+  alias: 'Котли: зміна нічного тарифу на день'
+  description: Вимкнути ел. котел не в нічний тариф (або запустити газовий, якщо потрібно  гріти
+    далі)
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.tod_night_tariff
+    from: 'on'
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.boiler_is_on
+    state: 'on'
+  action:
+  - service: script.turn_on
+    data: {}
+    entity_id: script.boiler_turn_on
+  mode: single
+- id: '1612131835798'
+  alias: Котрли - відкриті вікна
+  description: Алярма при включені котла при відритому будь-яком вікні в кімнатах
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.boiler_is_on
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.0x00158d0001ddc9c2_contact
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.0x00158d0001de18e8_contact
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.0x00158d0001e4c675_contact
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.0x00158d0001e4d72a_contact
+      state: 'on'
+  action:
+  - service: script.send_on_boiler_on_and_any_window_open
+    data: {}
+  mode: single
+- id: '1613129977445'
+  alias: Сходи - старт таймеру на виключення - розетка
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.switch
+    to: 'on'
+  condition: []
+  action:
+  - service: timer.cancel
+    data: {}
+    entity_id: timer.taimer_vikliuchennia_pidsvidki
+  - service: timer.start
+    data: {}
+    entity_id: timer.taimer_vikliuchennia_pidsvidki
+  mode: single
+- id: '1613130598701'
+  alias: Сходи - старт таймеру на виключення - рух
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.0x00158d00066982e9_occupancy
+    to: 'on'
+  condition: []
+  action:
+  - service: timer.cancel
+    data: {}
+    entity_id: timer.taimer_vikliuchennia_pidsvidki
+  - service: timer.start
+    data: {}
+    entity_id: timer.taimer_vikliuchennia_pidsvidki
+  mode: single
+- id: '1613130817123'
+  alias: Сходи - виключення по таймеру
+  description: ''
+  trigger:
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.taimer_vikliuchennia_pidsvidki
+  condition:
+  - condition: state
+    entity_id: switch.switch
+    state: 'on'
+  action:
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.switch
+  mode: single
+- id: '1613131383833'
+  alias: Сходи - вкючення по рухові
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.0x00158d00066982e9_occupancy
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: and
+    conditions:
+    - condition: device
+      type: is_off
+      device_id: ea84bceca6d35d922c3b15862baab96d
+      entity_id: switch.switch
+      domain: switch
+    - type: is_illuminance
+      condition: device
+      device_id: 818c57996a46cb2cd8ff8fe6374bbd2c
+      entity_id: sensor.0x00158d00066982e9_illuminance
+      domain: sensor
+      below: 10
+  action:
+  - type: turn_on
+    device_id: ea84bceca6d35d922c3b15862baab96d
+    entity_id: switch.switch
+    domain: switch
+  mode: single
+- id: '1613148741306'
+  alias: Сходи - Тест ON
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.0x00158d00066982e9_occupancy
+    to: 'on'
+  condition: []
+  action:
+  - type: turn_on
+    device_id: ea84bceca6d35d922c3b15862baab96d
+    entity_id: switch.switch
+    domain: switch
+  mode: single
+- id: '1613148846009'
+  alias: Сходи - Тест OFF
+  description: ''
+  trigger:
+  - type: no_motion
+    platform: device
+    device_id: 818c57996a46cb2cd8ff8fe6374bbd2c
+    entity_id: binary_sensor.0x00158d00066982e9_occupancy
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_off
+    device_id: ea84bceca6d35d922c3b15862baab96d
+    entity_id: switch.switch
+    domain: switch
+  mode: single
+- id: '1613335438165'
+  alias: Світло - коридор вкл.
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: ecd183eb327710a70c26935ea8e4c382
+    entity_id: binary_sensor.0x00158d000669535b_occupancy
+    domain: binary_sensor
+  condition:
+  - type: is_illuminance
+    condition: device
+    device_id: ecd183eb327710a70c26935ea8e4c382
+    entity_id: sensor.0x00158d000669535b_illuminance_lux
+    domain: sensor
+    below: 6
+  action:
+  - type: turn_on
+    device_id: 832ed3f6caca722ea4d040433a1f3a45
+    entity_id: switch.0x847127fffe24e50e
+    domain: switch
+  mode: single
+- id: '1613335511845'
+  alias: Світло - коридор викл.
+  description: ''
+  trigger:
+  - type: no_motion
+    platform: device
+    device_id: ecd183eb327710a70c26935ea8e4c382
+    entity_id: binary_sensor.0x00158d000669535b_occupancy
+    domain: binary_sensor
+  condition:
+  - condition: device
+    type: is_on
+    device_id: 832ed3f6caca722ea4d040433a1f3a45
+    entity_id: switch.0x847127fffe24e50e
+    domain: switch
+  action:
+  - type: turn_off
+    device_id: 832ed3f6caca722ea4d040433a1f3a45
+    entity_id: switch.0x847127fffe24e50e
+    domain: switch
+  mode: single
+- id: '1614114231282'
+  alias: ToggleGirland
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: a820abbc9e5aa94d2bb95224770f117c
+    type: action
+    subtype: 1_single
+    discovery_id: 0x60a423fffe650fbb action_1_single
+  condition: []
+  action:
+  - type: toggle
+    device_id: 7faf8a7e1ef6c9f5dd2acea20dc71680
+    entity_id: switch.wifi_socket_2_switch
+    domain: switch
+  mode: single
+- id: '1614265326796'
+  alias: Нова автоматизація
+  description: ''
+  trigger:
+  - type: power
+    platform: device
+    device_id: ca595ae56a01026c67e1a4d6c9bb0785
+    entity_id: sensor.0x842e14fffe3a4631_power
+    domain: sensor
+    below: 1
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
+  condition: []
+  action:
+  - service: script.turn_on
+    data: {}
+    entity_id: script.send_on_wash_end
   mode: single

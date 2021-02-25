@@ -40,7 +40,7 @@
                     },
                     {
                         "start": "09:00:00",
-                        "stop": "13:00:00",
+                        "stop": "12:00:00",
                         "conditions": [],
                         "condition_type": null,
                         "actions": [
@@ -71,7 +71,7 @@
                         ]
                     },
                     {
-                        "start": "13:00:00",
+                        "start": "12:00:00",
                         "stop": "16:00:00",
                         "conditions": [],
                         "condition_type": null,
@@ -104,7 +104,7 @@
                     },
                     {
                         "start": "16:00:00",
-                        "stop": "00:00:00",
+                        "stop": "22:00:00",
                         "conditions": [],
                         "condition_type": null,
                         "actions": [
@@ -130,6 +130,38 @@
                                 "service_data": {
                                     "hvac_mode": "heat",
                                     "temperature": 21
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "start": "22:00:00",
+                        "stop": "00:00:00",
+                        "conditions": [],
+                        "condition_type": null,
+                        "actions": [
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_11",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 20.5
+                                }
+                            },
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_21",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 20.5
+                                }
+                            },
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_22",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 20.5
                                 }
                             }
                         ]
@@ -172,7 +204,7 @@
                                 "entity_id": "climate.pterm_room_22",
                                 "service_data": {
                                     "hvac_mode": "heat",
-                                    "temperature": 21.5
+                                    "temperature": 21
                                 }
                             }
                         ]
@@ -231,14 +263,14 @@
                                 "entity_id": "climate.pterm_room_21",
                                 "service_data": {
                                     "hvac_mode": "heat",
-                                    "temperature": 21.5
+                                    "temperature": 20.5
                                 }
                             }
                         ]
                     },
                     {
                         "start": "10:30:00",
-                        "stop": "21:00:00",
+                        "stop": "22:30:00",
                         "conditions": [],
                         "condition_type": null,
                         "actions": [
@@ -253,7 +285,7 @@
                         ]
                     },
                     {
-                        "start": "21:00:00",
+                        "start": "22:30:00",
                         "stop": "00:00:00",
                         "conditions": [],
                         "condition_type": null,
@@ -263,7 +295,7 @@
                                 "entity_id": "climate.pterm_room_21",
                                 "service_data": {
                                     "hvac_mode": "heat",
-                                    "temperature": 21.5
+                                    "temperature": 20.5
                                 }
                             }
                         ]
@@ -290,7 +322,7 @@
                                 "entity_id": "climate.pterm_room_21",
                                 "service_data": {
                                     "hvac_mode": "heat",
-                                    "temperature": 21
+                                    "temperature": 20.5
                                 }
                             },
                             {
@@ -298,7 +330,7 @@
                                 "entity_id": "climate.pterm_room_11",
                                 "service_data": {
                                     "hvac_mode": "heat",
-                                    "temperature": 21
+                                    "temperature": 20.5
                                 }
                             },
                             {
@@ -306,7 +338,7 @@
                                 "entity_id": "climate.pterm_room_22",
                                 "service_data": {
                                     "hvac_mode": "heat",
-                                    "temperature": 21
+                                    "temperature": 20.5
                                 }
                             }
                         ]
@@ -444,7 +476,7 @@
                     "workday"
                 ],
                 "repeat_type": "repeat",
-                "name": "[\u041e\u043f\u0430\u043b\u0435\u043d\u043d\u044f] \u0411\u0443\u0434\u043d\u0456 \u043d\u0430 \u043e\u0444\u0456\u0441\u0456",
+                "name": "[\u041e\u043f\u0430\u043b\u0435\u043d\u043d\u044f] \u0411\u0443\u0434\u043d\u0456 \u043d\u0430 \u043e\u0444\u0456\u0441\u0456 (\u0432\u0441\u0456 \u043a\u0456\u043c\u043d\u0430\u0442\u0438)",
                 "enabled": false
             },
             {
@@ -489,6 +521,215 @@
                 "repeat_type": "repeat",
                 "name": "[\u041e\u043f\u0430\u043b\u0435\u043d\u043d\u044f] \u0420\u043e\u0431\u043e\u0442\u0430 \u0437 \u0434\u043e\u043c\u0443 - \u0432\u0456\u0442\u0430\u043b\u044c\u043d\u044f",
                 "enabled": true
+            },
+            {
+                "schedule_id": "742c1c",
+                "timeslots": [
+                    {
+                        "start": "00:00:00",
+                        "stop": "08:00:00",
+                        "conditions": [],
+                        "condition_type": null,
+                        "actions": [
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_11",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 20
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "start": "08:00:00",
+                        "stop": "18:00:00",
+                        "conditions": [],
+                        "condition_type": null,
+                        "actions": [
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_11",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 20
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "start": "18:00:00",
+                        "stop": "00:00:00",
+                        "conditions": [],
+                        "condition_type": null,
+                        "actions": [
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_11",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 21
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "weekdays": [
+                    "workday"
+                ],
+                "repeat_type": "repeat",
+                "name": "[\u041e\u043f\u0430\u043b\u0435\u043d\u043d\u044f] \u0411\u0443\u0434\u043d\u0456 \u043d\u0430 \u043e\u0444\u0456\u0441\u0456 - \u0432\u0456\u0442\u0430\u043b\u044c\u043d\u044f",
+                "enabled": false
+            },
+            {
+                "schedule_id": "885ea3",
+                "timeslots": [
+                    {
+                        "start": "00:00:00",
+                        "stop": "08:00:00",
+                        "conditions": [],
+                        "condition_type": null,
+                        "actions": [
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_21",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 20.5
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "start": "08:00:00",
+                        "stop": "10:00:00",
+                        "conditions": [],
+                        "condition_type": null,
+                        "actions": [
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_21",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 21
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "start": "10:00:00",
+                        "stop": "18:00:00",
+                        "conditions": [],
+                        "condition_type": null,
+                        "actions": [
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_21",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 20
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "start": "18:00:00",
+                        "stop": "00:00:00",
+                        "conditions": [],
+                        "condition_type": null,
+                        "actions": [
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_21",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 20.5
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "weekdays": [
+                    "workday"
+                ],
+                "repeat_type": "repeat",
+                "name": "[\u041e\u043f\u0430\u043b\u0435\u043d\u043d\u044f] \u0411\u0443\u0434\u043d\u0456 \u043d\u0430 \u043e\u0444\u0456\u0441\u0456 - \u0441\u043f\u0430\u043b\u044c\u043d\u044f",
+                "enabled": false
+            },
+            {
+                "schedule_id": "5f51f7",
+                "timeslots": [
+                    {
+                        "start": "00:00:00",
+                        "stop": "09:30:00",
+                        "conditions": [],
+                        "condition_type": null,
+                        "actions": [
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_22",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 20
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "start": "09:30:00",
+                        "stop": "18:30:00",
+                        "conditions": [],
+                        "condition_type": null,
+                        "actions": [
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_22",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 19
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "start": "18:30:00",
+                        "stop": "21:00:00",
+                        "conditions": [],
+                        "condition_type": null,
+                        "actions": [
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_22",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 20.5
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "start": "21:00:00",
+                        "stop": "00:00:00",
+                        "conditions": [],
+                        "condition_type": null,
+                        "actions": [
+                            {
+                                "service": "climate.set_temperature",
+                                "entity_id": "climate.pterm_room_22",
+                                "service_data": {
+                                    "hvac_mode": "heat",
+                                    "temperature": 20.5
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "weekdays": [
+                    "workday"
+                ],
+                "repeat_type": "repeat",
+                "name": "[\u041e\u043f\u0430\u043b\u0435\u043d\u043d\u044f] \u0411\u0443\u0434\u043d\u0456 \u043d\u0430 \u043e\u0444\u0456\u0441\u0456 - \u0434\u0438\u0442\u044f\u0447\u0430",
+                "enabled": false
             }
         ]
     }

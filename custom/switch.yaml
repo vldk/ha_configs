@@ -6,3 +6,8 @@
         service: script.boiler_turn_on
       turn_off:
         service: script.boiler_turn_off
+
+# - platform: pulseaudio_loopback
+  # sink_name: alsa_output.platform-bcm2835_audio.analog-stereo
+  # source_name: ""
+  # name: ""

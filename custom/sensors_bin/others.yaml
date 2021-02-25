@@ -1,0 +1,7 @@
+- platform: template
+  sensors:
+    is_anybody_home:
+      friendly_name: "Is anybody home?"
+      device_class: occupancy
+      value_template: >-
+        {{ is_state('person.vldk', 'home') or is_state('person.anna', 'home') }}

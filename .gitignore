@@ -10,3 +10,5 @@ themes/
 __pycache__
 !.storage/lovelace*
 !.storage/scheduler.storage
+tts
+node-red

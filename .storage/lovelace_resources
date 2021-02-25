@@ -9,14 +9,9 @@
                 "id": "7562fe4dfcd544d480aa532d153320e3"
             },
             {
-                "url": "/hacsfiles/mini-graph-card/mini-graph-card-bundle.js",
+                "url": "/hacsfiles/mini-media-player/mini-media-player-bundle.js",
                 "type": "module",
-                "id": "1c587f614a3744ac95731943593ce4bb"
-            },
-            {
-                "url": "/local/mini-graph-card-bundle.js",
-                "type": "module",
-                "id": "a68006edce9c4081a6523b4caaf71639"
+                "id": "8dc16ccf5e9240f3b5bff8247cc3f5bc"
             }
         ]
     }

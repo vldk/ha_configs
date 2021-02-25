@@ -21,17 +21,55 @@
                         },
                         {
                             "entity": "sensor.0x5c0272fffebda093_humidity"
+                        },
+                        {
+                            "entity": "binary_sensor.is_anybody_home"
                         }
                     ],
                     "cards": [
                         {
-                            "type": "button",
-                            "tap_action": {
-                                "action": "toggle"
-                            },
-                            "entity": "switch.0x842e14fffe3a4631",
-                            "show_state": true,
-                            "name": "\u041d\u043e\u0447\u043d\u0456\u043a"
+                            "type": "horizontal-stack",
+                            "cards": [
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.0x847127fffe24e50e",
+                                    "name": "\u041a\u043e\u0440\u0438\u0434\u043e\u0440",
+                                    "show_state": true,
+                                    "icon": "mdi:ceiling-light"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.wifi_socket_2_switch",
+                                    "name": "\u0433\u0456\u0440\u043b\u044f\u043d\u0434\u0430",
+                                    "show_state": true,
+                                    "icon": "mdi:led-strip-variant"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.switch",
+                                    "name": "\u0421\u0445\u043e\u0434\u0438",
+                                    "show_state": true,
+                                    "icon": "mdi:led-strip"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "custom:mini-media-player",
+                            "entity": "media_player.mpd",
+                            "group": false,
+                            "volume_stateless": false,
+                            "artwork": "none",
+                            "info": "scroll",
+                            "sound_mode": "icon"
                         },
                         {
                             "type": "grid",
@@ -82,6 +120,10 @@
                                     "secondary_info": "last-updated"
                                 },
                                 {
+                                    "entity": "sensor.wnd_11_left_temperature",
+                                    "name": "\u0432\u0456\u043a\u043d\u043e"
+                                },
+                                {
                                     "entity": "sensor.0x5c0272fffec72d04_humidity",
                                     "name": "\u0412\u043e\u043b\u043e\u0433\u0456\u0441\u0442\u044c"
                                 },
@@ -104,6 +146,10 @@
                                     "entity": "sensor.0x5c0272fffedabc57_position",
                                     "name": "\u041a\u043b\u0430\u043f\u0430\u043d",
                                     "secondary_info": "entity-id"
+                                },
+                                {
+                                    "entity": "sensor.maindoor_temperature",
+                                    "name": "\u0432\u0445\u0456\u0434\u043d\u0456 \u0434\u0432\u0435\u0440\u0456"
                                 }
                             ],
                             "state_color": true,
@@ -116,6 +162,10 @@
                                     "entity": "sensor.0x847127fffe18e757_temperature",
                                     "name": "\u0421\u043f\u0430\u043b\u044c\u043d\u044f",
                                     "secondary_info": "last-updated"
+                                },
+                                {
+                                    "entity": "sensor.wnd_21_1_temperature",
+                                    "name": "\u0432\u0456\u043a\u043d\u043e"
                                 },
                                 {
                                     "entity": "sensor.0x847127fffe18e757_humidity",
@@ -151,6 +201,10 @@
                                     "entity": "sensor.0x5c0272fffebda093_temperature",
                                     "name": "\u0414\u0438\u0442\u044f\u0447\u0430",
                                     "secondary_info": "last-updated"
+                                },
+                                {
+                                    "entity": "sensor.wnd_22_left_temperature",
+                                    "name": "\u0432\u0456\u043a\u043d\u043e"
                                 },
                                 {
                                     "entity": "sensor.0x5c0272fffebda093_humidity",
@@ -202,6 +256,10 @@
                                     "entity": "sensor.0x847127fffe9f3342_position",
                                     "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
                                     "secondary_info": "entity-id"
+                                },
+                                {
+                                    "entity": "sensor.kitchenwnd_temperature",
+                                    "name": "\u0432\u0456\u043a\u043d\u043e"
                                 }
                             ],
                             "footer": {
@@ -240,7 +298,7 @@
                             "show_name": true
                         },
                         {
-                            "type": "custom:mini-graph-card",
+                            "type": "history-graph",
                             "entities": [
                                 {
                                     "entity": "sensor.0x5c0272fffec72d04_temperature",
@@ -257,9 +315,43 @@
                                 {
                                     "entity": "sensor.0x5c0272fffebda093_temperature",
                                     "name": "\u0414\u0438\u0442\u044f\u0447\u0430"
+                                },
+                                {
+                                    "entity": "binary_sensor.boiler_is_on"
                                 }
                             ],
-                            "hours_to_show": 48
+                            "hours_to_show": 36,
+                            "refresh_interval": 0
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.roof_1_temperature"
+                                },
+                                {
+                                    "entity": "binary_sensor.0x00158d00019f49d5_contact"
+                                },
+                                {
+                                    "entity": "sensor.roof_2_temperature"
+                                },
+                                {
+                                    "entity": "binary_sensor.0x00158d00019d08a8_contact"
+                                }
+                            ],
+                            "title": "\u041c\u0430\u043d\u0441\u0430\u0440\u0434\u0430"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.0x00158d0001e4a6db_contact"
+                                },
+                                {
+                                    "entity": "sensor.garagedoor_temperature"
+                                }
+                            ],
+                            "title": "\u0413\u0430\u0440\u0430\u0436"
                         }
                     ]
                 },
@@ -363,13 +455,13 @@
                     "title": "Tests",
                     "path": "tests",
                     "icon": "mdi:flask",
+                    "panel": true,
                     "badges": [],
                     "cards": [
                         {
-                            "type": "entities",
-                            "entities": [
-                                "sensor.moto_z3_play_room_presence"
-                            ]
+                            "type": "iframe",
+                            "url": "http://rasp.lan:8123/api/hassio_ingress/gAZc6UpGaSl6Yl_hAss0d0wpvY1CK4b-d5LUBAnjgEc/d/StS5l7kgk/tempratures?orgId=1&theme=dark&viewPanel=2",
+                            "aspect_ratio": "100%"
                         }
                     ]
                 }
