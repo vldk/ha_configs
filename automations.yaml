@@ -12,215 +12,219 @@
       repack: true
   mode: single
 - id: trv_calibration_11_1
-  alias: Калібрування головки 11_right
+  alias: 'Опалення: Калібрування головки 11_right'
   description: Калібрування локальної температури термоголовки 11_1 по сенсору в кімнаті
   trigger:
   - platform: time_pattern
-    minutes: /5
+    minutes: /15
   - platform: template
-    value_template: '{{ (state_attr(''climate.0x5c0272fffedabc57'', ''current_temperature'')|float
-      - states(''sensor.0x5c0272fffec72d04_temperature'')|float)|abs > 0.25 }}'
+    value_template: '{{ (state_attr(''climate.trv_11_right'', ''current_temperature'')|float
+      - states(''sensor.0x00124b0022cd62e8_temperature'')|float)|abs > 0.25 }}'
     for: 00:00:02
   action:
   - service: mqtt.publish
     data_template:
-      topic: zigbee2mqtt/{{state_attr('climate.0x5c0272fffedabc57','friendly_name')}}/set/local_temperature_calibration
-      payload_template: "{{(state_attr('climate.0x5c0272fffedabc57','local_temperature_calibration')|float\
-        \ -\n    state_attr('climate.0x5c0272fffedabc57', 'current_temperature')|float\
-        \ +\n    states('sensor.0x5c0272fffec72d04_temperature')|float + 128)|round(1,'half')}}"
+      topic: zigbee2mqtt/{{state_attr('climate.trv_11_right','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.trv_11_right','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.trv_11_right', 'current_temperature')|float +\n\
+        \    states('sensor.0x00124b0022cd62e8_temperature')|float + 128)|round(1,'half')}}"
   mode: single
 - id: trv_calibration_11_2
-  alias: Калібрування головки 11_left
+  alias: 'Опалення: Калібрування головки 11_left'
   description: Калібрування локальної температури термоголовки 11_2 по сенсору в кімнаті
   trigger:
   - platform: time_pattern
-    minutes: /5
+    minutes: /15
   - platform: template
-    value_template: '{{ (state_attr(''climate.0x5c0272fffedabed2'', ''current_temperature'')|float
-      - states(''sensor.0x5c0272fffec72d04_temperature'')|float)|abs > 0.25 }}'
+    value_template: '{{ (state_attr(''climate.trv_11_left'', ''current_temperature'')|float
+      - states(''sensor.0x00124b0022cd62e8_temperature'')|float)|abs > 0.25 }}'
     for: 00:00:02
   action:
   - service: mqtt.publish
     data_template:
-      topic: zigbee2mqtt/{{state_attr('climate.0x5c0272fffedabed2','friendly_name')}}/set/local_temperature_calibration
-      payload_template: "{{(state_attr('climate.0x5c0272fffedabed2','local_temperature_calibration')|float\
-        \ -\n    state_attr('climate.0x5c0272fffedabed2', 'current_temperature')|float\
-        \ +\n    states('sensor.0x5c0272fffec72d04_temperature')|float + 128)|round(1,'half')}}"
+      topic: zigbee2mqtt/{{state_attr('climate.trv_11_left','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.trv_11_left','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.trv_11_left', 'current_temperature')|float +\n\
+        \    states('sensor.0x00124b0022cd62e8_temperature')|float + 128)|round(1,'half')}}"
   mode: single
 - id: trv_calibration_21_1
-  alias: Калібрування головки 21_right
+  alias: 'Опалення: Калібрування головки 21_right'
   description: Калібрування локальної температури термоголовки 21_1 по сенсору в кімнаті
   trigger:
   - platform: time_pattern
-    minutes: /5
+    minutes: /15
   - platform: template
-    value_template: '{{ (state_attr(''climate.0x847127fffe960b38'', ''current_temperature'')|float
-      - states(''sensor.0x847127fffe18e757_temperature'')|float)|abs > 0.25 }}'
+    value_template: '{{ (state_attr(''climate.trv_21_right'', ''current_temperature'')|float
+      - states(''sensor.0x00124b0022cf8217_temperature'')|float)|abs > 0.25 }}'
     for: 00:00:02
   action:
   - service: mqtt.publish
     data_template:
-      topic: zigbee2mqtt/{{state_attr('climate.0x847127fffe960b38','friendly_name')}}/set/local_temperature_calibration
-      payload_template: "{{(state_attr('climate.0x847127fffe960b38','local_temperature_calibration')|float\
-        \ -\n    state_attr('climate.0x847127fffe960b38', 'current_temperature')|float\
-        \ +\n    states('sensor.0x847127fffe18e757_temperature')|float + 128)|round(1,'half')}}"
+      topic: zigbee2mqtt/{{state_attr('climate.trv_21_right','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.trv_21_right','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.trv_21_right', 'current_temperature')|float +\n\
+        \    states('sensor.0x00124b0022cf8217_temperature')|float + 128)|round(1,'half')}}"
   mode: single
 - id: trv_calibration_21_2
-  alias: Калібрування головки 21_left
+  alias: 'Опалення: Калібрування головки 21_left'
   description: Калібрування локальної температури термоголовки 21_2 по сенсору в кімнаті
   trigger:
   - platform: time_pattern
-    minutes: /5
+    minutes: /15
   - platform: template
-    value_template: '{{ (state_attr(''climate.0x847127fffe940161'', ''current_temperature'')|float
-      - states(''sensor.0x847127fffe18e757_temperature'')|float)|abs > 0.25 }}'
+    value_template: '{{ (state_attr(''climate.trv_21_left'', ''current_temperature'')|float
+      - states(''sensor.0x00124b0022cf8217_temperature'')|float)|abs > 0.25 }}'
     for: 00:00:02
   action:
   - service: mqtt.publish
     data_template:
-      topic: zigbee2mqtt/{{state_attr('climate.0x847127fffe940161','friendly_name')}}/set/local_temperature_calibration
-      payload_template: "{{(state_attr('climate.0x847127fffe940161','local_temperature_calibration')|float\
-        \ -\n    state_attr('climate.0x847127fffe940161', 'current_temperature')|float\
-        \ +\n    states('sensor.0x847127fffe18e757_temperature')|float + 128)|round(1,'half')}}"
+      topic: zigbee2mqtt/{{state_attr('climate.trv_21_left','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.trv_21_left','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.trv_21_left', 'current_temperature')|float +\n\
+        \    states('sensor.0x00124b0022cf8217_temperature')|float + 128)|round(1,'half')}}"
   mode: single
 - id: trv_calibration_22_1
-  alias: Калібрування головки 22_right
+  alias: 'Опалення: Калібрування головки 22_right'
   description: Калібрування локальної температури термоголовки 22_1 по сенсору в кімнаті
   trigger:
   - platform: time_pattern
-    minutes: /5
+    minutes: /15
   - platform: template
-    value_template: '{{ (state_attr(''climate.0x5c0272fffed9d5ff'', ''current_temperature'')|float
-      - states(''sensor.0x5c0272fffebda093_temperature'')|float)|abs > 0.25 }}'
+    value_template: '{{ (state_attr(''climate.trv_22_right'', ''current_temperature'')|float
+      - states(''sensor.0x00124b0022cf60f7_temperature'')|float)|abs > 0.25 }}'
     for: 00:00:02
   action:
   - service: mqtt.publish
     data_template:
-      topic: zigbee2mqtt/{{state_attr('climate.0x5c0272fffed9d5ff','friendly_name')}}/set/local_temperature_calibration
-      payload_template: "{{(state_attr('climate.0x5c0272fffed9d5ff','local_temperature_calibration')|float\
-        \ -\n    state_attr('climate.0x5c0272fffed9d5ff', 'current_temperature')|float\
-        \ +\n    states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}"
+      topic: zigbee2mqtt/{{state_attr('climate.trv_22_right','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.trv_22_right','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.trv_22_right', 'current_temperature')|float +\n\
+        \    states('sensor.0x00124b0022cf60f7_temperature')|float + 128)|round(1,'half')}}"
   mode: single
 - id: trv_calibration_22_2
-  alias: Калібрування головки 22_middle
+  alias: 'Опалення: Калібрування головки 22_middle'
   description: Калібрування локальної температури термоголовки 22_2 по сенсору в кімнаті
   trigger:
   - platform: time_pattern
-    minutes: /5
+    minutes: /15
   - platform: template
-    value_template: '{{ (state_attr(''climate.0x5c0272fffedab255'', ''current_temperature'')|float
-      - states(''sensor.0x5c0272fffebda093_temperature'')|float)|abs > 0.25 }}'
+    value_template: '{{ (state_attr(''climate.trv_22_middle'', ''current_temperature'')|float
+      - states(''sensor.0x00124b0022cf60f7_temperature'')|float)|abs > 0.25 }}'
     for: 00:00:02
   action:
   - service: mqtt.publish
     data_template:
-      topic: zigbee2mqtt/{{state_attr('climate.0x5c0272fffedab255','friendly_name')}}/set/local_temperature_calibration
-      payload_template: "{{(state_attr('climate.0x5c0272fffedab255','local_temperature_calibration')|float\
-        \ -\n    state_attr('climate.0x5c0272fffedab255', 'current_temperature')|float\
-        \ +\n    states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}"
+      topic: zigbee2mqtt/{{state_attr('climate.trv_22_middle','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.trv_22_middle','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.trv_22_middle', 'current_temperature')|float\
+        \ +\n    states('sensor.0x00124b0022cf60f7_temperature')|float + 128)|round(1,'half')}}"
   mode: single
 - id: trv_calibration_22_3
-  alias: Калібрування головки 22_left
+  alias: 'Опалення: Калібрування головки 22_left'
   description: Калібрування локальної температури термоголовки 22_3 по сенсору в кімнаті
   trigger:
   - platform: time_pattern
-    minutes: /5
+    minutes: /15
   - platform: template
-    value_template: '{{ (state_attr(''climate.0x847127fffe93ff05'', ''current_temperature'')|float
-      - states(''sensor.0x5c0272fffebda093_temperature'')|float)|abs > 0.25 }}'
+    value_template: '{{ (state_attr(''climate.trv_22_left'', ''current_temperature'')|float
+      - states(''sensor.0x00124b0022cf60f7_temperature'')|float)|abs > 0.25 }}'
     for: 00:00:02
   action:
   - service: mqtt.publish
     data_template:
-      topic: zigbee2mqtt/{{state_attr('climate.0x847127fffe93ff05','friendly_name')}}/set/local_temperature_calibration
-      payload_template: "{{(state_attr('climate.0x847127fffe93ff05','local_temperature_calibration')|float\
-        \ -\n    state_attr('climate.0x847127fffe93ff05', 'current_temperature')|float\
-        \ +\n    states('sensor.0x5c0272fffebda093_temperature')|float + 128)|round(1,'half')}}"
+      topic: zigbee2mqtt/{{state_attr('climate.trv_22_left','friendly_name')}}/set/local_temperature_calibration
+      payload_template: "{{(state_attr('climate.trv_22_left','local_temperature_calibration')|float\
+        \ -\n    state_attr('climate.trv_22_left', 'current_temperature')|float +\n\
+        \    states('sensor.0x00124b0022cf60f7_temperature')|float + 128)|round(1,'half')}}"
   mode: single
 - id: toggle_switch2
-  alias: 'Котли: Котли: вкл. ел. котел -> викл.газ. котел'
+  alias: 'Опалення: вкл. ел. котел -> викл.газ. котел'
   description: Виключити газ. котел при включенні ел. котла
   trigger:
   - platform: state
-    entity_id: switch.0x00124b00209e96c4_l2
+    entity_id: switch.boilersswitch_l2
     from: 'off'
     to: 'on'
   condition:
   - condition: state
-    entity_id: switch.0x00124b00209e96c4_l1
+    entity_id: switch.boilersswitch_l1
     state: 'on'
   action:
   - service: switch.turn_off
-    entity_id: switch.0x00124b00209e96c4_l1
+    entity_id: switch.boilersswitch_l1
   mode: single
 - id: toggle_switch1
-  alias: 'Котли: вкл. газ. котел -> викл. ел. котел'
-  description: 'Котли: виключити ел. котел при вкюченні газ. котла'
+  alias: 'Опалення: вкл. газ. котел -> викл. ел. котел'
+  description: виключити ел. котел при вкюченні газ. котла
   trigger:
   - platform: state
-    entity_id: switch.0x00124b00209e96c4_l1
+    entity_id: switch.boilersswitch_l1
     from: 'off'
     to: 'on'
   condition:
   - condition: state
-    entity_id: switch.0x00124b00209e96c4_l2
+    entity_id: switch.boilersswitch_l2
     state: 'on'
   action:
   - service: switch.turn_off
-    entity_id: switch.0x00124b00209e96c4_l2
+    entity_id: switch.boilersswitch_l2
   mode: single
 - id: run_gas_boiler_delay_timer
-  alias: 'Котли: таймаут газ. котла'
+  alias: 'Опалення: таймаут газ. котла'
   description: Запустити затримку запуску газ. котла при виключенні
   trigger:
   - platform: device
     type: turned_off
     device_id: 972efa4469c7dbc89ad0cb3a5459d3db
-    entity_id: switch.0x00124b00209e96c4_l1
+    entity_id: switch.boilersswitch_l1
     domain: switch
   condition: []
   action:
   - service: timer.start
-    data: {}
-    entity_id: timer.boiler_gas_turn_on_timer
+    data:
+      duration: '0'
+    target:
+      entity_id: timer.boiler_gas_turn_on_timer
   mode: single
 - id: run_electri_boiler_delay_timer
-  alias: 'Котли: таймаут ел. котла'
+  alias: 'Опалення: таймаут ел. котла'
   description: Запустити затримку запуску ел. котла при виключенні
   trigger:
   - platform: device
     type: turned_off
     device_id: 972efa4469c7dbc89ad0cb3a5459d3db
-    entity_id: switch.0x00124b00209e96c4_l2
+    entity_id: switch.boilersswitch_l2
     domain: switch
   condition: []
   action:
   - service: timer.start
-    data: {}
-    entity_id: timer.boiler_electro_turn_on_timer
+    data:
+      duration: '0'
+    target:
+      entity_id: timer.boiler_electro_turn_on_timer
   mode: single
 - id: '1611223999739'
   alias: 'Виявлено дим '
   description: 'Відправити в телеграм алярму про дим '
   trigger:
   - platform: state
-    entity_id: binary_sensor.0x00158d0005294284_smoke
+    entity_id: binary_sensor.smokealarm_1_smoke
     from: 'off'
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.0x00158d000544c35d_smoke
+    entity_id: binary_sensor.smokealarm_2_smoke
     from: 'off'
     to: 'on'
   - platform: state
-    entity_id: binary_sensor.0x00158d00052d1217_smoke
+    entity_id: binary_sensor.smokealarm_3_smoke
     from: 'off'
     to: 'on'
   action:
-  - service: script.turn_on
+  - service: script.send_on_smoke_detect_s1
     entity_id: script.send_on_smoke_detect_s1
   mode: single
 - id: '1611264838756'
-  alias: PTerm1 -> TRV_Gropup_1
+  alias: 'Опалення:  PTerm1 -> TRV_Gropup_1'
   description: Синхронізація цільової темп. з програмного термостату в групу термоголовок
   trigger:
   - platform: state
@@ -236,7 +240,7 @@
       temperature: '{{ state_attr(''climate.pterm_room_11'', ''temperature'') }}'
   mode: single
 - id: '1611268219598'
-  alias: PTerm21 -> TRV_Gropup_21
+  alias: 'Опалення: PTerm21 -> TRV_Gropup_21'
   description: Синхронізація цільової темп. з програмного термостату в групу термоголовок
   trigger:
   - platform: state
@@ -252,7 +256,7 @@
       temperature: '{{ state_attr(''climate.pterm_room_21'', ''temperature'') }}'
   mode: single
 - id: '1611268259056'
-  alias: PTerm22 -> TRV_Gropup_22
+  alias: 'Опалення: PTerm22 -> TRV_Gropup_22'
   description: Синхронізація цільової темп. з програмного термостату в групу термоголовок
   trigger:
   - platform: state
@@ -268,7 +272,7 @@
       temperature: '{{ state_attr(''climate.pterm_room_22'', ''temperature'') }}'
   mode: single
 - id: '1611344598133'
-  alias: Віхідні двері - Open
+  alias: Вхідні двері - Open
   description: ''
   trigger:
   - platform: state
@@ -281,7 +285,7 @@
     data: {}
   mode: single
 - id: '1611344637707'
-  alias: Віхідні двері - Close
+  alias: Вхідні двері - Close
   description: ''
   trigger:
   - platform: state
@@ -299,7 +303,7 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: binary_sensor.0x00158d0001e4a6db_contact
+    entity_id: binary_sensor.garagedoor_contact
     from: 'off'
     to: 'on'
   condition: []
@@ -312,7 +316,7 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: binary_sensor.0x00158d0001e4a6db_contact
+    entity_id: binary_sensor.garagedoor_contact
     from: 'on'
     to: 'off'
   condition: []
@@ -331,17 +335,17 @@
   - condition: or
     conditions:
     - condition: state
-      entity_id: binary_sensor.0x00158d00019f49d5_contact
+      entity_id: binary_sensor.roof_1_contact
       state: 'on'
     - condition: state
-      entity_id: binary_sensor.0x00158d00019d08a8_contact
+      entity_id: binary_sensor.roof_2_contact
       state: 'on'
   action:
   - service: script.send_on_rainy_window_open
     data: {}
   mode: single
 - id: '1611610986123'
-  alias: 'Котли: зміна нічного тарифу на ніч'
+  alias: 'Опалення: зміна нічного тарифу на ніч'
   description: Вимкнути ел. котел не в нічний тариф (або запустити газовий, якщо потрібно  гріти
     далі)
   trigger:
@@ -358,7 +362,7 @@
     data: {}
   mode: single
 - id: '1612040388191'
-  alias: 'Котли: зміна нічного тарифу на день'
+  alias: 'Опалення: зміна нічного тарифу на день'
   description: Вимкнути ел. котел не в нічний тариф (або запустити газовий, якщо потрібно  гріти
     далі)
   trigger:
@@ -376,7 +380,7 @@
     entity_id: script.boiler_turn_on
   mode: single
 - id: '1612131835798'
-  alias: Котрли - відкриті вікна
+  alias: 'Опалення: Котли - відкриті вікна'
   description: Алярма при включені котла при відритому будь-яком вікні в кімнатах
   trigger:
   - platform: state
@@ -387,13 +391,13 @@
   - condition: or
     conditions:
     - condition: state
-      entity_id: binary_sensor.0x00158d0001ddc9c2_contact
+      entity_id: binary_sensor.wnd_11_left_contact
       state: 'on'
     - condition: state
-      entity_id: binary_sensor.0x00158d0001de18e8_contact
+      entity_id: binary_sensor.wnd_21_1_contact
       state: 'on'
     - condition: state
-      entity_id: binary_sensor.0x00158d0001e4c675_contact
+      entity_id: binary_sensor.kitchenwnd_contact
       state: 'on'
     - condition: state
       entity_id: binary_sensor.0x00158d0001e4d72a_contact
@@ -403,37 +407,45 @@
     data: {}
   mode: single
 - id: '1613129977445'
-  alias: Сходи - старт таймеру на виключення - розетка
+  alias: Сходи - старт таймеру на виключення
   description: ''
   trigger:
-  - platform: state
-    entity_id: switch.switch
-    to: 'on'
+  - platform: device
+    type: turned_on
+    device_id: 576d5121beccc89b28ade8bb5b03e1d6
+    entity_id: light.0x60a423fffeec621f
+    domain: light
   condition: []
   action:
   - service: timer.cancel
     data: {}
     entity_id: timer.taimer_vikliuchennia_pidsvidki
   - service: timer.start
-    data: {}
-    entity_id: timer.taimer_vikliuchennia_pidsvidki
+    data:
+      duration: '0'
+    target:
+      entity_id: timer.taimer_vikliuchennia_pidsvidki
   mode: single
 - id: '1613130598701'
   alias: Сходи - старт таймеру на виключення - рух
   description: ''
   trigger:
-  - platform: state
-    entity_id: binary_sensor.0x00158d00066982e9_occupancy
-    to: 'on'
+  - type: motion
+    platform: device
+    device_id: 818c57996a46cb2cd8ff8fe6374bbd2c
+    entity_id: binary_sensor.motion_2_occupancy
+    domain: binary_sensor
   condition: []
   action:
   - service: timer.cancel
     data: {}
     entity_id: timer.taimer_vikliuchennia_pidsvidki
   - service: timer.start
-    data: {}
-    entity_id: timer.taimer_vikliuchennia_pidsvidki
-  mode: single
+    data:
+      duration: '0'
+    target:
+      entity_id: timer.taimer_vikliuchennia_pidsvidki
+  mode: restart
 - id: '1613130817123'
   alias: Сходи - виключення по таймеру
   description: ''
@@ -443,71 +455,48 @@
     event_data:
       entity_id: timer.taimer_vikliuchennia_pidsvidki
   condition:
-  - condition: state
-    entity_id: switch.switch
-    state: 'on'
+  - condition: device
+    type: is_on
+    device_id: 576d5121beccc89b28ade8bb5b03e1d6
+    entity_id: light.0x60a423fffeec621f
+    domain: light
   action:
-  - service: switch.turn_off
-    data: {}
-    entity_id: switch.switch
+  - service: light.turn_off
+    target:
+      device_id: 576d5121beccc89b28ade8bb5b03e1d6
+    data:
+      transition: 5
   mode: single
 - id: '1613131383833'
   alias: Сходи - вкючення по рухові
   description: ''
   trigger:
-  - platform: state
-    entity_id: binary_sensor.0x00158d00066982e9_occupancy
-    from: 'off'
-    to: 'on'
+  - type: motion
+    platform: device
+    device_id: 818c57996a46cb2cd8ff8fe6374bbd2c
+    entity_id: binary_sensor.motion_2_occupancy
+    domain: binary_sensor
   condition:
   - condition: and
     conditions:
     - condition: device
       type: is_off
-      device_id: ea84bceca6d35d922c3b15862baab96d
-      entity_id: switch.switch
-      domain: switch
+      device_id: 576d5121beccc89b28ade8bb5b03e1d6
+      entity_id: light.0x60a423fffeec621f
+      domain: light
     - type: is_illuminance
       condition: device
       device_id: 818c57996a46cb2cd8ff8fe6374bbd2c
-      entity_id: sensor.0x00158d00066982e9_illuminance
+      entity_id: sensor.motion_2_illuminance
       domain: sensor
       below: 10
   action:
-  - type: turn_on
-    device_id: ea84bceca6d35d922c3b15862baab96d
-    entity_id: switch.switch
-    domain: switch
-  mode: single
-- id: '1613148741306'
-  alias: Сходи - Тест ON
-  description: ''
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.0x00158d00066982e9_occupancy
-    to: 'on'
-  condition: []
-  action:
-  - type: turn_on
-    device_id: ea84bceca6d35d922c3b15862baab96d
-    entity_id: switch.switch
-    domain: switch
-  mode: single
-- id: '1613148846009'
-  alias: Сходи - Тест OFF
-  description: ''
-  trigger:
-  - type: no_motion
-    platform: device
-    device_id: 818c57996a46cb2cd8ff8fe6374bbd2c
-    entity_id: binary_sensor.0x00158d00066982e9_occupancy
-    domain: binary_sensor
-  condition: []
-  action:
-  - type: turn_off
-    device_id: ea84bceca6d35d922c3b15862baab96d
-    entity_id: switch.switch
-    domain: switch
+  - service: light.turn_on
+    data:
+      transition: 5
+      brightness_pct: 70
+    target:
+      device_id: 576d5121beccc89b28ade8bb5b03e1d6
   mode: single
 - id: '1613335438165'
   alias: Світло - коридор вкл.
@@ -516,19 +505,19 @@
   - type: motion
     platform: device
     device_id: ecd183eb327710a70c26935ea8e4c382
-    entity_id: binary_sensor.0x00158d000669535b_occupancy
+    entity_id: binary_sensor.motion_1_occupancy
     domain: binary_sensor
   condition:
   - type: is_illuminance
     condition: device
     device_id: ecd183eb327710a70c26935ea8e4c382
-    entity_id: sensor.0x00158d000669535b_illuminance_lux
+    entity_id: sensor.motion_1_illuminance
     domain: sensor
-    below: 6
+    below: 10
   action:
   - type: turn_on
     device_id: 832ed3f6caca722ea4d040433a1f3a45
-    entity_id: switch.0x847127fffe24e50e
+    entity_id: switch.zbmini_1
     domain: switch
   mode: single
 - id: '1613335511845'
@@ -538,22 +527,560 @@
   - type: no_motion
     platform: device
     device_id: ecd183eb327710a70c26935ea8e4c382
-    entity_id: binary_sensor.0x00158d000669535b_occupancy
+    entity_id: binary_sensor.motion_1_occupancy
     domain: binary_sensor
   condition:
   - condition: device
     type: is_on
     device_id: 832ed3f6caca722ea4d040433a1f3a45
-    entity_id: switch.0x847127fffe24e50e
+    entity_id: switch.zbmini_1
     domain: switch
   action:
   - type: turn_off
     device_id: 832ed3f6caca722ea4d040433a1f3a45
-    entity_id: switch.0x847127fffe24e50e
+    entity_id: switch.zbmini_1
     domain: switch
   mode: single
 - id: '1614114231282'
-  alias: ToggleGirland
+  alias: '6ти клавішний - 1:   сходи'
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: b7763872b9b61a3d61388a37d9727bc2
+    type: action
+    subtype: button_1_single
+    discovery_id: 0x04cf8cdf3c7dd4f3 action_button_1_single
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 576d5121beccc89b28ade8bb5b03e1d6
+    entity_id: light.0x60a423fffeec621f
+    domain: light
+    brightness_pct: 75
+    flash: long
+  mode: single
+- id: '1614265326796'
+  alias: Стіралка - закінчила стірку
+  description: ''
+  trigger:
+  - type: power
+    platform: device
+    device_id: 4e48dfddb30d3e023d94a62495b795d3
+    entity_id: sensor.0x60a423fffe61bdae_power
+    domain: sensor
+    above: 0
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+    below: 5
+  condition:
+  - condition: device
+    type: is_on
+    device_id: 4e48dfddb30d3e023d94a62495b795d3
+    entity_id: switch.0x60a423fffe61bdae
+    domain: switch
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 0
+  - type: is_power
+    condition: device
+    device_id: 4e48dfddb30d3e023d94a62495b795d3
+    entity_id: sensor.0x60a423fffe61bdae_power
+    domain: sensor
+    below: 5
+  action:
+  - service: script.send_on_wash_end
+  mode: single
+- id: '1614454460918'
+  alias: Витяжка - автовикл.
+  description: Вимкнути витяжку через 10хв після виключення світла в туалеті при увімкненній
+    витяжці
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: 0c049d318d2d7e68445af350cb236d5f
+    entity_id: switch.0x60a423fffeff28dd_l1
+    domain: switch
+  condition:
+  - condition: device
+    type: is_on
+    device_id: 0c049d318d2d7e68445af350cb236d5f
+    entity_id: switch.0x60a423fffeff28dd_l2
+    domain: switch
+  action:
+  - delay:
+      hours: 0
+      minutes: 10
+      seconds: 0
+      milliseconds: 0
+  - type: turn_off
+    device_id: 0c049d318d2d7e68445af350cb236d5f
+    entity_id: switch.0x60a423fffeff28dd_l2
+    domain: switch
+  mode: single
+- id: '1614714416267'
+  alias: Сходи підвал - вкючення по рухові
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 0bcf5b7ce8fc54c2936756904d97049b
+    entity_id: binary_sensor.motion_3_occupancy
+    domain: binary_sensor
+  condition:
+  - condition: device
+    type: is_off
+    device_id: d4bc15aff771a9d445e4928db1b76d68
+    entity_id: switch.0x804b50fffeb566af
+    domain: switch
+  action:
+  - service: switch.turn_on
+    target:
+      device_id: d4bc15aff771a9d445e4928db1b76d68
+  mode: single
+- id: '1614714466562'
+  alias: Сходи підвал - старт таймеру на виключення (рух)
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 0bcf5b7ce8fc54c2936756904d97049b
+    entity_id: binary_sensor.motion_3_occupancy
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: timer.cancel
+    data: {}
+    target:
+      entity_id: timer.taimer_pidsvidki_pidvalnikh_skhodiv
+  - service: timer.start
+    data:
+      duration: '0'
+    target:
+      entity_id: timer.taimer_pidsvidki_pidvalnikh_skhodiv
+  mode: single
+- id: '1616589401508'
+  alias: Сходи підвал - старт таймеру на виключення
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: d4bc15aff771a9d445e4928db1b76d68
+    entity_id: switch.0x804b50fffeb566af
+    domain: switch
+  condition: []
+  action:
+  - service: timer.cancel
+    data: {}
+    target:
+      entity_id: timer.taimer_pidsvidki_pidvalnikh_skhodiv
+  - service: timer.start
+    data:
+      duration: '0'
+    target:
+      entity_id: timer.taimer_pidsvidki_pidvalnikh_skhodiv
+  mode: single
+- id: '1616590795463'
+  alias: Сходи підвал - виключення по таймеру
+  description: ''
+  trigger:
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.taimer_pidsvidki_pidvalnikh_skhodiv
+  condition:
+  - condition: device
+    type: is_on
+    device_id: d4bc15aff771a9d445e4928db1b76d68
+    entity_id: switch.0x804b50fffeb566af
+    domain: switch
+  action:
+  - service: switch.turn_off
+    target:
+      device_id: d4bc15aff771a9d445e4928db1b76d68
+  mode: single
+- id: '1616684893843'
+  alias: 'Витяжка - автовикл. 2ет '
+  description: Вимкнути витяжку через Xхв після виключення світла в туалеті при увімкненній
+    витяжці
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: ec6b08dc92949451e647d4f1db5b2b51
+    entity_id: switch.0x842e14fffe15c0cf_l1
+    domain: switch
+  - platform: device
+    type: turned_off
+    device_id: 986bd8c55380314b2db3ba048ffa5b20
+    entity_id: switch.0x60a423fffe7b514d_l1
+    domain: switch
+  - platform: device
+    type: turned_off
+    device_id: 986bd8c55380314b2db3ba048ffa5b20
+    entity_id: switch.0x60a423fffe7b514d_l2
+    domain: switch
+  condition:
+  - condition: device
+    type: is_on
+    device_id: ec6b08dc92949451e647d4f1db5b2b51
+    entity_id: switch.0x842e14fffe15c0cf_l2
+    domain: switch
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 0
+  - condition: and
+    conditions:
+    - condition: device
+      type: is_off
+      device_id: ec6b08dc92949451e647d4f1db5b2b51
+      entity_id: switch.0x842e14fffe15c0cf_l1
+      domain: switch
+    - condition: device
+      type: is_off
+      device_id: 986bd8c55380314b2db3ba048ffa5b20
+      entity_id: switch.0x60a423fffe7b514d_l1
+      domain: switch
+    - condition: device
+      type: is_off
+      device_id: 986bd8c55380314b2db3ba048ffa5b20
+      entity_id: switch.0x60a423fffe7b514d_l2
+      domain: switch
+  action:
+  - delay:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
+  - type: turn_off
+    device_id: ec6b08dc92949451e647d4f1db5b2b51
+    entity_id: switch.0x842e14fffe15c0cf_l2
+    domain: switch
+  mode: restart
+- id: '1616797085775'
+  alias: 'Моніторинг - Переключити тариф енергії (доба) '
+  description: ''
+  trigger:
+  - platform: time
+    at: 07:00:00
+  - platform: time
+    at: '23:00:00'
+  condition: []
+  action:
+  - service: script.1617110336318
+  mode: single
+- id: '1616799538893'
+  alias: Сходи - Виключити LED при відновлення живлення в домові
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition:
+  - condition: device
+    type: is_on
+    device_id: 576d5121beccc89b28ade8bb5b03e1d6
+    entity_id: light.0x60a423fffeec621f
+    domain: light
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  action:
+  - type: turn_off
+    device_id: 576d5121beccc89b28ade8bb5b03e1d6
+    entity_id: light.0x60a423fffeec621f
+    domain: light
+  mode: single
+- id: '1616800339345'
+  alias: Моніторинг - Скинути лічильники 1го числа
+  description: ''
+  trigger:
+  - platform: time
+    at: 00:00:01
+  condition:
+  - condition: template
+    value_template: '{{ now().day == 1 }}'
+  action:
+  - service: script.1616799747883
+  mode: single
+- id: '1616973954777'
+  alias: 'Опалення: Вітальня - відкрити термоголовки по потребі'
+  description: ''
+  use_blueprint:
+    path: homeassistant/trv_open_valve.yaml
+    input:
+      trv_device: climate.trv_group_11
+      root_temperature_sensor: sensor.0x00124b0022cd62e8_temperature
+- id: '1616974129432'
+  alias: 'Опалення: Вітальня - закрити термоголовки по потребі'
+  description: ''
+  use_blueprint:
+    path: homeassistant/trv_close_valve.yaml
+    input:
+      trv_device: climate.trv_group_11
+      root_temperature_sensor: sensor.0x00124b0022cd62e8_temperature
+- id: '1616974160160'
+  alias: 'Опалення: Спальня - відкрити термоголовки по потребі'
+  description: ''
+  use_blueprint:
+    path: homeassistant/trv_open_valve.yaml
+    input:
+      trv_device: climate.trv_group_21
+      root_temperature_sensor: sensor.0x00124b0022cf8217_temperature
+- id: '1616974186937'
+  alias: 'Опалення: Спальня - закрити термоголовки по потребі'
+  description: ''
+  use_blueprint:
+    path: homeassistant/trv_close_valve.yaml
+    input:
+      trv_device: climate.trv_group_21
+      root_temperature_sensor: sensor.0x00124b0022cf8217_temperature
+- id: '1616974215364'
+  alias: 'Опалення: Дитяча - відкрити термоголовки по потребі'
+  description: ''
+  use_blueprint:
+    path: homeassistant/trv_open_valve.yaml
+    input:
+      trv_device: climate.trv_group_22
+      root_temperature_sensor: sensor.0x00124b0022cf60f7_temperature
+- id: '1616974236956'
+  alias: 'Опалення: Дитяча - закрити термоголовки по потребі'
+  description: ''
+  use_blueprint:
+    path: homeassistant/trv_close_valve.yaml
+    input:
+      trv_device: climate.trv_group_22
+      root_temperature_sensor: sensor.0x00124b0022cf60f7_temperature
+- id: '1617017253371'
+  alias: 'Опалення: включити насоси '
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.boiler_is_on
+    to: 'on'
+  condition: []
+  action:
+  - type: turn_on
+    device_id: c2b2a7a84abfbd01ef0e8aef8c1864c7
+    entity_id: switch.0x60a423fffe61bc7d
+    domain: switch
+  mode: single
+- id: '1617017329572'
+  alias: 'Опалення: виключити насоси'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.boiler_is_on
+    to: 'off'
+    from: 'on'
+    for: 00:20:00
+  condition: []
+  action:
+  - type: turn_off
+    device_id: c2b2a7a84abfbd01ef0e8aef8c1864c7
+    entity_id: switch.0x60a423fffe61bc7d
+    domain: switch
+  mode: single
+- id: '1617607307230'
+  alias: 6ти клавішний - 6- розетка на комп
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: b7763872b9b61a3d61388a37d9727bc2
+    type: action
+    subtype: button_6_single
+    discovery_id: 0x04cf8cdf3c7dd4f3 action_button_6_single
+  condition: []
+  action:
+  - type: toggle
+    device_id: a36b8a1b931351d7e0be161479b07482
+    entity_id: switch.socket_1
+    domain: switch
+  mode: single
+- id: '1617874263461'
+  alias: 'Світло - MiJa Btn 1: Single => Bulb 1 toggle'
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 71f05729feeb9625e5e90ebf84510fba
+    type: click
+    subtype: single
+    discovery_id: 0x00158d0005cf0a68 click_single
+  condition: []
+  action:
+  - type: toggle
+    device_id: 573453267247db8d7e071bd12aeea3ac
+    entity_id: light.0x00124b00234c9822
+    domain: light
+  mode: single
+- id: '1617874446355'
+  alias: 'Світло - MiJa Btn 1: double => Bulb 1 inc. bright'
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 71f05729feeb9625e5e90ebf84510fba
+    type: click
+    subtype: double
+    discovery_id: 0x00158d0005cf0a68 click_double
+  condition: []
+  action:
+  - type: brightness_increase
+    device_id: 573453267247db8d7e071bd12aeea3ac
+    entity_id: light.0x00124b00234c9822
+    domain: light
+  mode: single
+- id: '1618607623933'
+  alias: Світло ліва кнопка ванна
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 958169cc5e6509ca5f6f370a7a1f40a0
+    type: action
+    subtype: 1_single
+    discovery_id: 0x60a423fffe651008 action_1_single
+  condition: []
+  action:
+  - type: toggle
+    device_id: 0c049d318d2d7e68445af350cb236d5f
+    entity_id: switch.0x60a423fffeff28dd_l1
+    domain: switch
+  mode: single
+- id: '1618607677830'
+  alias: Світло права кнопка ванна
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 958169cc5e6509ca5f6f370a7a1f40a0
+    type: action
+    subtype: 2_single
+    discovery_id: 0x60a423fffe651008 action_2_single
+  condition: []
+  action:
+  - type: toggle
+    device_id: 0c049d318d2d7e68445af350cb236d5f
+    entity_id: switch.0x60a423fffeff28dd_l2
+    domain: switch
+  mode: single
+- id: '1619083645468'
+  alias: 'Витяжка - автовикл. 2ет (case 2) '
+  description: Виключити витяжку, якщо вимнуте все світло при виході з туалету
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: ec6b08dc92949451e647d4f1db5b2b51
+    entity_id: switch.0x842e14fffe15c0cf_l2
+    domain: switch
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  condition:
+  - condition: and
+    conditions:
+    - condition: device
+      type: is_off
+      device_id: ec6b08dc92949451e647d4f1db5b2b51
+      entity_id: switch.0x842e14fffe15c0cf_l1
+      domain: switch
+    - condition: device
+      type: is_off
+      device_id: 986bd8c55380314b2db3ba048ffa5b20
+      entity_id: switch.0x60a423fffe7b514d_l1
+      domain: switch
+    - condition: device
+      type: is_off
+      device_id: 986bd8c55380314b2db3ba048ffa5b20
+      entity_id: switch.0x60a423fffe7b514d_l2
+      domain: switch
+  action:
+  - delay:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
+  - type: turn_off
+    device_id: ec6b08dc92949451e647d4f1db5b2b51
+    entity_id: switch.0x842e14fffe15c0cf_l2
+    domain: switch
+  mode: restart
+- id: '1619083796099'
+  alias: Витяжка - автовикл. 1ет (case 2)
+  description: Виключити витяжку, якщо вимнуте все світло при виході з туалету
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 0c049d318d2d7e68445af350cb236d5f
+    entity_id: switch.0x60a423fffeff28dd_l2
+    domain: switch
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  condition:
+  - condition: device
+    type: is_off
+    device_id: 0c049d318d2d7e68445af350cb236d5f
+    entity_id: switch.0x60a423fffeff28dd_l1
+    domain: switch
+  action:
+  - delay:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
+  - type: turn_off
+    device_id: 0c049d318d2d7e68445af350cb236d5f
+    entity_id: switch.0x60a423fffeff28dd_l2
+    domain: switch
+  mode: single
+- id: '1619186429245'
+  alias: Стіралка - закінчила стірку (Test)
+  description: ''
+  trigger:
+  - type: power
+    platform: device
+    device_id: ca595ae56a01026c67e1a4d6c9bb0785
+    entity_id: sensor.washmachine_power
+    domain: sensor
+    below: 5
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  condition:
+  - condition: device
+    type: is_on
+    device_id: ca595ae56a01026c67e1a4d6c9bb0785
+    entity_id: switch.washmachine
+    domain: switch
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 15
+      milliseconds: 0
+  action:
+  - service: notify.mobile_app_moto_z3_play
+    data:
+      title: Test
+      message: Done!
+  mode: single
+- id: '1619353878942'
+  alias: Ванна 2п - ліва клавіша 1
   description: ''
   trigger:
   - platform: device
@@ -565,28 +1092,75 @@
   condition: []
   action:
   - type: toggle
-    device_id: 7faf8a7e1ef6c9f5dd2acea20dc71680
-    entity_id: switch.wifi_socket_2_switch
+    device_id: 986bd8c55380314b2db3ba048ffa5b20
+    entity_id: switch.0x60a423fffe7b514d_l2
     domain: switch
   mode: single
-- id: '1614265326796'
-  alias: Нова автоматизація
+- id: '1619353955967'
+  alias: Ванна 2п. права кнопка 1
   description: ''
   trigger:
-  - type: power
-    platform: device
-    device_id: ca595ae56a01026c67e1a4d6c9bb0785
-    entity_id: sensor.0x842e14fffe3a4631_power
-    domain: sensor
-    below: 1
-    for:
-      hours: 0
-      minutes: 5
-      seconds: 0
-      milliseconds: 0
+  - platform: device
+    domain: mqtt
+    device_id: a820abbc9e5aa94d2bb95224770f117c
+    type: action
+    subtype: 2_single
+    discovery_id: 0x60a423fffe650fbb action_2_single
   condition: []
   action:
-  - service: script.turn_on
-    data: {}
-    entity_id: script.send_on_wash_end
+  - type: toggle
+    device_id: 986bd8c55380314b2db3ba048ffa5b20
+    entity_id: switch.0x60a423fffe7b514d_l1
+    domain: switch
+  mode: single
+- id: '1619354049706'
+  alias: Ванна 2п - ліва клавіша 2 - дуйчик
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: a820abbc9e5aa94d2bb95224770f117c
+    type: action
+    subtype: 1_double
+    discovery_id: 0x60a423fffe650fbb action_1_double
+  condition: []
+  action:
+  - type: toggle
+    device_id: ec6b08dc92949451e647d4f1db5b2b51
+    entity_id: switch.0x842e14fffe15c0cf_l2
+    domain: switch
+  mode: single
+- id: '1619354083995'
+  alias: Ванна 2п - права клавіша 2 - дзеркало
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: a820abbc9e5aa94d2bb95224770f117c
+    type: action
+    subtype: 2_double
+    discovery_id: 0x60a423fffe650fbb action_2_double
+  condition: []
+  action:
+  - type: toggle
+    device_id: ec6b08dc92949451e647d4f1db5b2b51
+    entity_id: switch.0x842e14fffe15c0cf_l1
+    domain: switch
+  mode: single
+- id: '1619354955063'
+  alias: '6ти клавішний - 2:   гірлянда'
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: b7763872b9b61a3d61388a37d9727bc2
+    type: action
+    subtype: button_2_single
+    discovery_id: 0x04cf8cdf3c7dd4f3 action_button_2_single
+  condition: []
+  action:
+  - type: toggle
+    device_id: 7faf8a7e1ef6c9f5dd2acea20dc71680
+    entity_id: switch.wifi_plug2
+    domain: switch
   mode: single

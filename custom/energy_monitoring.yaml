@@ -1,0 +1,58 @@
+daily_boiler_energy:
+  source: sensor.wifi_boiler_socket_energy
+  cycle: daily
+  tariffs:
+    - day
+    - night
+
+monthly_boiler_energy:
+  source: sensor.wifi_boiler_socket_energy
+  cycle: monthly
+  tariffs:
+    - day
+    - night
+
+# PC socket
+daily_pc_energy:
+  source: sensor.socket_1_energy
+  cycle: daily
+  tariffs:
+    - day
+    - night
+
+monthly_pc_energy:
+  source: sensor.socket_1_energy
+  cycle: monthly
+  tariffs:
+    - day
+    - night
+
+# Насоси обігріву
+daily_motors_energy:
+  source: sensor.0x60a423fffe61bc7d_energy
+  cycle: daily
+  tariffs:
+    - day
+    - night
+
+monthly_motors_energy:
+  source: sensor.0x60a423fffe61bc7d_energy
+  cycle: monthly
+  tariffs:
+    - day
+    - night
+
+# Стіралка
+daily_wash_mashine_energy:
+  source: sensor.0x60a423fffe61bdae_energy
+  cycle: daily
+  tariffs:
+    - day
+    - night
+
+monthly_wash_mashine_energy:
+  source: sensor.0x60a423fffe61bdae_energy
+  cycle: monthly
+  tariffs:
+    - day
+    - night

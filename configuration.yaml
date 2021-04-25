@@ -6,6 +6,7 @@ homeassistant:
   unit_system: metric
   elevation: 270
   internal_url: "http://rasp.lan:8123"
+  external_url: "http://192.168.21.14:8123"
   customize: !include customize.yaml
   packages: !include_dir_merge_named custom/packages
 # Configure a default setup of Home Assistant (frontend, api, etc)
@@ -28,6 +29,9 @@ timer: !include custom/timers.yaml
 input_number: !include custom/input/number.yaml
 input_boolean: !include custom/input/boolean.yaml
 climate: !include custom/climate.yaml
+light: !include custom/light.yaml
+utility_meter: !include custom/energy_monitoring.yaml
+
 
 lovelace:
   # mode: yaml
@@ -59,8 +63,8 @@ mqtt:
   broker: core-mosquitto
   discovery: true
   discovery_prefix: homeassistant
-  username: mqtt
-  password: mqtt
+  username: !secret mqtt_user
+  password: !secret mqtt_pass
 
 mikrotik:
   - name: Mikrotik
@@ -88,3 +92,12 @@ media_player:
   - platform: mpd
     host: 127.0.0.1
 
+device_tracker:
+  - platform: bluetooth_tracker
+
+localtuya: !include custom/localtuya.yaml
+
+# logger:
+#   default: warning
+#   logs:
+#     custom_components.localtuya: debug

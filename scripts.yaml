@@ -6,7 +6,7 @@ boiler_turn_on:
       - condition: or
         conditions:
         - condition: state
-          entity_id: input_boolean.use_electro_all_time          
+          entity_id: input_boolean.use_electro_all_time
           state: 'on'
         - condition: state
           entity_id: binary_sensor.tod_night_tariff
@@ -16,12 +16,12 @@ boiler_turn_on:
           }}'
       - service: switch.turn_on
         data: {}
-        entity_id: switch.0x00124b00209e96c4_l2
+        entity_id: switch.boilersswitch_l2
     default:
     - wait_template: '{{ is_state(''timer.boiler_gas_turn_on_timer'', ''idle'') }}'
     - service: switch.turn_on
       data: {}
-      entity_id: switch.0x00124b00209e96c4_l1
+      entity_id: switch.boilersswitch_l1
   mode: single
   icon: mdi:radiator
 boiler_turn_off:
@@ -29,9 +29,235 @@ boiler_turn_off:
   sequence:
   - service: switch.turn_off
     data: {}
-    entity_id: switch.0x00124b00209e96c4_l2
+    entity_id: switch.boilersswitch_l2
   - service: switch.turn_off
     data: {}
-    entity_id: switch.0x00124b00209e96c4_l1
+    entity_id: switch.boilersswitch_l1
+  mode: single
+  icon: mdi:radiator-off
+'1614468416410':
+  alias: '[Опалення] Робота з дому'
+  sequence:
+  - type: turn_on
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_robota_z_domu_kabinet
+    domain: switch
+  - type: turn_on
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_robota_z_domu_spalnia
+    domain: switch
+  - type: turn_on
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_robota_z_domu_vitalnia
+    domain: switch
+  - type: turn_off
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_budni_na_ofisi_vitalnia
+    domain: switch
+  - type: turn_off
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_budni_na_ofisi_spalnia
+    domain: switch
+  - type: turn_off
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_budni_na_ofisi_ditiacha
+    domain: switch
+  - type: turn_off
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_ne_vdoma_vsi_kimnati
+    domain: switch
+  mode: single
+'1614468501945':
+  alias: '[Опалення] Робота офісі'
+  sequence:
+  - type: turn_off
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_robota_z_domu_kabinet
+    domain: switch
+  - type: turn_off
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_robota_z_domu_spalnia
+    domain: switch
+  - type: turn_off
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_robota_z_domu_vitalnia
+    domain: switch
+  - type: turn_on
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_budni_na_ofisi_vitalnia
+    domain: switch
+  - type: turn_on
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_budni_na_ofisi_spalnia
+    domain: switch
+  - type: turn_on
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_budni_na_ofisi_ditiacha
+    domain: switch
+  - type: turn_off
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_ne_vdoma_vsi_kimnati
+    domain: switch
+  mode: single
+'1614468639127':
+  alias: '[Опалення] не в дома'
+  sequence:
+  - type: turn_off
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_robota_z_domu_kabinet
+    domain: switch
+  - type: turn_off
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_robota_z_domu_spalnia
+    domain: switch
+  - type: turn_off
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_robota_z_domu_vitalnia
+    domain: switch
+  - type: turn_off
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_budni_na_ofisi_vitalnia
+    domain: switch
+  - type: turn_off
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_budni_na_ofisi_spalnia
+    domain: switch
+  - type: turn_off
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_budni_na_ofisi_ditiacha
+    domain: switch
+  - type: turn_on
+    device_id: f487794eae0865f4f45a7b50918b874b
+    entity_id: switch.schedule_opalennia_ne_vdoma_vsi_kimnati
+    domain: switch
+  mode: single
+scan_bt:
+  alias: Scan BT
+  sequence:
+  - service: bluetooth_tracker.update
+    data: {}
+  mode: single
+'1616799632110':
+  alias: Моніторинг - Скинути лічильник за добу
+  sequence:
+  - service: utility_meter.reset
+    data:
+      entity_id:
+      - utility_meter.daily_boiler_energy
+      - utility_meter.daily_pc_energy
+      - utility_meter.daily_motors_energy
+      - utility_meter.daily_wash_mashine_energy
+  mode: single
+  icon: mdi:counter
+'1616799747883':
+  alias: Моніторинг - Скинути лічильник за місяць
+  sequence:
+  - service: utility_meter.reset
+    data:
+      entity_id:
+      - utility_meter.monthly_boiler_energy
+      - utility_meter.monthly_pc_energy
+      - utility_meter.monthly_motors_energy
+      - utility_meter.monthly_wash_mashine_energy
+  mode: single
+  icon: mdi:counter
+'1617110336318':
+  alias: Моніторинг - переключити наступний тариф
+  sequence:
+  - service: utility_meter.next_tariff
+    data:
+      entity_id:
+      - utility_meter.daily_boiler_energy
+      - utility_meter.monthly_boiler_energy
+      - utility_meter.daily_pc_energy
+      - utility_meter.monthly_pc_energy
+      - utility_meter.daily_motors_energy
+      - utility_meter.monthly_motors_energy
+      - utility_meter.daily_wash_mashine_energy
+      - utility_meter.monthly_wash_mashine_energy
+  mode: single
+  icon: mdi:counter
+'1617553721790':
+  alias: '[Опалення] Увімкнути на початок сезону'
+  sequence:
+  - service: automation.turn_on
+    target:
+      entity_id:
+      - automation.kalibruvannia_golovki_11_1
+      - automation.kalibruvannia_golovki_11_2
+      - automation.kalibruvannia_golovki_21_1
+      - automation.kalibruvannia_golovki_21_2
+      - automation.kalibruvannia_golovki_22_1
+      - automation.kalibruvannia_golovki_22_2
+      - automation.kalibruvannia_golovki_22_3
+      - automation.kotli_ditiacha_vidkriti_termogolovki_po_potrebi
+      - automation.kotli_vitalnia_zakriti_termogolovki_po_potrebi_3
+      - automation.kotli_kotli_vkl_el_kotel_vikl_gaz_kotel_2
+      - automation.kotli_vkl_gaz_kotel_vikl_el_kotel_2
+      - automation.kotli_spalnia_vidkriti_termogolovki_po_potrebi
+      - automation.kotli_vitalnia_zakriti_termogolovki_po_potrebi_2
+      - automation.kotli_taimaut_el_kotla
+      - automation.kotli_taimaut_gaz_kotla
+      - automation.kotli_vikliuchiti_nasosi
+      - automation.kotli_vkliuchiti_nasosi
+      - automation.nova_avtomatizatsiia_3
+      - automation.kotli_vitalnia_zakriti_termogolovki_po_potrebi
+      - automation.kotli_zmina_nichnogo_tarifu_na_den
+      - automation.kotli_zmina_nichnogo_tarifu_na_den_2
+      - automation.opalennia_vidkriti_vikna
+      - automation.pterm_trv_gropup_1
+      - automation.pterm21_trv_gropup_21
+      - automation.pterm22_trv_gropup_22
+  - service: climate.set_hvac_mode
+    target:
+      entity_id:
+      - climate.pterm_room_11
+      - climate.pterm_room_21
+      - climate.pterm_room_22
+      - climate.trv_12
+    data:
+      hvac_mode: heat
+  mode: single
+  icon: mdi:radiator
+'1618561108477':
+  alias: '[Опалення] Вимкнути на кінець сезону'
+  sequence:
+  - service: automation.turn_off
+    target:
+      entity_id:
+      - automation.kalibruvannia_golovki_11_1
+      - automation.kalibruvannia_golovki_11_2
+      - automation.kalibruvannia_golovki_21_1
+      - automation.kalibruvannia_golovki_21_2
+      - automation.kalibruvannia_golovki_22_1
+      - automation.kalibruvannia_golovki_22_2
+      - automation.kalibruvannia_golovki_22_3
+      - automation.kotli_ditiacha_vidkriti_termogolovki_po_potrebi
+      - automation.kotli_vitalnia_zakriti_termogolovki_po_potrebi_3
+      - automation.kotli_kotli_vkl_el_kotel_vikl_gaz_kotel_2
+      - automation.kotli_vkl_gaz_kotel_vikl_el_kotel_2
+      - automation.kotli_spalnia_vidkriti_termogolovki_po_potrebi
+      - automation.kotli_vitalnia_zakriti_termogolovki_po_potrebi_2
+      - automation.kotli_taimaut_el_kotla
+      - automation.kotli_taimaut_gaz_kotla
+      - automation.kotli_vikliuchiti_nasosi
+      - automation.kotli_vkliuchiti_nasosi
+      - automation.nova_avtomatizatsiia_3
+      - automation.kotli_vitalnia_zakriti_termogolovki_po_potrebi
+      - automation.kotli_zmina_nichnogo_tarifu_na_den
+      - automation.kotli_zmina_nichnogo_tarifu_na_den_2
+      - automation.opalennia_vidkriti_vikna
+      - automation.pterm_trv_gropup_1
+      - automation.pterm21_trv_gropup_21
+      - automation.pterm22_trv_gropup_22
+  - service: climate.set_hvac_mode
+    target:
+      entity_id:
+      - climate.pterm_room_11
+      - climate.pterm_room_21
+      - climate.pterm_room_22
+      - climate.trv_12
+    data:
+      hvac_mode: 'off'
   mode: single
   icon: mdi:radiator-off

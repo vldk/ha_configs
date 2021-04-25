@@ -1,0 +1,41 @@
+- host: 192.168.20.10
+  device_id: 57220562c4dd5726b939
+  local_key: 5645a0e88e68262f
+  friendly_name: WiFi Plug2
+  protocol_version: "3.3"
+  entities:      
+    - platform: switch
+      friendly_name: WiFi Plug2
+      id: 1
+      current: 18
+      current_consumption: 19
+      voltage: 20
+
+    # - platform: binary_sensor
+    #   friendly_name: WiFI Socket 2 Status
+    #   id: 1
+    #   device_class: power
+    #   state_on: "true"
+    #   state_off: "false"
+
+    - platform: sensor      
+      # name: wifi_socket_2_current
+      friendly_name: WiFi Plug2 Current
+      id: 18
+      # scaling: 0.001
+      device_class: current
+      unit_of_measurement: "mA"
+    
+    - platform: sensor
+      friendly_name: WiFi Plug2 Power
+      id: 19
+      # scaling: 0.001 
+      device_class: power # Optional
+      unit_of_measurement: "mW" # Optional
+
+    - platform: sensor
+      friendly_name: WiFi Plug2 Voltage      
+      id: 20
+      scaling: 0.1 
+      device_class: voltage
+      unit_of_measurement: "V"     

@@ -1,0 +1,11 @@
+- platform: switch
+  name: Bath 1st floor
+  entity_id: switch.0x60a423fffeff28dd_l1
+
+- platform: switch
+  name: Bath 2nd floor mirror
+  entity_id: switch.0x842e14fffe15c0cf_l1
+
+- platform: switch
+  name: Corridor 1st floor
+  entity_id: switch.zbmini_1

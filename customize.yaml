@@ -1,24 +1,42 @@
-switch.0x00124b00209e96c4_l1:
+switch.boilersswitch_l1:
   icon: mdi:fire
   friendly_name: Swith Port 1 (Gas)
-switch.0x00124b00209e96c4_l2:
+switch.boilersswitch_l2:
   icon: mdi:power-plug
   friendly_name: Swith Port 2 (Electro)
-sensor.0x00124b00209e96c4_l1:
+sensor.boilersswitch_l1:
   icon: mdi:toggle-switch
-sensor.0x00124b00209e96c4_l2:
+sensor.boilersswitch_l2:
   icon: mdi:toggle-switch
-binary_sensor.0x00158d00019f49d5_contact:
+binary_sensor.roof_1_contact:
   device_class: window
-binary_sensor.0x00158d0001de18e8_contact:
+binary_sensor.wnd_21_1_contact:
   device_class: window
-binary_sensor.0x00158d00019d08a8_contact:
+binary_sensor.roof_2_contact:
   device_class: window
-binary_sensor.0x00158d0001ddc9c2_contact:
+binary_sensor.wnd_11_contact:
   device_class: window
-binary_sensor.0x00158d0001e4c675_contact:
+binary_sensor.kitchenwnd_contact:
   device_class: window
 binary_sensor.0x00158d0001e4d72a_contact:
   device_class: window
 device_tracker.0c_cb_85_af_29_86:
   friendly_name: moto_z
+switch.0x60a423fffeff28dd_l2:
+  icon: mdi:fan
+switch.0x842e14fffe15c0cf_l2:
+  icon: mdi:fan
+switch.0x60a423fffeff28dd_l1:
+  icon: mdi:lightbulb-group
+switch.0x842e14fffe15c0cf_l1:
+  icon: mdi:mirror
+switch.0x60a423fffe7b514d_l2:
+  icon: mdi:wall-sconce-flat
+switch.0x60a423fffe7b514d_l1:
+  icon: mdi:globe-light
+switch.wifi_socket_2_switch:
+  icon: mdi:string-lights
+binary_sensor.wnd_11_left_contact:
+  icon: mdi:window-closed
+binary_sensor.0x00158d0006a0a7c2_contact:
+  device_class: window

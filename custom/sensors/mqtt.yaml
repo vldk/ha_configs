@@ -1,0 +1,3 @@
+- platform: mqtt
+  name: "RF Scan"
+  state_topic: "home/rf-scan/state"  

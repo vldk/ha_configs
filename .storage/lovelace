@@ -14,19 +14,56 @@
                             "entity": "binary_sensor.boiler_is_on"
                         },
                         {
-                            "entity": "sensor.0x5c0272fffec72d04_humidity"
+                            "entity": "person.anna"
                         },
                         {
-                            "entity": "sensor.0x847127fffe18e757_humidity"
-                        },
-                        {
-                            "entity": "sensor.0x5c0272fffebda093_humidity"
-                        },
-                        {
-                            "entity": "binary_sensor.is_anybody_home"
+                            "entity": "person.vldk"
                         }
                     ],
                     "cards": [
+                        {
+                            "type": "horizontal-stack",
+                            "cards": [
+                                {
+                                    "type": "light",
+                                    "entity": "light.0x60a423fffeec621f",
+                                    "name": "\u0421\u0445\u043e\u0434\u0438",
+                                    "icon": "mdi:led-strip",
+                                    "double_tap_action": {
+                                        "action": "toggle"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.zbmini_1",
+                                    "name": "\u041a\u043e\u0440\u0438\u0434\u043e\u0440",
+                                    "show_state": true,
+                                    "icon": "mdi:lightbulb-multiple"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.wifi_plug2",
+                                    "name": "\u0433\u0456\u0440\u043b\u044f\u043d\u0434\u0430",
+                                    "show_state": true,
+                                    "icon": "mdi:string-lights"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.0x804b50fffeb566af",
+                                    "name": "\u041f\u0456\u0434\u0432\u0430\u043b",
+                                    "icon": "mdi:outdoor-lamp"
+                                }
+                            ]
+                        },
                         {
                             "type": "horizontal-stack",
                             "cards": [
@@ -35,30 +72,100 @@
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "entity": "switch.0x847127fffe24e50e",
-                                    "name": "\u041a\u043e\u0440\u0438\u0434\u043e\u0440",
-                                    "show_state": true,
-                                    "icon": "mdi:ceiling-light"
+                                    "entity": "switch.0x60a423fffeff28dd_l2",
+                                    "name": "1\u043f",
+                                    "icon": "mdi:fan",
+                                    "show_state": true
                                 },
                                 {
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "entity": "switch.wifi_socket_2_switch",
-                                    "name": "\u0433\u0456\u0440\u043b\u044f\u043d\u0434\u0430",
+                                    "entity": "switch.0x60a423fffeff28dd_l1",
+                                    "name": "\u0421\u0432\u0456\u0442\u043b\u043e",
                                     "show_state": true,
-                                    "icon": "mdi:led-strip-variant"
+                                    "icon": "mdi:lightbulb-group"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "horizontal-stack",
+                            "cards": [
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.0x60a423fffe7b514d_l1",
+                                    "name": "2\u043f \u0441\u0432\u0456\u0442\u043b\u043e",
+                                    "show_state": true
                                 },
                                 {
                                     "type": "button",
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "entity": "switch.switch",
-                                    "name": "\u0421\u0445\u043e\u0434\u0438",
+                                    "entity": "switch.0x60a423fffe7b514d_l2",
+                                    "name": "\u0441\u0432\u0456\u0442\u043b\u043e \u0434\u0443\u0448",
+                                    "show_state": true
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.0x842e14fffe15c0cf_l2",
+                                    "icon": "mdi:fan",
+                                    "name": "2\u043f",
+                                    "show_state": true
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.0x842e14fffe15c0cf_l1",
+                                    "name": "\u0414\u0437\u0435\u0440\u043a\u0430\u043b\u043e",
                                     "show_state": true,
-                                    "icon": "mdi:led-strip"
+                                    "icon": "mdi:mirror"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "horizontal-stack",
+                            "cards": [
+                                {
+                                    "type": "light",
+                                    "entity": "light.0x00124b00234c9822",
+                                    "name": "\u0422\u043e\u0440\u0448\u0435\u0440"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.socket_1",
+                                    "name": "PC",
+                                    "icon": "mdi:power",
+                                    "show_state": true,
+                                    "hold_action": {
+                                        "action": "more-info"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.motion_1_occupancy"
+                                },
+                                {
+                                    "entity": "binary_sensor.motion_2_occupancy"
+                                },
+                                {
+                                    "entity": "binary_sensor.motion_3_occupancy"
                                 }
                             ]
                         },
@@ -82,7 +189,7 @@
                                 },
                                 {
                                     "type": "thermostat",
-                                    "entity": "climate.0x847127fffe9f3342",
+                                    "entity": "climate.trv_12",
                                     "name": "TRV \u041a\u0443\u0445\u043d\u044f"
                                 },
                                 {
@@ -112,162 +219,30 @@
                     "badges": [],
                     "cards": [
                         {
-                            "type": "entities",
+                            "type": "history-graph",
                             "entities": [
                                 {
-                                    "entity": "sensor.0x5c0272fffec72d04_temperature",
-                                    "name": "\u0412\u0456\u0442\u0430\u043b\u044c\u043d\u044f",
-                                    "secondary_info": "last-updated"
+                                    "entity": "sensor.0x00124b0022cd62e8_temperature",
+                                    "name": "\u0412\u0456\u0442\u0430\u043b\u044c\u043d\u044f"
                                 },
                                 {
-                                    "entity": "sensor.wnd_11_left_temperature",
-                                    "name": "\u0432\u0456\u043a\u043d\u043e"
+                                    "entity": "sensor.0x00124b0022cf8217_temperature",
+                                    "name": "\u0421\u043f\u0430\u043b\u044c\u043d\u044f"
                                 },
                                 {
-                                    "entity": "sensor.0x5c0272fffec72d04_humidity",
-                                    "name": "\u0412\u043e\u043b\u043e\u0433\u0456\u0441\u0442\u044c"
+                                    "entity": "sensor.0x00124b0022cf60f7_temperature",
+                                    "name": "\u0414\u0438\u0442\u044f\u0447\u0430"
                                 },
                                 {
-                                    "entity": "climate.0x5c0272fffedabed2",
-                                    "name": "\u041b\u0456\u0432\u0438\u0439",
-                                    "secondary_info": "last-updated"
-                                },
-                                {
-                                    "entity": "sensor.0x5c0272fffedabed2_position",
-                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d",
-                                    "secondary_info": "entity-id"
-                                },
-                                {
-                                    "entity": "climate.0x5c0272fffedabc57",
-                                    "name": "\u041f\u0440\u0430\u0432\u0438\u0439",
-                                    "secondary_info": "last-updated"
-                                },
-                                {
-                                    "entity": "sensor.0x5c0272fffedabc57_position",
-                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d",
-                                    "secondary_info": "entity-id"
-                                },
-                                {
-                                    "entity": "sensor.maindoor_temperature",
-                                    "name": "\u0432\u0445\u0456\u0434\u043d\u0456 \u0434\u0432\u0435\u0440\u0456"
-                                }
-                            ],
-                            "state_color": true,
-                            "show_header_toggle": false
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.0x847127fffe18e757_temperature",
-                                    "name": "\u0421\u043f\u0430\u043b\u044c\u043d\u044f",
-                                    "secondary_info": "last-updated"
-                                },
-                                {
-                                    "entity": "sensor.wnd_21_1_temperature",
-                                    "name": "\u0432\u0456\u043a\u043d\u043e"
-                                },
-                                {
-                                    "entity": "sensor.0x847127fffe18e757_humidity",
-                                    "name": "\u0412\u043e\u043b\u043e\u0433\u0456\u0441\u0442\u044c"
-                                },
-                                {
-                                    "entity": "climate.0x847127fffe940161",
-                                    "name": "\u041b\u0456\u0432\u0438\u0439",
-                                    "secondary_info": "last-updated"
-                                },
-                                {
-                                    "entity": "sensor.0x847127fffe940161_position",
-                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
-                                    "secondary_info": "entity-id"
-                                },
-                                {
-                                    "entity": "climate.0x847127fffe960b38",
-                                    "name": "\u041f\u0440\u0430\u0432\u0438\u0439",
-                                    "secondary_info": "last-updated"
-                                },
-                                {
-                                    "entity": "sensor.0x847127fffe960b38_position",
-                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
-                                    "secondary_info": "entity-id"
-                                }
-                            ],
-                            "state_color": false
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.0x5c0272fffebda093_temperature",
-                                    "name": "\u0414\u0438\u0442\u044f\u0447\u0430",
-                                    "secondary_info": "last-updated"
-                                },
-                                {
-                                    "entity": "sensor.wnd_22_left_temperature",
-                                    "name": "\u0432\u0456\u043a\u043d\u043e"
-                                },
-                                {
-                                    "entity": "sensor.0x5c0272fffebda093_humidity",
-                                    "name": "\u0412\u043e\u043b\u043e\u0433\u0456\u0441\u0442\u044c"
-                                },
-                                {
-                                    "entity": "climate.0x847127fffe93ff05",
-                                    "secondary_info": "last-updated",
-                                    "name": "\u041b\u0456\u0432\u0438\u0439"
-                                },
-                                {
-                                    "entity": "sensor.0x847127fffe93ff05_position",
-                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
-                                    "secondary_info": "entity-id"
-                                },
-                                {
-                                    "entity": "climate.0x5c0272fffedab255",
-                                    "secondary_info": "last-updated",
-                                    "name": "\u0421\u0435\u0440\u0435\u0434\u043d\u0456\u0439"
-                                },
-                                {
-                                    "entity": "sensor.0x5c0272fffedab255_position",
-                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
-                                    "secondary_info": "entity-id"
-                                },
-                                {
-                                    "entity": "climate.0x5c0272fffed9d5ff",
-                                    "secondary_info": "last-updated",
-                                    "name": "\u041f\u0440\u0430\u0432\u0438\u0439"
-                                },
-                                {
-                                    "entity": "sensor.0x5c0272fffed9d5ff_position",
-                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
-                                    "secondary_info": "entity-id"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "state_color": true
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "climate.0x847127fffe9f3342",
-                                    "secondary_info": "last-updated",
+                                    "entity": "sensor.trv_12_temperature",
                                     "name": "\u041a\u0443\u0445\u043d\u044f"
                                 },
                                 {
-                                    "entity": "sensor.0x847127fffe9f3342_position",
-                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
-                                    "secondary_info": "entity-id"
-                                },
-                                {
-                                    "entity": "sensor.kitchenwnd_temperature",
-                                    "name": "\u0432\u0456\u043a\u043d\u043e"
+                                    "entity": "binary_sensor.boiler_is_on"
                                 }
                             ],
-                            "footer": {
-                                "type": "graph",
-                                "entity": "sensor.trv_12_temperature",
-                                "hours_to_show": 48,
-                                "detail": 2
-                            }
+                            "hours_to_show": 36,
+                            "refresh_interval": 0
                         },
                         {
                             "type": "grid",
@@ -287,56 +262,202 @@
                             ]
                         },
                         {
-                            "type": "button",
-                            "tap_action": {
-                                "action": "toggle"
-                            },
-                            "entity": "input_boolean.use_electro_all_time",
-                            "icon_height": "50px",
-                            "show_icon": true,
-                            "show_state": true,
-                            "show_name": true
-                        },
-                        {
-                            "type": "history-graph",
+                            "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "sensor.0x5c0272fffec72d04_temperature",
-                                    "name": "\u0412\u0456\u0442\u044f\u043b\u044c\u043d\u044f"
+                                    "entity": "sensor.0x00124b0022cd62e8_temperature",
+                                    "name": "\u0412\u0456\u0442\u0430\u043b\u044c\u043d\u044f",
+                                    "secondary_info": "last-changed"
                                 },
                                 {
-                                    "entity": "sensor.trv_12_temperature",
-                                    "name": "\u041a\u0443\u0445\u043d\u044f"
+                                    "entity": "sensor.wnd_11_left_temperature",
+                                    "name": "\u0432\u0456\u043a\u043d\u043e"
                                 },
                                 {
-                                    "entity": "sensor.0x847127fffe18e757_temperature",
-                                    "name": "\u0421\u043f\u0430\u043b\u044c\u043d\u044f"
+                                    "entity": "binary_sensor.wnd_11_left_contact",
+                                    "name": "\u0412\u0456\u043a\u043d\u043e",
+                                    "secondary_info": "last-changed"
                                 },
                                 {
-                                    "entity": "sensor.0x5c0272fffebda093_temperature",
-                                    "name": "\u0414\u0438\u0442\u044f\u0447\u0430"
+                                    "entity": "sensor.0x00124b0022cd62e8_humidity",
+                                    "name": "\u0412\u043e\u043b\u043e\u0433\u0456\u0441\u0442\u044c"
                                 },
                                 {
-                                    "entity": "binary_sensor.boiler_is_on"
+                                    "entity": "climate.trv_11_left",
+                                    "name": "\u041b\u0456\u0432\u0438\u0439",
+                                    "secondary_info": "last-updated"
+                                },
+                                {
+                                    "entity": "sensor.trv_11_left_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d",
+                                    "secondary_info": "entity-id"
+                                },
+                                {
+                                    "entity": "climate.trv_11_right",
+                                    "name": "\u041f\u0440\u0430\u0432\u0438\u0439",
+                                    "secondary_info": "last-updated"
+                                },
+                                {
+                                    "entity": "sensor.trv_11_right_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d",
+                                    "secondary_info": "entity-id"
+                                },
+                                {
+                                    "entity": "sensor.0x00158d00019f34e2_temperature",
+                                    "name": "\u0432\u0445\u0456\u0434\u043d\u0456 \u0434\u0432\u0435\u0440\u0456"
+                                },
+                                {
+                                    "entity": "binary_sensor.0x00158d00019f34e2_contact",
+                                    "name": "\u0432\u0445\u0456\u0434\u043d\u0456 \u0434\u0432\u0435\u0440\u0456",
+                                    "secondary_info": "last-changed"
                                 }
                             ],
-                            "hours_to_show": 36,
-                            "refresh_interval": 0
+                            "state_color": true,
+                            "show_header_toggle": false
                         },
                         {
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "sensor.roof_1_temperature"
+                                    "entity": "sensor.0x00124b0022cf8217_temperature",
+                                    "name": "\u0421\u043f\u0430\u043b\u044c\u043d\u044f",
+                                    "secondary_info": "last-changed"
                                 },
                                 {
-                                    "entity": "binary_sensor.0x00158d00019f49d5_contact"
+                                    "entity": "sensor.wnd_21_1_temperature",
+                                    "name": "\u0432\u0456\u043a\u043d\u043e"
                                 },
                                 {
-                                    "entity": "sensor.roof_2_temperature"
+                                    "entity": "binary_sensor.wnd_21_1_contact",
+                                    "name": "\u0412\u0456\u043a\u043d\u043e",
+                                    "secondary_info": "last-changed"
                                 },
                                 {
-                                    "entity": "binary_sensor.0x00158d00019d08a8_contact"
+                                    "entity": "sensor.0x00124b0022cf8217_humidity",
+                                    "name": "\u0412\u043e\u043b\u043e\u0433\u0456\u0441\u0442\u044c"
+                                },
+                                {
+                                    "entity": "climate.trv_21_left",
+                                    "name": "\u041b\u0456\u0432\u0438\u0439",
+                                    "secondary_info": "last-updated"
+                                },
+                                {
+                                    "entity": "sensor.trv_21_left_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
+                                    "secondary_info": "entity-id"
+                                },
+                                {
+                                    "entity": "climate.trv_21_right",
+                                    "name": "\u041f\u0440\u0430\u0432\u0438\u0439",
+                                    "secondary_info": "last-updated"
+                                },
+                                {
+                                    "entity": "sensor.trv_21_right_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
+                                    "secondary_info": "entity-id"
+                                }
+                            ],
+                            "state_color": false
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.0x00124b0022cf60f7_temperature",
+                                    "name": "\u0414\u0438\u0442\u044f\u0447\u0430",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "sensor.0x00158d0001e4d72a_temperature",
+                                    "name": "\u0432\u0456\u043a\u043d\u043e"
+                                },
+                                {
+                                    "entity": "binary_sensor.0x00158d0001e4d72a_contact",
+                                    "name": "\u0412\u0456\u043a\u043d\u043e",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "sensor.0x00124b0022cf60f7_humidity",
+                                    "name": "\u0412\u043e\u043b\u043e\u0433\u0456\u0441\u0442\u044c"
+                                },
+                                {
+                                    "entity": "climate.trv_22_left",
+                                    "secondary_info": "last-updated",
+                                    "name": "\u041b\u0456\u0432\u0438\u0439"
+                                },
+                                {
+                                    "entity": "sensor.trv_22_left_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
+                                    "secondary_info": "entity-id"
+                                },
+                                {
+                                    "entity": "climate.trv_22_middle",
+                                    "secondary_info": "last-updated",
+                                    "name": "\u0421\u0435\u0440\u0435\u0434\u043d\u0456\u0439"
+                                },
+                                {
+                                    "entity": "sensor.trv_22_middle_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
+                                    "secondary_info": "entity-id"
+                                },
+                                {
+                                    "entity": "climate.trv_22_right",
+                                    "secondary_info": "last-updated",
+                                    "name": "\u041f\u0440\u0430\u0432\u0438\u0439"
+                                },
+                                {
+                                    "entity": "sensor.trv_22_right_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
+                                    "secondary_info": "entity-id"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "state_color": true
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "climate.trv_12",
+                                    "secondary_info": "last-updated",
+                                    "name": "\u041a\u0443\u0445\u043d\u044f"
+                                },
+                                {
+                                    "entity": "sensor.trv_12_position",
+                                    "name": "\u041a\u043b\u0430\u043f\u0430\u043d \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u043d\u0430",
+                                    "secondary_info": "entity-id"
+                                },
+                                {
+                                    "entity": "sensor.kitchenwnd_temperature",
+                                    "name": "\u0432\u0456\u043a\u043d\u043e"
+                                },
+                                {
+                                    "entity": "binary_sensor.kitchenwnd_contact",
+                                    "name": "\u0412\u0456\u043a\u043d\u043e",
+                                    "secondary_info": "last-changed"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.roof_1_contact",
+                                    "name": "\u0412\u0456\u043a\u043d\u043e 1",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "sensor.roof_1_temperature",
+                                    "name": "\u0412\u0456\u043a\u043d\u043e 1 \u0442\u0435\u043c\u043f."
+                                },
+                                {
+                                    "entity": "binary_sensor.roof_2_contact",
+                                    "name": "\u0412\u0456\u043a\u043d\u043e 2",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "sensor.roof_2_temperature",
+                                    "name": "\u0412\u0456\u043a\u043d\u043e 2 \u0442\u0435\u043f\u043c."
                                 }
                             ],
                             "title": "\u041c\u0430\u043d\u0441\u0430\u0440\u0434\u0430"
@@ -345,13 +466,369 @@
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "binary_sensor.0x00158d0001e4a6db_contact"
+                                    "entity": "binary_sensor.garagedoor_contact",
+                                    "name": "\u0413\u0430\u0440\u0430\u0436",
+                                    "secondary_info": "last-changed"
                                 },
                                 {
-                                    "entity": "sensor.garagedoor_temperature"
+                                    "entity": "sensor.garagedoor_temperature",
+                                    "name": "\u0413\u0430\u0440\u0430\u0436 \u0442\u0435\u043c\u043f."
+                                },
+                                {
+                                    "entity": "binary_sensor.0x00158d0006a0a7c2_contact",
+                                    "name": "\u0412\u0456\u043a\u043d\u043e",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "sensor.0x00158d0006a0a7c2_temperature",
+                                    "name": "\u0412\u0456\u043a\u043d\u043e \u0442\u0435\u043c\u043f."
+                                },
+                                {
+                                    "entity": "binary_sensor.0x00158d0006b0f47f_contact",
+                                    "name": "\u0414\u0432\u0435\u0440\u0456",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "sensor.0x00158d0006b0f47f_temperature",
+                                    "name": "\u0414\u0432\u0435\u0440\u0456 \u0442\u0435\u043c\u043f."
                                 }
                             ],
-                            "title": "\u0413\u0430\u0440\u0430\u0436"
+                            "title": "\u041f\u0456\u0434\u0432\u0430\u043b"
+                        }
+                    ]
+                },
+                {
+                    "title": "Shedulers",
+                    "path": "shedulers",
+                    "icon": "mdi:timer-outline",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "input_boolean.use_electro_all_time"
+                                },
+                                {
+                                    "entity": "script.1614468416410"
+                                },
+                                {
+                                    "entity": "script.1614468501945"
+                                },
+                                {
+                                    "entity": "script.1614468639127"
+                                },
+                                {
+                                    "entity": "script.1617553721790"
+                                },
+                                {
+                                    "entity": "script.1618561108477"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "custom:scheduler-card",
+                            "display_options": {
+                                "primary_info": "{name}"
+                            },
+                            "include": [
+                                "climate.pterm_room_11",
+                                "climate.pterm_room_21",
+                                "climate.pterm_room_22"
+                            ],
+                            "title": "\u041e\u043f\u0430\u043b\u0435\u043d\u043d\u044f"
+                        },
+                        {
+                            "type": "custom:scheduler-card",
+                            "include": [
+                                "switch"
+                            ],
+                            "title": "\u0415\u043b\u0435\u043a\u0442\u0440\u0438\u043a\u0430"
+                        }
+                    ]
+                },
+                {
+                    "title": "Energy",
+                    "path": "energy",
+                    "icon": "mdi:counter",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "utility_meter.daily_boiler_energy",
+                                    "name": "\u0410\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u0442\u0430\u0440\u0438\u0444"
+                                },
+                                {
+                                    "entity": "sensor.total_energy_daily_day",
+                                    "name": "\u0420\u0430\u0437\u043e\u043c \u0437\u0430 \u0434\u043e\u0431\u0443 (\u0434\u0435\u043d\u044c)"
+                                },
+                                {
+                                    "entity": "sensor.total_energy_daily_night",
+                                    "name": "\u0420\u0430\u0437\u043e\u043c \u0437\u0430 \u0434\u043e\u0431\u0443 (\u043d\u0456\u0447)"
+                                },
+                                {
+                                    "entity": "sensor.total_energy_monthly_day",
+                                    "name": "\u0420\u0430\u0437\u043e\u043c \u0437\u0430 \u043c\u0456\u0441\u044f\u0446\u044c (\u0434\u0435\u043d\u044c)"
+                                },
+                                {
+                                    "entity": "sensor.total_energy_monthly_night",
+                                    "name": "\u0420\u0430\u0437\u043e\u043c \u0437\u0430 \u043c\u0456\u0441\u044f\u0446\u044c (\u043d\u0456\u0447)"
+                                }
+                            ],
+                            "title": "\u0412\u0441\u044c\u043e\u0433\u043e"
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "title": "\u0411\u043e\u0439\u043b\u0435\u0440 \u0412\u043e\u0434\u0430",
+                            "cards": [
+                                {
+                                    "type": "glance",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.power",
+                                            "name": "W"
+                                        },
+                                        {
+                                            "entity": "sensor.current",
+                                            "name": "A"
+                                        },
+                                        {
+                                            "entity": "sensor.voltage",
+                                            "name": "V"
+                                        },
+                                        {
+                                            "entity": "switch.switch",
+                                            "name": "State"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "utility_meter.daily_boiler_energy",
+                                            "name": "\u0410\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u0442\u0430\u0440\u0438\u0444"
+                                        },
+                                        {
+                                            "entity": "sensor.daily_boiler_energy_day",
+                                            "name": "\u0417\u0430 \u0434\u043e\u0431\u0443 (\u0434\u0435\u043d\u044c)"
+                                        },
+                                        {
+                                            "entity": "sensor.daily_boiler_energy_night",
+                                            "name": "\u0417\u0430 \u0434\u043e\u0431\u0443 (\u043d\u0456\u0447)"
+                                        },
+                                        {
+                                            "entity": "sensor.monthly_boiler_energy_day",
+                                            "name": "\u0417\u0430 \u043c\u0456\u0441\u044f\u0446\u044c (\u0434\u0435\u043d\u044c)"
+                                        },
+                                        {
+                                            "entity": "sensor.monthly_boiler_energy_night",
+                                            "name": "\u0417\u0430 \u043c\u0456\u0441\u044f\u0446\u044c (\u043d\u0456\u0447)"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "title": "PC",
+                            "cards": [
+                                {
+                                    "type": "glance",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.socket_1_power",
+                                            "name": "W"
+                                        },
+                                        {
+                                            "entity": "sensor.socket_1_current",
+                                            "name": "A"
+                                        },
+                                        {
+                                            "entity": "sensor.socket_1_voltage",
+                                            "name": "V"
+                                        },
+                                        {
+                                            "entity": "sensor.socket_1_energy",
+                                            "name": "Total"
+                                        },
+                                        {
+                                            "entity": "switch.socket_1",
+                                            "name": "State"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "utility_meter.daily_pc_energy",
+                                            "name": "\u0410\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u0442\u0430\u0440\u0438\u0444"
+                                        },
+                                        {
+                                            "entity": "sensor.daily_pc_energy_day",
+                                            "name": "\u0417\u0430 \u0434\u043e\u0431\u0443 (\u0434\u0435\u043d\u044c)"
+                                        },
+                                        {
+                                            "entity": "sensor.daily_pc_energy_night",
+                                            "name": "\u0417\u0430 \u0434\u043e\u0431\u0443 (\u043d\u0456\u0447)"
+                                        },
+                                        {
+                                            "entity": "sensor.monthly_pc_energy_day",
+                                            "name": "\u0417\u0430 \u043c\u0456\u0441\u044f\u0446\u044c (\u0434\u0435\u043d\u044c)"
+                                        },
+                                        {
+                                            "entity": "sensor.monthly_pc_energy_night",
+                                            "name": "\u0417\u0430 \u043c\u0456\u0441\u044f\u0446\u044c (\u043d\u0456\u0447)"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "title": "\u041d\u0430\u0441\u043e\u0441\u0438",
+                            "cards": [
+                                {
+                                    "type": "glance",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.0x60a423fffe61bc7d_power",
+                                            "name": "W"
+                                        },
+                                        {
+                                            "entity": "sensor.0x60a423fffe61bc7d_current",
+                                            "name": "A"
+                                        },
+                                        {
+                                            "entity": "sensor.0x60a423fffe61bc7d_voltage",
+                                            "name": "V"
+                                        },
+                                        {
+                                            "entity": "sensor.0x60a423fffe61bc7d_energy",
+                                            "name": "Total"
+                                        },
+                                        {
+                                            "entity": "switch.0x60a423fffe61bc7d",
+                                            "name": "State"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "utility_meter.daily_motors_energy",
+                                            "name": "\u0410\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u0442\u0430\u0440\u0438\u0444"
+                                        },
+                                        {
+                                            "entity": "sensor.daily_motors_energy_day",
+                                            "name": "\u0417\u0430 \u0434\u043e\u0431\u0443 (\u0434\u0435\u043d\u044c)"
+                                        },
+                                        {
+                                            "entity": "sensor.daily_motors_energy_night",
+                                            "name": "\u0417\u0430 \u0434\u043e\u0431\u0443 (\u043d\u0456\u0447)"
+                                        },
+                                        {
+                                            "entity": "sensor.monthly_motors_energy_day",
+                                            "name": "\u0417\u0430 \u043c\u0456\u0441\u044f\u0446\u044c (\u0434\u0435\u043d\u044c)"
+                                        },
+                                        {
+                                            "entity": "sensor.monthly_motors_energy_night",
+                                            "name": "\u0417\u0430 \u043c\u0456\u0441\u044f\u0446\u044c (\u043d\u0456\u0447)"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "title": "\u0421\u0442\u0456\u0440\u0430\u043b\u043a\u0430",
+                            "cards": [
+                                {
+                                    "type": "glance",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.0x60a423fffe61bdae_power",
+                                            "name": "W"
+                                        },
+                                        {
+                                            "entity": "sensor.0x60a423fffe61bdae_current",
+                                            "name": "A"
+                                        },
+                                        {
+                                            "entity": "sensor.0x60a423fffe61bdae_voltage",
+                                            "name": "V"
+                                        },
+                                        {
+                                            "entity": "sensor.0x60a423fffe61bdae_energy",
+                                            "name": "Total"
+                                        },
+                                        {
+                                            "entity": "switch.0x60a423fffe61bdae",
+                                            "name": "State"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "utility_meter.daily_wash_mashine_energy",
+                                            "name": "\u0410\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u0442\u0430\u0440\u0438\u0444"
+                                        },
+                                        {
+                                            "entity": "sensor.daily_wash_mashine_energy_day",
+                                            "name": "\u0417\u0430 \u0434\u043e\u0431\u0443 (\u0434\u0435\u043d\u044c)"
+                                        },
+                                        {
+                                            "entity": "sensor.daily_wash_mashine_energy_night",
+                                            "name": "\u0417\u0430 \u0434\u043e\u0431\u0443 (\u043d\u0456\u0447)"
+                                        },
+                                        {
+                                            "entity": "sensor.monthly_wash_mashine_energy_day",
+                                            "name": "\u0417\u0430 \u043c\u0456\u0441\u044f\u0446\u044c (\u0434\u0435\u043d\u044c)"
+                                        },
+                                        {
+                                            "entity": "sensor.monthly_wash_mashine_energy_night",
+                                            "name": "\u0417\u0430 \u043c\u0456\u0441\u044f\u0446\u044c (\u043d\u0456\u0447)"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "title": "\u041f\u043e\u043b\u043e\u0442\u0454\u043d\u0447\u0438\u043a 2\u043f",
+                            "cards": [
+                                {
+                                    "type": "glance",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.washmachine_power",
+                                            "name": "W"
+                                        },
+                                        {
+                                            "entity": "sensor.washmachine_current",
+                                            "name": "A"
+                                        },
+                                        {
+                                            "entity": "sensor.washmachine_voltage",
+                                            "name": "V"
+                                        },
+                                        {
+                                            "entity": "sensor.washmachine_energy",
+                                            "name": "Total"
+                                        },
+                                        {
+                                            "entity": "switch.washmachine",
+                                            "name": "State"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
@@ -429,39 +906,10 @@
                                     "entity": "sensor.disk_free"
                                 }
                             ]
-                        }
-                    ]
-                },
-                {
-                    "title": "Shedulers",
-                    "path": "shedulers",
-                    "icon": "mdi:timer-outline",
-                    "badges": [],
-                    "cards": [
+                        },
                         {
-                            "type": "custom:scheduler-card",
-                            "display_options": {
-                                "primary_info": "{name}"
-                            },
-                            "include": [
-                                "climate.pterm_room_11",
-                                "climate.pterm_room_21",
-                                "climate.pterm_room_22"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "title": "Tests",
-                    "path": "tests",
-                    "icon": "mdi:flask",
-                    "panel": true,
-                    "badges": [],
-                    "cards": [
-                        {
-                            "type": "iframe",
-                            "url": "http://rasp.lan:8123/api/hassio_ingress/gAZc6UpGaSl6Yl_hAss0d0wpvY1CK4b-d5LUBAnjgEc/d/StS5l7kgk/tempratures?orgId=1&theme=dark&viewPanel=2",
-                            "aspect_ratio": "100%"
+                            "type": "light",
+                            "entity": "light.espdiy_rgb_2"
                         }
                     ]
                 }

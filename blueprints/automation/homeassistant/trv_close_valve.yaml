@@ -1,0 +1,56 @@
+blueprint:
+  domain: automation
+  name: Close TRV valve at high room temperature
+  input:
+    trv_device:
+      name: Thermostat device
+      selector:
+        entity:
+          domain: climate          
+    root_temperature_sensor:
+      name: Temperature Sensor
+      selector:
+        entity:
+          domain: sensor
+          device_class: temperature    
+
+mode: single
+variables:
+  trv_input: !input trv_device
+  room_input: !input root_temperature_sensor
+  room_temp: '{{ states(room_input) }}'
+  trv_temp: '{{ state_attr(trv_input, ''temperature'') }}'  
+  is_opened: '{{ is_state(trv_input, ''heat'') }}'
+  tollerance: 0.3
+  need_to_close: '{{ (room_temp - trv_temp) > tollerance }}'
+
+
+trigger:
+  - platform: time_pattern
+    minutes: /5
+  
+  
+condition:
+  - condition: and
+    conditions:
+    - condition: template
+      value_template: '{{ is_opened }}'
+    - condition: template
+      value_template: '{{ is_state(''binary_sensor.boiler_is_on'', ''on'') }}'
+    - condition: template
+      value_template: '{{ need_to_close }}'
+
+action:
+  - service: climate.set_hvac_mode
+    data:
+      hvac_mode: 'off'
+    target: 
+      entity_id: !input trv_device
+  # - service: notify.telegram_id1
+  #   data:
+  #     message: >-        
+  #       need to close: {{ state_attr(trv_input,'friendly_name') }}
+      
+
+
+

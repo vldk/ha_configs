@@ -1,0 +1,57 @@
+blueprint:
+  domain: automation
+  name: Open TRV valve at low room temperature
+  input:
+    trv_device:
+      name: Thermostat device
+      selector:
+        entity:
+          domain: climate          
+    root_temperature_sensor:
+      name: Temperature Sensor
+      selector:
+        entity:
+          domain: sensor
+          device_class: temperature    
+
+mode: single
+variables:
+  trv_input: !input trv_device
+  room_input: !input root_temperature_sensor
+  room_temp: '{{ states(room_input) }}'
+  trv_temp: '{{ state_attr(trv_input, ''temperature'') }}'  
+  is_closed: '{{ is_state(trv_input, ''off'') }}'
+  tollerance: 0.3
+  need_to_open: '{{ (room_temp - trv_temp) <= tollerance }}'
+
+trigger:
+  - platform: time_pattern
+    minutes: /5
+  - platform: state
+    entity_id: binary_sensor.boiler_is_on
+    to: 'on' 
+
+condition:
+  - condition: and
+    conditions:
+    - condition: template
+      value_template: '{{ is_closed }}'
+    - condition: template
+      value_template: '{{ is_state(''binary_sensor.boiler_is_on'', ''on'') }}'
+    - condition: template
+      value_template: '{{ need_to_open }}'
+
+
+action:
+  - service: climate.set_hvac_mode
+    data:
+      hvac_mode: 'heat'
+    target: 
+      entity_id: !input trv_device
+  # - service: notify.telegram_id1
+  #   data:
+  #     message: >-
+  #       need to open: {{ state_attr(trv_input,'friendly_name') }}
+        
+
+

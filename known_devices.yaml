@@ -1,0 +1,132 @@
+
+redmiann:
+  name: RedmiAnn
+  mac: BT_00:EC:0A:76:4E:8D
+  icon:
+  picture:
+  track: true
+
+mi_band4_anna:
+  name: Mi Band 4 Anna
+  mac: BT_E0:C5:42:D9:1C:18
+  icon: mdi:watch
+  picture:
+  track: true
+
+moto_z_bt:  
+  name: Moto Z
+  mac: BT_0C:CB:85:AF:29:85
+  icon: mdi:cellphone-android
+  picture:
+  track: true
+
+amaizefit_bib:  
+  name: AmazeFit Bip
+  mac: BT_EB:AA:AC:A3:52:C8
+  icon: mdi:watch
+  picture:
+  track: true
+televizor_u_vitalni:
+  name: Телевізор у вітальні
+  mac: BT_B4:C9:B9:25:A2:61
+  icon:
+  picture:
+  track: true
+
+tv_samsung_q70_series_65:
+  name: '[TV] Samsung Q70 Series (65)'
+  mac: BT_8C:79:F5:D3:C8:5B
+  icon:
+  picture:
+  track: false
+
+bt_2c_fd_a1_90_71_04:
+  name: bt_2c_fd_a1_90_71_04
+  mac: BT_2C:FD:A1:90:71:04
+  icon:
+  picture:
+  track: false
+
+oleg_borovskys_iphone:
+  name: Oleg Borovsky’s iPhone
+  mac: BT_40:9C:28:DE:12:FD
+  icon:
+  picture:
+  track: false
+
+samsung_u_flex_5a4b:
+  name: Samsung U Flex (5A4B)
+  mac: BT_2C:BA:BA:7A:5A:4B
+  icon:
+  picture:
+  track: false
+
+mami:
+  name: MaMi
+  mac: BT_78:02:F8:E8:46:9D
+  icon:
+  picture:
+  track: false
+
+tpm191e_nown:
+  name: TPM191E nown
+  mac: BT_34:F1:50:82:EC:40
+  icon:
+  picture:
+  track: false
+
+galaxy_s10:
+  name: Galaxy S10+
+  mac: BT_C0:BD:C8:21:76:B6
+  icon:
+  picture:
+  track: false
+
+huawei_mediapad_t3_10:
+  name: HUAWEI MediaPad T3 10
+  mac: BT_50:04:B8:1A:56:98
+  icon:
+  picture:
+  track: false
+
+huawei_p8_lite_2017:
+  name: HUAWEI P8 lite 2017
+  mac: BT_04:4F:4C:D2:DA:6A
+  icon:
+  picture:
+  track: false
+
+ipad_olena:
+  name: iPad Olena
+  mac: BT_C4:0B:31:1F:00:36
+  icon:
+  picture:
+  track: false
+
+jbl_charge_4:
+  name: JBL Charge 4
+  mac: BT_98:52:3D:C5:16:5F
+  icon:
+  picture:
+  track: false
+
+meizu_m6_note:
+  name: MEIZU M6 Note
+  mac: BT_14:16:9E:1B:0E:94
+  icon:
+  picture:
+  track: true
+
+redmi:
+  name: Redmi
+  mac: BT_C4:0B:CB:BB:C7:AE
+  icon:
+  picture:
+  track: true
+
+vld_charge_3:
+  name: VLD Charge 3
+  mac: BT_FC:A8:9A:99:37:91
+  icon:
+  picture:
+  track: true

@@ -1,0 +1,67 @@
+  - platform: integration
+    source: sensor.power
+    name: wifi_boiler_socket_energy
+    unit_prefix: k
+    round: 2
+  
+  - platform: template
+    sensors:      
+      current_total_load_power:
+        friendly_name: "Summary load power"
+        value_template: "{{
+          states('sensor.power') | float + 
+          states('sensor.socket_1_energy') | float + 
+          states('sensor.0x60a423fffe61bc7d_energy') | float + 
+          states('sensor.washmachine_power') | float
+        }}"
+        unit_of_measurement: "w"
+
+      load_wifi_boiler_socket:
+        friendly_name: "total power wifi boiler"
+        value_template: "{{ (states('sensor.power') | float * 0.001) | round(6) }}"
+        unit_of_measurement: "кВт"
+
+      
+      total_energy_daily_day:
+        friendly_name: "Total energy (daily)"
+        icon_template: mdi:counter
+        value_template: "{{ (
+          states('sensor.daily_boiler_energy_day') | float + 
+          states('sensor.daily_pc_energy_day') | float + 
+          states('sensor.daily_motors_energy_day') | float +
+          states('sensor.daily_wash_mashine_energy_day') | float
+          ) | round(6) }}"
+        unit_of_measurement: "кВт"
+
+      total_energy_daily_night:
+        friendly_name: "Total energy (night)"
+        icon_template: mdi:counter
+        value_template: "{{ ( 
+          states('sensor.daily_boiler_energy_night') | float + 
+          states('sensor.daily_pc_energy_night') | float + 
+          states('sensor.daily_motors_energy_night') | float +
+          states('sensor.daily_wash_mashine_energy_night') | float
+          ) | round(6) }}"
+        unit_of_measurement: "кВт"
+      
+      total_energy_monthly_day:
+        friendly_name: "Total energy (monthly)"
+        icon_template: mdi:counter
+        value_template: "{{ ( 
+          states('sensor.monthly_boiler_energy_day') | float + 
+          states('sensor.monthly_pc_energy_day') | float + 
+          states('sensor.monthly_motors_energy_day') | float +
+          states('sensor.monthly_wash_mashine_energy_day') | float
+          ) | round(6) }}"
+        unit_of_measurement: "кВт"
+      
+      total_energy_monthly_night:
+        friendly_name: "Total energy (monthly)"
+        icon_template: mdi:counter
+        value_template: "{{ ( 
+          states('sensor.monthly_boiler_energy_night') | float + 
+          states('sensor.monthly_pc_energy_night') | float + 
+          states('sensor.monthly_motors_energy_night') | float +
+          states('sensor.monthly_wash_mashine_energy_night') | float
+          ) | round(6) }}"
+        unit_of_measurement: "кВт"

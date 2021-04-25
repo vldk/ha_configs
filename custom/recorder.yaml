@@ -10,30 +10,50 @@ auto_purge: true
 #     - sensor.weather_*
 include:
   entity_globs:
-    - switch.*
-    # termostats
+    - switch.*    
     - climate.*
+    - automation.*
+    - scripts.*
+    - input_number.*
+    - input_boolean.*
+    - device_tracker.*
+    - binary_sensor.ble_*
+    - person.*
+    - light.*
     # датчики темп    
     - sensor.*_temperature
     - sensor.*_humidity
     - sensor.*_linkquality
 
     - sensor.speedtest_*
+    # monitoring energy
+    - sensor.load_*
+    - utility_meter.*
     - sensor.*_current
     - sensor.*_energy
     - sensor.*_power
-    - sensor.*_voltage
+    - sensor.*_voltage    
+    - sensor.daily_*_energy_*
+    - sensor.monthly_*_energy_*
+    - sensor.total_energy_daily_*
+    
     - sensor.pterm_*
+    - sensor.*_action
     - sensor.*_illuminance
     - sensor.*_illuminance_lux
     - binary_sensor.*_occupancy
-    - binary_sensor.*_contact
-    - automation.*
-    - scripts.*
-    - input_number.*
-    - input_boolean.*
-    - device_tracker.*
+    - binary_sensor.*_contact    
   entities:
+    # WifiSocket with wrong initial integration
+    - sensor.current
+    - sensor.energy
+    - sensor.power
+    - sensor.voltage
+
+    - binary_sensor.my_amazefit_bip
+
+    - sensor.rf_scan
+
     - sensor.home_assistant_v2_db
     - sensor.maria_db_size
     
